@@ -1,0 +1,103 @@
+body {
+    max-width: 1920px ;
+    text-align: center ;
+    margin: auto, 0 ;
+    text-decoration: none;
+    line-height: 1.3rem;
+}
+
+.navHead {
+    background-color: rgb(7, 4, 21);
+    padding: 1rem;
+}
+
+.navHead li {
+    display: inline-block;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.navHead a {
+    text-decoration: none;
+    color:aliceblue;
+    padding: 1rem;
+}
+
+.navHead a:hover {
+    color: gold;
+}
+
+input {
+    width: 400px;
+    padding:0.5rem;
+    margin: 0.3rem;
+    text-align: center;
+    border-radius: 5px;
+    
+}
+
+hr {
+    width: 600px;
+    margin: 2rem auto 0 auto;
+}
+
+select {
+    width: 250px;
+    padding: 0.3rem;
+    background-color: rgb(12, 10, 10);
+    color: gold;
+    border-radius: 5px;
+}
+
+#div-input-label {
+    margin-top: 1rem;
+}
+
+.submit {
+    width: 250px;
+    padding: 0.3rem;
+    margin-top: 2rem;
+}
+
+.superAdmin a li {
+    display:inline-block;
+    padding:1rem;
+    color:white ;
+    text-transform: uppercase;
+}
+.superAdmin a li:hover {
+    color: crimson;
+}
+
+.superAdmin {
+    max-width: 100%;
+    background-color: rgb(61, 88, 208);
+}
+
+.titleAdmin {
+    color: red;
+}
+
+/* .imghome {
+    width: 100%;
+} */
+
+.table {
+    margin: 3rem auto;
+    border-collapse: collapse;
+}
+
+
+.table th,
+.table td {
+    padding: 1.2rem;
+    border: 1px solid black;
+}
+
+.table a {
+    text-decoration: none;
+}
+
+.table a:hover{
+    color: red;
+}

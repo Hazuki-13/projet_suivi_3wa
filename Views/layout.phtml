@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <title>Hotel</title>
+    <link rel="icon"  type="img/png" href="../assets/favicon/favicon-32x32.png" />
+</head>
+<body>
+    <header>
+
+        <h1>Hotel</h1>
+
+            <nav class ="navHead">
+                <ul>
+                    <li><a href="<?= url('/home') ?>">Home</a></li>
+                    <li><a href="<?= url('/room') ?>">Room</a></li>
+                    <li><a href="<?= url('/buffet') ?>">Buffet</a></li>
+                    <li><a href="<?= url('/booking') ?>">Booking</a></li>
+                    
+                    
+                </ul>
+            </nav>
+
+    </header>
+    <main class="container">
+
+    
+        <?php require $template . '.phtml' ?>
+        
+    </main>
+    
+    <footer>
+        
+        
+        
+        </footer>
+        
+        <script src="../assets/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<h2>Test Connection Base de Donnée</h2>
+
+<div>
+    <?php
+        $servername = 'db.3wa.io';
+        $username = 'alexandreangosto';
+        $password = 'b2a7ffe6f7a5907ea8fc2cc231aab338';
+        //On établit la connexion
+        $conn = new mysqli($servername, $username, $password);
+        //On vérifie la connexion
+        if($conn->connect_error){
+                die('Erreur : ' .$conn->connect_error);
+                }
+        echo 'Connexion réussie';
+        ?>
+</div>

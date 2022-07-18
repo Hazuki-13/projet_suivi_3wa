@@ -1,0 +1,72 @@
+<h2>Booking</h2>
+
+    <h3>Personal details</h3>
+
+        <form action="<?= url('/booking/create') ?>" method="POST">
+            <div class="idForm">
+                
+                    <div class="div-input">
+                        <label for="firstName"></label>
+                        <input type="text" name="firstName" id="firstName" placeholder="Your first name">
+                    </div>
+                    <div class="div-input">
+                        <label for="lastName"></label>
+                        <input type="text" name="lastName" id="lastName" placeholder="Your last name">
+                    </div>
+                    <div class="div-input">
+                            <label for="email"></label>
+                            <input type="email" name="email" id="email" placeholder="Your email">
+                    </div>                    
+                        <p></p>                   
+                    <div class="div-input-label">
+                            <label for="birthDate">Your birthdate</label><br>
+                            
+                            <input type="date" name="birthDate" id="birthDate" placeholder="Your birth date">
+                    </div>
+            </div>
+            
+            <hr>
+            
+            <h3>Your stay</h3>
+                <div class="divRoom">
+                    
+                        <label for="check-in">Check-in: 2pm</label>
+                        <p></p>
+                        <input type="date" id="check-in" name="check-in"
+                        value ="">
+                        <p></p>
+                        <label for="check-out">Check-out: 12am</label>
+                        <p></p>
+                        <input type="date" id="check-out
+                        "name="check-out"
+                        value ="">
+                       
+      
+                        <h3>Your room</h3>
+                        
+                        <select id="selectCategory" name="cat_id">
+                            
+                            <option value="">Choose your room</option>
+                            
+                            <?php foreach ($rooms as $room): ?>
+                                <option value="<?= htmlspecialchars($room['cat_id']) ?>"><?= htmlspecialchars($room['cat_title']) ?></option>
+                                <?php endforeach ?>
+                                
+                                
+                            </select>
+                            
+                        <p></p>
+
+                        <div id="price">
+                            
+                                    
+                        </div>
+                        
+                        
+                    </div>
+                
+                <button class="submit">Book now!</button>
+        </form>
+                
+                
+                
