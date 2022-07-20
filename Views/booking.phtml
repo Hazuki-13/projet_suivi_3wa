@@ -21,7 +21,8 @@
                     <div class="div-input-label">
                             <label for="birthDate">Your birthdate</label><br>
                             
-                            <input type="date" name="birthDate" id="birthDate" placeholder="Your birth date">
+                            <input type="date" name="birthDate" id="birthDate"
+                            min="<?= (new \DateTime('-18 years'))->format('Y-m-d') ?>" placeholder="Your birth date">
                     </div>
             </div>
             
@@ -32,13 +33,13 @@
                     
                         <label for="check-in">Check-in: 2pm</label>
                         <p></p>
-                        <input type="date" id="check-in" name="check-in"
+                        <input type="date" id="check-in" name="check_in"
                         value ="">
                         <p></p>
                         <label for="check-out">Check-out: 12am</label>
                         <p></p>
                         <input type="date" id="check-out
-                        "name="check-out"
+                        "name="check_out"
                         value ="">
                        
       
@@ -67,6 +68,7 @@
                 
                 <button class="submit">Book now!</button>
         </form>
+        
                 
                 
                 

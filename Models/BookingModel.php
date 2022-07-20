@@ -10,18 +10,18 @@ class BookingModel extends Database
 
         public function newBooking($data)
         {
-            echo'<pre>';
-            var_dump($data);
-            echo '</pre>';
+            // echo'<pre>';
+            // var_dump($data);
+            // echo '</pre>';
             $this->createOne('customers', 'cust_lastname, cust_firstname, cust_birthdate, cust_email', '?, ?, ?, ?', $data);
         }
                 
         public function newBookingSuite($dataSuite)
         {
-            echo'<pre>';
-            var_dump($dataSuite);
-            echo '</pre>';
-            $this->createOneSuite('booking', ' cust_id, cat_id, check_in, check_out', '?, ?, ?, ?', $dataSuite);
+            // echo'<pre>';
+            // var_dump($dataSuite);
+            // echo '</pre>';
+            $this->createOneSuite('booking', 'cust_id, cat_id, check_in, check_out', '?, ?, ?, ?', $dataSuite);
                 
             
         }
