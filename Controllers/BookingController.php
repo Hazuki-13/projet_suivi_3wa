@@ -31,103 +31,105 @@ class BookingController extends Controller
             _afficher erreur message ="le champs n'est pas correct"
         */
 
-        $data = [];
-        // $cust_id = [];
-        $dataSuite = [];
-        $error = [];
+        $error = false;
+        $errorFirstName = '';
+        $errorLastName='';
+        $errorEmail='';
+        $errorBirthDate='';
+        $errorCat_id='';
+        $errorCheck_in='';
+        $errorCheck_out='';
         
-        if(isset($_POST['firstName']) && !empty($_POST['firstName']))
+        if(!isset($_POST['firstName']) || (isset($_POST['firstName']) && empty($_POST['firstName']))) {
+            $errorFirstName = 'first name incorrect';
+            $error = true;
+        }
+                        
+        if(!isset($_POST['lastName']) || (isset($_POST['lastName']) && empty($_POST['lastName']))) 
         {
-            // $data=[ $_POST['firstName']];
-            array_push($data, $_POST['firstName']);
+            $errorLastName = 'last name incorrect';
+            $error = true;         
         }
-        else{
-            $error['firstName'] = ['firstName incorrect'];
-            
-        }
-        if(isset($_POST['lastName']) && !empty($_POST['lastName']))
+
+        if(!isset($_POST['email']) || (isset($_POST['email']) && empty     ($_POST['email']))) 
         {
-            // $data=[ $_POST['lastName']];
-            array_push($data, $_POST['lastName']);
-        }
-        else{
-            $error['lastName'] = ['lastName incorrect'];
+            $errorEmail= 'email incorrect';
+            $error = true;         
+        }            
             
-        }
-        if(isset($_POST['email']) && !empty($_POST['email']))
+            
+        if(!isset($_POST['birthDate']) || (isset($_POST['birthDate']) && empty($_POST['birthDate']))) {
+            $errorBirthDate = 'birthdate incorrect';
+            $error = true;        
+        }            
+
+            
+        if(!isset($_POST['cat_id']) || (isset($_POST['cat_id']) && empty($_POST['cat_id']))) 
         {
-            $data=[ $_POST['email']];
+            $errorCat_id= 'room not selected';
+            $error = true;         
         }
-        else{
-            $error['email'] = ['email incorrect'];
-            
-        }
-        if(isset($_POST['birthDate']) && !empty($_POST['birthDate']))
+
+                                                
+        if(!isset($_POST['check_in']) || (isset($_POST['check_in']) && empty($_POST['check_in']))) 
         {
-            $data=[ $_POST['birthDate']];
+            $errorCheck_in= 'choose a date of your arrival';
+            $error = true;            
         }
-        else{
-            $error['birthDate'] = ['birthDate incorrect'];
-            
+
+                        
+        if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out']))) {
+            $errorCheck_out= 'choose a date of your leaving';
+            $error = true;           
         }
-        // $cust_id = $model -> getLastCustomerId();
-        // if(isset($cust_id['cust_id']) && !empty($cust_id['cust_id']))
-        // {
-        //     $cust_id = ['cust_id'];
-        // }
-        // else{
-        //     $error[$cust_id] = ['unexpected error!'];
-            
-        // }
-        if(isset($_POST['cat_id']) && !empty($_POST['cat_id']))
+
+        
+        $_SESSION['message']=[
+            'firstName'=> $errorFirstName,
+            'lastName'  => $errorLastName,
+            'email'  => $errorEmail,
+            'birthDate'  => $errorBirthDate,
+            'cat_id'  => $errorCat_id,
+            'check_in'  => $errorCheck_in,
+            'check_out'  => $errorCheck_out
+        ];
+
+        // echo('<pre>');
+        // print_r($_SESSION['message']);
+        // echo ('</pre>');
+        // die();
+        if($error)
         {
-            $dataSuite=[$_POST['cat_id']];
-        }
-        else{
-            $error['cat_id'] = ['select your category\'s room'];
-            
-        }
-        if(isset($_POST['check_in']) && !empty($_POST['check_in']))
-        {
-            $dataSuite=[ $_POST['check_in']];
-        }
-        else{
-            $error['check_in'] = ['select the date of your arrival'];
-            
-        }
-        if(isset($_POST['check_out']) && !empty($_POST['check_out']))
-        {
-            $dataSuite=[ $_POST['check_out']];
-        }
-        else{
-            $error['check_out'] = ['select the date of your leaving'];
-            
-        }
-        echo('<pre>');
-        print_r($error);
-        echo ('</pre>');
-        if(isset($error) && !empty($error))
-        {
-            echo('ERROR DETECTER');
-            echo('<br>');
+           $_SESSION["data"] = [
+            'firstName'=> $_POST['firstName'],
+            'lastName'  => $_POST['lastName'],
+            'email'  => $_POST['email'],
+            'birthDate'  => $_POST['birthDate'],
+            'cat_id'  => $_POST['cat_id'],
+            'check_in'  => $_POST['check_in'],
+            'check_out'  => $_POST['check_out']
+           ];
+            // echo('<pre>');
+            // print_r($_SESSION['data']);
+            // echo ('</pre>');
+            // die();
 
             $modelRoom = new RoomModel();
             $rooms = $modelRoom -> getRooms(['cat_title']);
-            echo('<pre>');
-            print_r($data);
-            echo ('</pre>');
-            echo('<pre>');
-            print_r($dataSuite);
-            echo ('</pre>');
-            // $model = new BookingModel;
-            // $model -> newBooking($data);
-            // $cust_id = $model -> getLastCustomerId();
-            // $model2 = new BookingModel;
-            // $model2 -> newBookingSuite($dataSuite);
+
+                // echo('<pre>');
+                // print_r($data);
+                // echo ('</pre>');
+                // echo('<pre>');
+                // print_r($dataSuite);
+                // echo ('</pre
             $this -> render('booking', [
-                    'rooms' => $rooms,
-                    'error' => $error
+                    'rooms' => $rooms
+                    // 'error' => $error
                 ]);
+                // $template =  'booking' ;
+                // require 'Views/layout.phtml';
+                // exit();
             // redirect('/booking');
                 // die;
         }
@@ -140,9 +142,11 @@ class BookingController extends Controller
            $_POST['birthDate'],
            $_POST['email']
         ];
-        echo('<pre>');
-            print_r($data);
-            echo ('</pre>');
+
+            // echo('<pre>');
+            // print_r($data);
+            // echo ('</pre>');
+
         $model -> newBooking($data);
         // on vient d'inserer des element new customer
         // recuperer l'id de ce nouveau customer

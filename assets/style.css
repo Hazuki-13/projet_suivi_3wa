@@ -1,25 +1,30 @@
 body {
     max-width: 1920px ;
+    width:95%;
     text-align: center ;
-    margin: auto, 0 ;
+    margin: 0 auto ;
     text-decoration: none;
     line-height: 1.3rem;
+    font-family: sans-serif;
 }
-
+/************************************************************************/
+/************ style du hearder et de la barre de navigation *************/
+/************************************************************************/
 .navHead {
     background-color: rgb(7, 4, 21);
     padding: 1rem;
 }
-
-.navHead li {
-    display: inline-block;
-    margin-left: 2rem;
-    margin-right: 2rem;
+.navHead ul {
+    display: flex;
+    justify-content: center;
+    
 }
 
 .navHead a {
     text-decoration: none;
     color:aliceblue;
+    margin-left: 2rem;
+    margin-right: 2rem;
     padding: 1rem;
 }
 
@@ -27,13 +32,32 @@ body {
     color: gold;
 }
 
+/***********************************************************************/
+/************************ style de la vue Home *************************/
+/***********************************************************************/
+.imghome {
+    width: 100%;
+}
+
+/***********************************************************************/
+/************************ style de la vue room *************************/
+/***********************************************************************/
+.rooms {
+    width: 60%;
+    margin: 0 auto;
+}
+
+/***********************************************************************/
+/*************** style du formulaire de réservation ********************/
+/***********************************************************************/
 input {
     width: 400px;
     padding:0.5rem;
-    margin: 0.3rem;
+    margin-bottom: -1rem;
+    margin: 0 auto -1rem auto;
     text-align: center;
     border-radius: 5px;
-    color: red;
+    display: inline-block;
     
 }
 
@@ -51,7 +75,7 @@ select {
 }
 
 #div-input-label {
-    margin-top: 1rem;
+    margin-top: 1rem auto;
 }
 
 .submit {
@@ -60,6 +84,13 @@ select {
     margin-top: 2rem;
 }
 
+.errorForm {
+    color:red;
+}
+
+/*********************************************************************/
+/*********************** style de la page admin  *********************/
+/*********************************************************************/
 .superAdmin a li {
     display:inline-block;
     padding:1rem;
@@ -79,15 +110,11 @@ select {
     color: red;
 }
 
-/* .imghome {
-    width: 100%;
-} */
 
 .table {
     margin: 3rem auto;
     border-collapse: collapse;
 }
-
 
 .table th,
 .table td {
@@ -102,3 +129,55 @@ select {
 .table a:hover{
     color: red;
 }
+
+/*********************************************************************/
+/***********************style du footer*******************************/
+/*********************************************************************/
+.footer {
+    background-color: rgb(7, 4, 21);
+    padding: 1.2rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0.2rem;
+    color:white;
+    display:flex;
+    justify-content: space-around;
+}
+
+footer div {
+    width: 40%;
+}
+
+.footer h3 {
+    text-decoration: underline;
+}
+/* .contact {
+    display:flex;
+    justify-content: flex-start;
+} */
+.contact h4 p {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 2rem;
+}
+
+.reseaux {
+    width: 40%;
+    /* display: flex;
+    justify-content: flex-end; */
+}
+
+.reseaux a i {
+    font-size: 2rem;
+    margin: 1.2rem;
+    color: white;
+}
+
+.reseaux a i:hover {
+    color: gold;
+}
+
+
+
+/*********************************************************************/
+/*********************************************************************/
+/*********************************************************************/

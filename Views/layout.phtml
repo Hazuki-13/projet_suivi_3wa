@@ -4,10 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/style.css">
-
+    <script src="https://kit.fontawesome.com/01b2730b7a.js" crossorigin="anonymous"></script>
     <title>Hotel</title>
-    <link rel="icon"  type="img/png" href="../assets/favicon/favicon-32x32.png" />
+    <?php 
+        $url = $_SERVER['REQUEST_URI'];
+        $path = parse_url($url, PHP_URL_PATH);
+            // echo($path);
+        $pathFragments = explode('/', $path);
+        $endUrl = end($pathFragments);
+            // echo('<br>'.$endUrl);
+    ?>
+    <?php if($endUrl !== "create"): ?>
+        <link rel="stylesheet" href="../assets/style.css">
+        <link rel="icon"  type="img/png" href="../assets/favicon/favicon-32x32.png" />
+    <?php else: ?>
+        <link rel="stylesheet" href="../../assets/style.css">
+        <link rel="icon"  type="img/png" href="../../assets/favicon/favicon-32x32.png" />
+    <?php endif; ?>
+
+    
 </head>
 <body>
     <header>
@@ -18,8 +33,8 @@
                 <ul>
                     <li><a href="<?= url('/home') ?>">Home</a></li>
                     <li><a href="<?= url('/room') ?>">Room</a></li>
-                    <li><a href="<?= url('/buffet') ?>">Buffet</a></li>
                     <li><a href="<?= url('/booking') ?>">Booking</a></li>
+                    <li><a href="#about">About</a></li>
                     
                     
                 </ul>
@@ -33,13 +48,34 @@
         
     </main>
     
-    <footer>
+    <footer class="footer" id="about">
+
+        <div class="contact">
+
+            <h3>Contact</h3>
+            
+            <p>Adress: my adress</p>
+            <p>Email: myemail@email.com</p>
+            <p>Phone: +9999999999</p>
+            
+        </div>
         
-        
+        <div class="reseaux">
+            
+            <h3>Social</h3>
+
+                <a target="_blank" href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+                <a target="_blank" href="https://twitter.com/?la"><i class="fa-brands fa-twitter"></i></a>
+                <a target="_blank" href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+
+        </div>
         
         </footer>
-        
-        <script src="../assets/script.js"></script>
+        <?php if($endUrl !== "create"): ?>
+            <script src="../assets/script.js"></script>
+        <?php else: ?>
+            <script src="../../assets/script.js"></script>
+        <?php endif; ?>
 
 </body>
 </html>

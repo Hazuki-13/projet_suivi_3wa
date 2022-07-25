@@ -1,3 +1,5 @@
+
+
 <h2>Booking</h2>
 
     <h3>Personal details</h3>
@@ -7,22 +9,48 @@
                 
                     <div class="div-input">
                         <label for="firstName"></label>
-                        <input type="text" name="firstName" id="firstName" placeholder="Your first name">
+
+                        <input type="text" name="firstName" id="firstName" placeholder="Your first name" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['firstName'] !=='') {
+                            echo ($_SESSION['data']['firstName']);}?>"> 
+                        <p><small class="errorForm"><?php
+                        if(isset($_SESSION['message']) && $_SESSION['message']['firstName']!==''){
+                            echo($_SESSION['message']['firstName']);
+                        }
+                        ?></small></p>
                     </div>
                     <div class="div-input">
                         <label for="lastName"></label>
-                        <input type="text" name="lastName" id="lastName" placeholder="Your last name">
+
+                        <input type="text" name="lastName" id="lastName" placeholder="Your last name" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['lastName'] !=='') {
+                            echo ($_SESSION['data']['lastName']);}?>"> 
+                        <p><small class="errorForm"><?php
+                        if(isset($_SESSION['message']) && $_SESSION['message']['lastName']!==''){
+                            echo($_SESSION['message']['lastName']);
+                        }
+                        ?></small></p>
                     </div>
                     <div class="div-input">
                             <label for="email"></label>
-                            <input type="email" name="email" id="email" placeholder="Your email">
+
+                            <input type="email" name="email" id="email" placeholder="Your email" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['email'] !=='') {
+                            echo ($_SESSION['data']['email']);}?>"> 
+                            <p><small class="errorForm"><?php
+                        if(isset($_SESSION['message']) && $_SESSION['message']['email']!==''){
+                            echo($_SESSION['message']['email']);
+                        }
+                        ?></small></p>
                     </div>                    
-                        <p></p>                   
+                                           
                     <div class="div-input-label">
-                            <label for="birthDate">Your birthdate</label><br>
+                            <div><label for="birthDate">your birthdate</label></div>
                             
-                            <input type="date" name="birthDate" id="birthDate"
-                            min="<?= (new \DateTime('-18 years'))->format('Y-m-d') ?>" placeholder="Your birth date">
+                            <input type="date" name="birthDate" id="birthDate" placeholder="Your birth date" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['birthDate'] !=='') {
+                            echo ($_SESSION['data']['birthDate']);}?>">
+                            <p><small class="errorForm"><?php
+                        if(isset($_SESSION['message']) && $_SESSION['message']['birthDate']!==''){
+                            echo($_SESSION['message']['birthDate']);
+                        }
+                        ?></small></p>
                     </div>
             </div>
             
@@ -31,16 +59,25 @@
             <h3>Your stay</h3>
                 <div class="divRoom">
                     
-                        <label for="check-in">Check-in: 2pm</label>
-                        <p></p>
-                        <input type="date" id="check-in" name="check_in"
-                        value ="">
-                        <p></p>
-                        <label for="check-out">Check-out: 12am</label>
-                        <p></p>
-                        <input type="date" id="check-out
-                        "name="check_out"
-                        value ="">
+                        <div><label for="check-in">Check-in: 2pm</label></div>
+                        
+                        <input type="date" id="check-in" name="check_in" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['check_in'] !=='') {
+                            echo ($_SESSION['data']['check_in']);}?>">
+                        <p><small class="errorForm"><?php
+                        if(isset($_SESSION['message']) && $_SESSION['message']['check_in']!==''){
+                            echo($_SESSION['message']['check_in']);
+                        }
+                        ?></small></p>
+                        
+                        <div><label for="check-out">Check-out: 12am</label></div>
+                        
+                        <input type="date" id="check-out" name="check_out" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['check_out'] !=='') {
+                            echo ($_SESSION['data']['check_out']);}?>">
+                        <p><small class="errorForm"><?php
+                        if(isset($_SESSION['message']) && $_SESSION['message']['check_out']!==''){
+                            echo($_SESSION['message']['check_out']);
+                        }
+                        ?></small></p>
                        
       
                         <h3>Your room</h3>
@@ -55,8 +92,13 @@
                                 
                                 
                             </select>
+                            <p><small class="errorForm"><?php
+                        if(isset($_SESSION['message']) && $_SESSION['message']['cat_id']!==''){
+                            echo($_SESSION['message']['cat_id']);
+                        }
+                        ?></small></p>
                             
-                        <p></p>
+                        
 
                         <div id="price">
                             
@@ -68,6 +110,8 @@
                 
                 <button class="submit">Book now!</button>
         </form>
+
+        
         
                 
                 

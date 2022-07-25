@@ -56,11 +56,6 @@ return [
         'booking'
     ],
 
-    '/payment' => [
-        'Controllers\BookingController',
-        'displayPayment'
-    ],
-
     '/super-admin-control' => [
         'Controllers\FullController',
         'displayControl'
@@ -71,7 +66,6 @@ return [
         'create'
     ],
     
-
     '/booking/ajax' => [
         'Controllers\BookingController',
         'search'
