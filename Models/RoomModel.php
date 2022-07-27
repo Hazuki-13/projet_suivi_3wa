@@ -16,3 +16,14 @@ class RoomModel extends Database
     }
 }
 
+// public function getRooms():array
+    // {
+    //     $table = 'SELECT *, category.cat_title 
+    //               FROM rooms
+    //               INNER JOIN category 
+    //                 ON category.cat_id = rooms.cat_id
+    //               ORDER BY rooms.cat_id ASC';
+    // 
+    //     return $this -> findAll($table);
+    // }
+

@@ -57,8 +57,8 @@ return [
     ],
 
     '/super-admin-control' => [
-        'Controllers\FullController',
-        'displayControl'
+        'Controllers\SuperAdminController',
+        'displayBookingAdmin'
     ],
 
     '/booking/create' => [

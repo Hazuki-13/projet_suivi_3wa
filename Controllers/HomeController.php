@@ -12,11 +12,4 @@ class HomeController extends Controller
         // la methode render remplace le code précedent
         $this -> render('home');
     }
-
-    // public function displayRoom()
-    // {
-    
-        
-    // }
-
 }

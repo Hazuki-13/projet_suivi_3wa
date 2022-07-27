@@ -3,9 +3,6 @@
     <div>
         <ul class="superAdmin">
             <a href="<?= url('/super-admin-control') ?>"><li>Booking</li></a>
-            <a href="<?= url('/super-admin-control') ?>"><li>Edit</li></a>
-            <a href="<?= url('/super-admin-control') ?>"><li>Update</li></a>
-            <a href="<?= url('/super-admin-control') ?>"><li>Delete</li></a>
             <a href="<?= url('/super-admin-control') ?>"><li>Add</li></a>
         </ul>
     </div>
@@ -14,33 +11,33 @@
     <thead>
         <tr>
             <th>Number</th>
-            <th>id_booking</th>
-            <th>customer_id</th>
+            <th>id booking</th>
+            <th>customer id</th>
             <th>LastName</th>
             <th>FirstName</th>
-            <th>category_title</th>
-            <th>rooms</th>
-            <th>buffet_id</th>
-            <th>check_in</th>
-            <th>check_out</th>
+            <th>category</th>
+            <th>check-in</th>
+            <th>check-out</th>
             <th colspan="2">Action</th>
         </tr>
     </thead>
         <tbody>
+            <?php foreach ($booking as $book): ?>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="<?= url('/super-admin-control') ?>">Modifier</a></td>
-                <td><a href="<?= url('/super-admin-control') ?>">Archiver</a></td>
-            </tr>
+
+                    <td></td>
+                    <td><?= $book['id_booking'] ?></td>
+                    <td><?= $book['cust_id'] ?></td>
+                    <td><?= $book['cust_lastname'] ?></td>
+                    <td><?= $book['cust_firstname'] ?></td>
+                    <td><?= $book['cat_title'] ?></td>
+                    <td><?= $book['check_in'] ?></td>
+                    <td><?= $book['check_out'] ?></td>
+                    <td><a href="<?= url('/super-admin-control') ?>">Update</a></td>
+                    <td><a href="<?= url('/super-admin-control') ?>">Delete</a></td>
+
+                </tr>
+                <?php endforeach ?>
         </tbody>
     </table>
             

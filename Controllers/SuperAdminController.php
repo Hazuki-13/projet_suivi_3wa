@@ -2,11 +2,11 @@
 
 namespace Controllers;
 
-
+use Models\AdminModel;
 
 class SuperAdminController extends Controller
 {
-    protected function displayBooking()
+    public function displayBooking(): void
     {
         $this -> render ('super-admin-control');
     }
@@ -28,9 +28,9 @@ class SuperAdminController extends Controller
         
     }
 
-    public function displayBookingAdmin(): array
+    public function displayBookingAdmin(): void
     {
-        $model = new \Models\Model();
+        $model = new AdminModel;
         $bookingList = $model -> readBooking();
         $this -> render('super-admin-control',[
             'booking' => $bookingList

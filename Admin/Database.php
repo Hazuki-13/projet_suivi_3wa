@@ -50,7 +50,8 @@ class Database
         
     }
 
-    public function getOneById($table, $pre, $id) {
+    public function getOneById($table, $pre, $id) 
+    {
         $query = $this->getPdo()->prepare("SELECT * FROM " . $table . " WHERE ". $pre ."id = ?");
         $query->execute([$id]);
         $data = $query->fetch();
