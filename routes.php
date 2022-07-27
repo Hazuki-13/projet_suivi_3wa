@@ -42,8 +42,8 @@ return [
     ],
 
     '/room' => [
-        'Controllers\HomeController',
-        'displayRoom'
+        'Controllers\RoomController',
+        'displayRooms'
     ],
 
     '/buffet' => [
@@ -53,7 +53,7 @@ return [
 
     '/booking' => [
         'Controllers\BookingController',
-        'booking'
+        'bookingFormUser'
     ],
 
     '/super-admin-control' => [

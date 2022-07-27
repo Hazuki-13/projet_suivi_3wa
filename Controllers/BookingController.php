@@ -7,7 +7,7 @@ use Models\RoomModel;
 
 class BookingController extends Controller
 {
-    public function booking()
+    public function bookingFormUser()
     {
         
         $modelRoom = new RoomModel();

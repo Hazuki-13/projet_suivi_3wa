@@ -14,7 +14,7 @@ if(document.querySelector('#selectCategory') !== null){
         fetch(myRequest)
         .then(res=>res.text())
         .then(res=>{
-            document.getElementById('price').innerHTML= 'Prix de la chambre par jour : ' + res;
+            document.getElementById('price').innerHTML= 'Room\'s price per day : ' + res;
         })
     
     });

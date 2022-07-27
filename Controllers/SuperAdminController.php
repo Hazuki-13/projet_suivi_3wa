@@ -27,6 +27,15 @@ class SuperAdminController extends Controller
         $this -> render('super-admin-control');
         
     }
+
+    public function displayBookingAdmin(): array
+    {
+        $model = new \Models\Model();
+        $bookingList = $model -> readBooking();
+        $this -> render('super-admin-control',[
+            'booking' => $bookingList
+        ]);
+    }
     
     
 }
