@@ -60,7 +60,7 @@ return [
         'Controllers\SuperAdminController',
         'displayBookingAdmin'
     ],
-
+    
     '/booking/create' => [
         'Controllers\BookingController',
         'create'
@@ -69,6 +69,16 @@ return [
     '/booking/ajax' => [
         'Controllers\BookingController',
         'search'
+    ],
+
+    '/super-admin-control/update' => [
+        'Controllers\SuperAdminController',
+        'update'
+    ],
+
+    '/super-admin-control/delete' => [
+        'Controllers\SuperAdminController',
+        'delete'
     ]
 
 ];

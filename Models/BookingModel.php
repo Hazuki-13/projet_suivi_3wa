@@ -36,4 +36,9 @@ class BookingModel extends Database
             // var_dump($query);
         }
 
+        public function deleteBooking(): void
+        {
+
+        }
+
 }

@@ -55,7 +55,7 @@ class Database
         $query = $this->getPdo()->prepare("SELECT * FROM " . $table . " WHERE ". $pre ."id = ?");
         $query->execute([$id]);
         $data = $query->fetch();
-        $query->closeCursor(); // On indique au serveur que notre requete est terminée
+        $query -> closeCursor(); // On indique au serveur que notre requete est terminée
         return $data;
     }
 
@@ -89,8 +89,8 @@ class Database
     {
         $query = $this->getPdo()->prepare('INSERT INTO ' . $table . '(' . $columns . ') values (' . $values . ')');
         // var_dump($data);
-        $query->execute($data);
-        $query->closeCursor();
+        $query -> execute($data);
+        $query -> closeCursor();
     }
 
     // protected function addOne($query, $query2, $data )
@@ -104,33 +104,41 @@ class Database
     {
         $query = $this->getPdo()->prepare('INSERT INTO ' . $table . '(' . $columns . ') values (' . $values . ')');
         // var_dump($dataSuite);
-        $query->execute($dataSuite);
-        $query->closeCursor();
+        $query -> execute($dataSuite);
+        $query -> closeCursor();
     } 
     
-}
-
-
-// public function booking(string $table, $columns, $data)
+    
+    
+    // public function booking(string $table, $columns, $data)
 // {
-//     $query = $this -> getPdo() -> prepare('INSERT INTO customers, rooms, buffet, booking 
-//                                            FROM $table
-//                                            WHERE $columns = ?');
-//     $query->execute($data);
-// 
+    //     $query = $this -> getPdo() -> prepare('INSERT INTO customers, rooms, buffet, booking 
+    //                                            FROM $table
+    //                                            WHERE $columns = ?');
+    //     $query->execute($data);
+    // 
 // }
 //   
 //  public fuction booking (string $table, $columns, $data)
 // {                                     
-//     $query = $this -> getPdo() -> prepare('
-//                  INSERT INTO customers FROM $table WHERE $columns = ?');
-//                  SELECT LAST_INSERT_ID() FROM customers;
-//                  INSERT INTO rooms FROM $table WHERE $columns = ?');
-//                  INSERT INTO buffet FROM $table WHERE $columns = ?');
-//                  INSERT INTO booking FROM $table WHERE $columns = ?');
-// 
-// 
-//     $query->execute($data);
-// }
-
+    //     $query = $this -> getPdo() -> prepare('
+    //                  INSERT INTO customers FROM $table WHERE $columns = ?');
+    //                  SELECT LAST_INSERT_ID() FROM customers;
+    //                  INSERT INTO booking FROM $table WHERE $columns = ?');
+    // 
+    // 
+    //     $query->execute($data);
+    // }
     
+    public function delete(string $table, string $condition, string $value)
+    {
+        $query = $this->getPdo()->prepare('DELETE FROM' . $table . 'WHERE' . $condition . ' = ?');
+        // echo'<pre>';
+        // var_dump($query);
+        // echo '</pre>';
+        // die();
+        $query->execute([$value]);
+        $query->closeCursor();
+    }
+    
+}

@@ -32,9 +32,39 @@ class SuperAdminController extends Controller
     {
         $model = new AdminModel;
         $bookingList = $model -> readBooking();
+        // echo'<pre>';
+        // var_dump($bookingList);
+        // echo '</pre>';
+        // die();
         $this -> render('super-admin-control',[
             'booking' => $bookingList
         ]);
+    }
+
+    public function update() :void
+    {
+        $id = $_GET['id'];
+        // echo'<pre>';
+        // var_dump($_GET);
+        // echo '</pre>';
+        // die();
+        $model = new AdminModel();
+        $model -> updateModel($id);
+        redirect('/super-admin-control');
+
+    }
+
+    public function delete() :void
+    {
+        $id = $_GET['id'];
+        // echo'<pre>';
+        // var_dump($_GET);
+        // echo '</pre>';
+        // die();
+        $model = new AdminModel();
+        $model -> deleteModel($id);
+        redirect('/super-admin-control');
+
     }
     
     
