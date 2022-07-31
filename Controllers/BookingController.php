@@ -3,7 +3,8 @@
 namespace Controllers;
 
 use Models\BookingModel;
-use Models\RoomModel;   
+use Models\RoomModel; 
+use Models\AdminModel;  
 
 class BookingController extends Controller
 {
@@ -133,115 +134,145 @@ class BookingController extends Controller
             // redirect('/booking');
                 // die;
         }
-        else{
+        else
+        {
+            $model = new BookingModel;
+            $data = [
+               $_POST['firstName'],
+               $_POST['lastName'],
+               $_POST['birthDate'],
+               $_POST['email']
+            ];
+    
+                // echo('<pre>');
+                // print_r($data);
+                // echo ('</pre>');
+    
+            $model -> newBooking($data);
+            // on vient d'inserer des element new customer
+            // recuperer l'id de ce nouveau customer
+            $cust_id = $model -> getLastCustomerId();
+            
+            $modelRoom = new RoomModel();
+            $rooms = $modelRoom -> getRooms(['cat_title']);
+            
+            $model2 = new BookingModel;
+            $dataSuite = [
+                $cust_id,
+                $_POST['cat_id'],
+                $_POST['check_in'],
+                $_POST['check_out']
+    
+            ];
+            
+            $model2 -> newBookingSuite($dataSuite);
         
+         
+            redirect('/home');
+        }
+            
+    }
+    
+    public function search()
+    {
+        $content = file_get_contents("php://input");
+        $data = json_decode($content, true);
+
+        $search = $data['id'];
+        
+        $modelRoom = new RoomModel();
+        $price = $modelRoom -> getOneById('category', 'cat_', $search);
+        // file_put_contents('exemple.txt', $price['cat_price']);
+        include'views/prix.phtml';
+
+    }
+
+    public function edit()
+    {
+        //pour faire afficher le formulaire pour l'UPDATE
+        //id du
+        $idCust = $_GET['cust_id'];
+        $idBook = $_GET['id_booking'];
         $model = new BookingModel;
+        $model2 = new BookingModel;
+        $form = $model -> findCustomer($idCust);
+        $form2 = $model2 -> findBooking($idBook);
+
+        $modelRoom = new RoomModel();
+        $model2 = new BookingModel();
+        $rooms = $modelRoom -> getRooms(['cat_title']);
+
+        // $template =  'booking' ;
+        // require 'MVC/Views/layout.phtml';
+        // la methode render remplace le code précedent
+        
+        $this -> render('super-admin-control/updateBooking', [
+            'rooms' => $rooms
+        ]);
+
+    }
+
+    public function update() :void
+    {
+        $idCust = $_POST['cust_id'];
+        $model = new BookingModel();
         $data = [
-           $_POST['firstName'],
-           $_POST['lastName'],
-           $_POST['birthDate'],
-           $_POST['email']
+            $_POST['firstName'],
+            $_POST['lastName'],
+            $_POST['birthDate'],
+            $_POST['email']
         ];
+        
+        echo('<pre>');
+        print_r($data);
+        echo ('</pre>');
+        
+        // $model -> newBooking($data);
+        $model -> updateModelCustomers($data, $idCust);
 
-            // echo('<pre>');
-            // print_r($data);
-            // echo ('</pre>');
-
-        $model -> newBooking($data);
         // on vient d'inserer des element new customer
         // recuperer l'id de ce nouveau customer
-        $cust_id = $model -> getLastCustomerId();
+        // $cust_id = $model -> getLastCustomerId();
         
         $modelRoom = new RoomModel();
         $rooms = $modelRoom -> getRooms(['cat_title']);
-        
-        $model2 = new BookingModel;
+
+        $idBook = $_POST['id_booking'];
+        $model2 = new BookingModel();
         $dataSuite = [
-            $cust_id,
+            // $cust_id,
             $_POST['cat_id'],
             $_POST['check_in'],
             $_POST['check_out']
-
         ];
         
-    $model2 -> newBookingSuite($dataSuite);
+        echo('<pre>');
+        print_r($dataSuite);
+        echo ('</pre>');
+        die();
+        
+        // $model -> updateModelCustomers($id, $data);
+        // $model2 -> newBookingSuite($dataSuite);
+        
+        $model2 -> updateModelBooking($dataSuite, $idBook);
+
+        redirect('/super-admin-control');
+    }
+
+    public function delete() :void
+    {
+        $id = $_GET['id'];
+        // echo'<pre>';
+        // var_dump($_GET);
+        // echo '</pre>';
+        // die();
+        $model = new BookingModel();
+        $model -> deleteModel($id);
+        redirect('/super-admin-control');
+    }
     
-     
-    redirect('/home');
-        }
-}
-    
-
-public function search()
-{
-    $content = file_get_contents("php://input");
-    $data = json_decode($content, true);
-
-    $search = $data['id'];
-     
-    $modelRoom = new RoomModel();
-    $price = $modelRoom -> getOneById('category', 'cat_', $search);
-    // file_put_contents('exemple.txt', $price['cat_price']);
-    include'views/prix.phtml';
-
-}
-
-// public function errorForm ()
-// {
-   
-    
-//         if(isset($_POST['firstName']) && !empty($_POST['firstName']))
-//         if(isset($_POST['lastName']) && !empty($_POST['lastName']))
-//         if(isset($_POST['email']) && !empty($_POST['email']))
-//         if(isset($_POST['birthDate']) && !empty($_POST['birthDate']))
-//         if(isset($_POST['check-in']) && !empty($_POST['check-in']))
-//         if(isset($_POST['check-out']) && !empty($_POST['check-out']))
-//         if(isset($_POST['cat_id']) && !empty($_POST['cat_id']))
-//         {
-//             $model = new BookingModel;
-//             $data = [
-//        $_POST['firstName'],
-//        $_POST['lastName'],
-//        $_POST['birthDate'],
-//        $_POST['email'],
-//             ];
-//             $model2 = new BookingModel;
-//             $cust_id = $model -> getLastCustomerId();
-//             $dataSuite = [
-//                 $cust_id,
-//                 $_POST['cat_id'],
-//                 $_POST['check-in'],
-//                 $_POST['check-out']
-//             ];
-
-//     $model -> newBooking($data);
-//     $model -> newBookingSuite([$dataSuite]);
-//     redirect('/home');
-//         }
-//         else
-//         {
-//             throw new \Exception('Remplir tous les champs vide');
-//         }
-    
-   
-// }
 }
 
-// $model = new PostModel();
-    
-    // Tableau contenant les informations du formulaire
-    // $formData = [
-    //     'title' => $_POST['title'],
-    //     'content' => $_POST['content'],
-    //     'category_id' => $_POST['category']
-    // ];
-    
-    // Insertion dans la base de données
-    // $model->create($formData, 1);  // Id de l'utilisateur = 1 pour le moment (authentification pas encore mise en place)
-    
-    // Exemple sans passer par un tableau
-    // $model->create($_POST['title'], $_POST['content'], $_POST['category'], 1);
-    
-    // Redirection vers la page d'accueil
-    // redirect('/home');
+
+
         

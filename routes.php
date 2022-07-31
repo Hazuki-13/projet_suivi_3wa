@@ -71,13 +71,18 @@ return [
         'search'
     ],
 
+    '/super-admin-control/updateBooking' => [
+        'Controllers\BookingController',
+        'edit'
+    ],
+
     '/super-admin-control/update' => [
-        'Controllers\SuperAdminController',
+        'Controllers\BookingController',
         'update'
     ],
 
     '/super-admin-control/delete' => [
-        'Controllers\SuperAdminController',
+        'Controllers\BookingController',
         'delete'
     ]
 

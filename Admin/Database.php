@@ -129,6 +129,36 @@ class Database
     // 
     //     $query->execute($data);
     // }
+
+    
+    // protected function update(string $table, string $condition, string $value)
+    // {
+    //     $query = $this->getPdo()->prepare('UPDATE ' . $table . ' SET(' . $condition . ') values (' . $value . ')');
+    //     // var_dump($data);
+    //     $query -> execute([$value]);
+    //     $query -> closeCursor();
+    // }
+    
+    // protected function update(string $table, string $column, string $condition, string $value)
+    // {
+    //     $query = $this->getPdo()->prepare('UPDATE ' . $table . ' SET ' . $column . ' "WHERE id = ?"');
+    //     // var_dump($data);
+    //     $query -> execute([$value]);
+    //     $query -> closeCursor();
+    // }
+
+    
+    public function update(string $table, $condition, $value, $params=[]): array
+    {
+        $query = $this -> getPdo() -> prepare('UPDATE *  
+                                               FROM $table
+                                               WHERE $condition = ?');
+        
+        $query -> execute([$value]);
+    //     $data = $query -> fetch();
+        return $value;
+        
+    }
     
     public function delete(string $table, string $condition, string $value)
     {

@@ -36,17 +36,30 @@ class AdminModel extends Database
     
     */
 
-    public function updateModel(string $value): void
-    {
+    // public function updateModelCustomers(array $data, string $id): void
+    // {
 
-        $this -> update(' customers ', ' cust_id', $value);
-    }
+    //     $this -> update(' customers ', ' cust_lastname, cust_firstname, cust_birthdate, cust_email',  $data);
 
-    public function deleteModel(string $value): void
-    {
+    //     echo'<pre>';
+    //     var_dump($data);
+    //     echo '</pre>';
+    //     die();
+    // }
+    
+    // public function updateModelBooking(array $dataSuite, string $id): void
+    // {
+        
+    //     $this -> update(' booking ', ' cat_id, check_in, check_out', $dataSuite);
 
-        $this -> delete(' customers ', ' cust_id', $value);
-    }
+    //     echo'<pre>';
+    //     var_dump($dataSuite);
+    //     echo '</pre>';
+    //     die();
+    // }
+    
+    
+        
 
     // public function deleteModel(): void
     // {
