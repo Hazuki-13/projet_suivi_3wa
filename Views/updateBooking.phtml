@@ -11,10 +11,13 @@
                 <div class="div-input">
                     <label for="firstName"></label>
 
-                    <input type="text" name="firstName" id="firstName" placeholder="Your first name" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['firstName'] !=='') {
-                        echo ($_SESSION['data']['firstName']);}?>"> 
+                    <input type="text" name="firstName" id="firstName" placeholder="Your first name" value="<?= $form['firstName'] ?> 
+                    {
+                        echo ($form['firstName']);
+                    }?>"> 
                     <p><small class="errorForm"><?php
-                    if(isset($_SESSION['message']) && $_SESSION['message']['firstName']!==''){
+                    if(isset($_SESSION['message']) && $_SESSION['message']['firstName']!=='')
+                    {
                         echo($_SESSION['message']['firstName']);
                     }
                     ?></small></p>

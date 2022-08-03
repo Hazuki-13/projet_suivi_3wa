@@ -193,26 +193,31 @@ class BookingController extends Controller
         //id du
         $idCust = $_GET['cust_id'];
         $idBook = $_GET['id_booking'];
-        // echo('<pre>');
-        // print_r($_GET);
-        // echo ('</pre>');
-        // die();
         
-        $model = new BookingModel();
+        $editModel = new BookingModel();
         // $model2 = new BookingModel();
-        $form = $model -> findCustomer($idCust);
-        $form2 = $model -> findBooking($idBook);
+        $form = $editModel -> findCustomer($idCust);
+        $form2 = $editModel -> findBooking($idBook);
         
         $modelRoom = new RoomModel();
         $rooms = $modelRoom -> getRooms(['cat_title']);
         // $model2 = new BookingModel();
-
+        
+        echo('<pre>');
+        print_r($form);
+        echo ('</pre>');
+        echo('<pre>');
+        print_r($form2);
+        echo ('</pre>');
+        // die();
         // $template =  'booking' ;
         // require 'MVC/Views/layout.phtml';
         // la methode render remplace le code précedent
         
         $this -> render('updateBooking', [
-            'rooms' => $rooms
+            'rooms' => $rooms,
+            'cust_id' => $form,
+            'id_booking' =>$form2
         ]);
         
 
