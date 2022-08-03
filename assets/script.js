@@ -1,4 +1,3 @@
-
 if(document.querySelector('#selectCategory') !== null){
 
     let categoryList = document.querySelector('#selectCategory');
@@ -19,14 +18,3 @@ if(document.querySelector('#selectCategory') !== null){
     
     });
 }
-
-    
-
-
-
-
-
-
-    
-
-

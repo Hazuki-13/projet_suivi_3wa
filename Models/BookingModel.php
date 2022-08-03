@@ -38,24 +38,24 @@ class BookingModel extends Database
 
         public function findCustomer(string $id): array
         {
-            $data = $this -> getOneById('customers', 'cust_lastname, cust_firstname, cust_birthDate, cust_email', '?, ?, ?, ?', [
+            $data = $this -> getOneById('customers','cust_id',
               $id  
-            ]);
+            );
             return $data;
         }
 
         public function findBooking(string $id): array
         {
-            $dataSuite = $this -> getOneById('booking', 'cat_id, check_in, check_out', '?, ?, ?', [
+            $dataSuite = $this -> getOneById('booking','id_booking', 
                 $id  
-              ]);
+              );
               return $dataSuite;
         }
 
         public function updateModelCustomers(array $data, string $id): void
         {
 
-            $this -> update(' customers ', ' cust_lastname, cust_firstname, cust_birthdate, cust_email',  $data);
+            $this -> update(' customers ', 'cust_lastname, cust_firstname, cust_birthdate, cust_email',  $data);
 
             echo'<pre>';
             var_dump($data);

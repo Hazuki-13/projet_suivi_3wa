@@ -156,7 +156,7 @@ class BookingController extends Controller
             $modelRoom = new RoomModel();
             $rooms = $modelRoom -> getRooms(['cat_title']);
             
-            $model2 = new BookingModel;
+            // $model2 = new BookingModel;
             $dataSuite = [
                 $cust_id,
                 $_POST['cat_id'],
@@ -165,7 +165,7 @@ class BookingController extends Controller
     
             ];
             
-            $model2 -> newBookingSuite($dataSuite);
+            $model -> newBookingSuite($dataSuite);
         
          
             redirect('/home');
@@ -181,7 +181,7 @@ class BookingController extends Controller
         $search = $data['id'];
         
         $modelRoom = new RoomModel();
-        $price = $modelRoom -> getOneById('category', 'cat_', $search);
+        $price = $modelRoom -> getOneById('category', 'cat_id', $search);
         // file_put_contents('exemple.txt', $price['cat_price']);
         include'views/prix.phtml';
 
@@ -193,22 +193,28 @@ class BookingController extends Controller
         //id du
         $idCust = $_GET['cust_id'];
         $idBook = $_GET['id_booking'];
-        $model = new BookingModel;
-        $model2 = new BookingModel;
+        // echo('<pre>');
+        // print_r($_GET);
+        // echo ('</pre>');
+        // die();
+        
+        $model = new BookingModel();
+        // $model2 = new BookingModel();
         $form = $model -> findCustomer($idCust);
-        $form2 = $model2 -> findBooking($idBook);
-
+        $form2 = $model -> findBooking($idBook);
+        
         $modelRoom = new RoomModel();
-        $model2 = new BookingModel();
         $rooms = $modelRoom -> getRooms(['cat_title']);
+        // $model2 = new BookingModel();
 
         // $template =  'booking' ;
         // require 'MVC/Views/layout.phtml';
         // la methode render remplace le code précedent
         
-        $this -> render('super-admin-control/updateBooking', [
+        $this -> render('updateBooking', [
             'rooms' => $rooms
         ]);
+        
 
     }
 
@@ -223,9 +229,9 @@ class BookingController extends Controller
             $_POST['email']
         ];
         
-        echo('<pre>');
-        print_r($data);
-        echo ('</pre>');
+        // echo('<pre>');
+        // print_r($data);
+        // echo ('</pre>');
         
         // $model -> newBooking($data);
         $model -> updateModelCustomers($data, $idCust);
@@ -246,10 +252,10 @@ class BookingController extends Controller
             $_POST['check_out']
         ];
         
-        echo('<pre>');
-        print_r($dataSuite);
-        echo ('</pre>');
-        die();
+        // echo('<pre>');
+        // print_r($dataSuite);
+        // echo ('</pre>');
+        // die();
         
         // $model -> updateModelCustomers($id, $data);
         // $model2 -> newBookingSuite($dataSuite);

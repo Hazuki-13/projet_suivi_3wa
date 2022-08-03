@@ -35,7 +35,7 @@
                     <td><?= $book['check_in'] ?></td>
                     <td><?= $book['check_out'] ?></td>
                     <td><?= $book['created_at'] ?></td>
-                    <td><a href="<?= url('/super-admin-control/updateBooking', ['id' => $book['cust_id']]) ?>') ?>">Update</a></td>
+                    <td><a href="<?= url('/super-admin-control/updateBooking', ['cust_id' => $book['cust_id'], 'id_booking' => $book['id_booking']]) ?>">Update</a></td>
                     <td><a href="<?= url('/super-admin-control/delete', ['id' => $book['cust_id']]) ?>">Delete</a></td>
 
                 </tr>

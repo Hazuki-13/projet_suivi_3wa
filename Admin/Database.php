@@ -50,13 +50,16 @@ class Database
         
     }
 
-    public function getOneById($table, $pre, $id) 
+    public function getOneById(string $table, string $pre,$id)
     {
-        $query = $this->getPdo()->prepare("SELECT * FROM " . $table . " WHERE ". $pre ."id = ?");
-        $query->execute([$id]);
-        $data = $query->fetch();
-        $query -> closeCursor(); // On indique au serveur que notre requete est terminée
-        return $data;
+        // if (!empty($table) && !empty($pre) && !empty($idCol) &&!empty($id)){
+
+            $query = $this->getPdo()->prepare("SELECT * FROM " . $table . " WHERE " . $pre . " = ?");
+            $query->execute([$id]);
+            $data = $query->fetch();
+            $query -> closeCursor(); // On indique au serveur que notre requete est terminée
+            return $data;
+        // }
     }
 
 

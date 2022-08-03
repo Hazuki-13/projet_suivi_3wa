@@ -16,10 +16,17 @@
     ?>
     <?php if($endUrl !== "create"): ?>
         <link rel="stylesheet" href="../assets/style.css">
-        <link rel="icon"  type="img/png" href="../assets/favicon/favicon-32x32.png" />
+        <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
     <?php else: ?>
         <link rel="stylesheet" href="../../assets/style.css">
-        <link rel="icon"  type="img/png" href="../../assets/favicon/favicon-32x32.png" />
+        <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
+    <?php endif; ?>
+    <?php if($endUrl !== "updateBooking"): ?>
+        <link rel="stylesheet" href="../assets/style.css">
+        <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
+    <?php else: ?>
+        <link rel="stylesheet" href="../../assets/style.css">
+        <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
     <?php endif; ?>
 
     
@@ -72,6 +79,11 @@
         
         </footer>
         <?php if($endUrl !== "create"): ?>
+            <script src="../assets/script.js"></script>
+        <?php else: ?>
+            <script src="../../assets/script.js"></script>
+        <?php endif; ?>
+        <?php if($endUrl !== "updateBooking"): ?>
             <script src="../assets/script.js"></script>
         <?php else: ?>
             <script src="../../assets/script.js"></script>
