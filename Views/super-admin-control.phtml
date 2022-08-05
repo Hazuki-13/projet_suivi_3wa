@@ -32,9 +32,9 @@
                     <td><?= $book['cust_lastname'] ?></td>
                     <td><?= $book['cust_firstname'] ?></td>
                     <td><?= $book['cat_title'] ?></td>
-                    <td><?= $book['check_in'] ?></td>
-                    <td><?= $book['check_out'] ?></td>
-                    <td><?= $book['created_at'] ?></td>
+                    <td><?= date_format(date_create(($book['check_in'])), 'd/m/Y')?></td>
+                    <td><?= date_format(date_create(($book['check_out'])), 'd/m/Y')?></td>
+                    <td><?= date_format(date_create(($book['created_at'])), 'd/m/Y H:i:s')?></td>
                     <td><a href="<?= url('/super-admin-control/updateBooking', ['cust_id' => $book['cust_id'], 'id_booking' => $book['id_booking']]) ?>">Update</a></td>
                     <td><a href="<?= url('/super-admin-control/delete', ['id' => $book['cust_id']]) ?>">Delete</a></td>
 

@@ -50,7 +50,7 @@ class Database
         
     }
 
-    public function getOneById(string $table, string $pre,$id)
+    public function getOneById(string $table, string $pre ,$id)
     {
         // if (!empty($table) && !empty($pre) && !empty($idCol) &&!empty($id)){
 

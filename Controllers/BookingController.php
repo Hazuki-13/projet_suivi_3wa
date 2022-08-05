@@ -3,8 +3,7 @@
 namespace Controllers;
 
 use Models\BookingModel;
-use Models\RoomModel; 
-use Models\AdminModel;  
+use Models\RoomModel;  
 
 class BookingController extends Controller
 {
@@ -187,12 +186,14 @@ class BookingController extends Controller
 
     }
 
-    public function edit()
+    public function edit(): void
     {
         //pour faire afficher le formulaire pour l'UPDATE
         //id du
         $idCust = $_GET['cust_id'];
         $idBook = $_GET['id_booking'];
+
+        
         
         $editModel = new BookingModel();
         // $model2 = new BookingModel();
@@ -203,21 +204,18 @@ class BookingController extends Controller
         $rooms = $modelRoom -> getRooms(['cat_title']);
         // $model2 = new BookingModel();
         
-        echo('<pre>');
-        print_r($form);
-        echo ('</pre>');
-        echo('<pre>');
-        print_r($form2);
-        echo ('</pre>');
+        // echo('<pre>');
+        // print_r($form);
+        // echo ('</pre>');
+        // echo('<pre>');
+        // print_r($form2);
+        // echo ('</pre>');
         // die();
-        // $template =  'booking' ;
-        // require 'MVC/Views/layout.phtml';
-        // la methode render remplace le code précedent
         
         $this -> render('updateBooking', [
             'rooms' => $rooms,
-            'cust_id' => $form,
-            'id_booking' =>$form2
+            'form' => $form,
+            'form2' =>$form2
         ]);
         
 
