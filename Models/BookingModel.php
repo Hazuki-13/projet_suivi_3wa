@@ -38,9 +38,7 @@ class BookingModel extends Database
 
         public function findCustomer(string $id): array
         {
-            $data = $this -> getOneById('customers','cust_id',
-              $id  
-            );
+            $data = $this -> getOneById('customers','cust_id',$id);
             return $data;
         }
 
@@ -70,10 +68,5 @@ class BookingModel extends Database
     
             $this -> delete(' customers ', ' cust_id', $value);
         }
-
-        // public function deleteBooking(): void
-        // {
-
-        // }
 
 }
