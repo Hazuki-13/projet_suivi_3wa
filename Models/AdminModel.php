@@ -8,7 +8,7 @@ class AdminModel extends Database
 {
     public function readBooking(): array
     {
-        $bookings = 'SELECT booking.id_booking, booking.cust_id, customers.cust_lastname, customers.cust_firstname, category.cat_title, booking.check_in, booking.check_out, booking.created_at
+        $bookings = 'SELECT booking.id_booking, booking.cust_id, customers.cust_lastname, customers.cust_firstname, customers.cust_email, category.cat_title, booking.check_in, booking.check_out, booking.created_at
                      
                      FROM booking
                      INNER JOIN customers ON customers.cust_id = booking.cust_id

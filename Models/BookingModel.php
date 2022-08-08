@@ -21,7 +21,7 @@ class BookingModel extends Database
             // echo'<pre>';
             // var_dump($dataSuite);
             // echo '</pre>';
-            $this->createOneSuite('booking', 'cust_id, cat_id, check_in, check_out', '?, ?, ?, ?', $dataSuite);
+            $this->createOne('booking', 'cust_id, cat_id, check_in, check_out', '?, ?, ?, ?', $dataSuite);
                 
             
         }
@@ -52,26 +52,17 @@ class BookingModel extends Database
               return $dataSuite;
         }
 
-        public function updateModelCustomers(array $data, string $id): void
+        public function updateModelCustomers(array $data): void
         {
 
-            $this -> update(' customers ', 'cust_lastname, cust_firstname, cust_birthdate, cust_email',  $data);
-
-            echo'<pre>';
-            var_dump($data);
-            echo '</pre>';
-            die();
+            $this -> updateTable(' customers ', 'cust_lastname=?, cust_firstname=?, cust_birthdate=?, cust_email=?', 'cust_id', $data);
+        
         }
         
-        public function updateModelBooking(array $dataSuite, string $id): void
+        public function updateModelBooking(array $dataSuite): void
         {
             
-            $this -> update(' booking ', ' cat_id, check_in, check_out', $dataSuite);
-
-            echo'<pre>';
-            var_dump($dataSuite);
-            echo '</pre>';
-            die();
+            $this -> updateTable(' booking ', ' cat_id=?, check_in=?, check_out=?', 'id_booking', $dataSuite);
         }
 
         public function deleteModel(string $value): void

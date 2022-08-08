@@ -103,13 +103,13 @@ class Database
     //     $query->closeCursor();
     // }
 
-    protected function createOneSuite(string $table, string $columns, string $values, $dataSuite )
-    {
-        $query = $this->getPdo()->prepare('INSERT INTO ' . $table . '(' . $columns . ') values (' . $values . ')');
-        // var_dump($dataSuite);
-        $query -> execute($dataSuite);
-        $query -> closeCursor();
-    } 
+    // protected function createOneSuite(string $table, string $columns, string $values, $dataSuite )
+    // {
+    //     $query = $this->getPdo()->prepare('INSERT INTO ' . $table . '(' . $columns . ') values (' . $values . ')');
+    //     // var_dump($dataSuite);
+    //     $query -> execute($dataSuite);
+    //     $query -> closeCursor();
+    // } 
     
     
     
@@ -151,17 +151,31 @@ class Database
     // }
 
     
-    public function update(string $table, $condition, $value, $params=[]): array
+    // public function update(string $table, $condition, $value, $params=[]): array
+    // {
+    //     $query = $this -> getPdo() -> prepare('UPDATE *  
+    //                                            FROM $table
+    //                                            WHERE $condition = ?');
+        
+    //     $query -> execute([$value]);
+    // //     $data = $query -> fetch();
+    //     return $value;
+        
+    // }
+
+    // UPDATE table SET colonne_1 = 'valeur 1', colonne_2 = 'valeur 2', colonne_3 = 'valeur 3'WHERE condition
+
+    protected function updateTable( string $table, string$columns, string $condition, $data )
     {
-        $query = $this -> getPdo() -> prepare('UPDATE *  
-                                               FROM $table
-                                               WHERE $condition = ?');
-        
-        $query -> execute([$value]);
-    //     $data = $query -> fetch();
-        return $value;
-        
+        $query = $this->getPdo()->prepare('UPDATE ' . $table . ' 
+                                            SET ' . $columns . ' WHERE ' . $condition . '= ?');
+        // var_dump($data);
+        $query -> execute($data);
+        $query -> closeCursor();
     }
+
+    // UPDATE table SET colonne_1 = 'valeur 1', colonne_2 = 'valeur 2', colonne_3 = 'valeur 3'WHERE condition
+
     
     public function delete(string $table, string $condition, string $value)
     {

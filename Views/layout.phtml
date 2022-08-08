@@ -28,6 +28,13 @@
         <link rel="stylesheet" href="../../assets/style.css">
         <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
     <?php endif; ?>
+    <?php if($endUrl !== "update"): ?>
+        <link rel="stylesheet" href="../assets/style.css">
+        <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
+    <?php else: ?>
+        <link rel="stylesheet" href="../../assets/style.css">
+        <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
+    <?php endif; ?>
 
     
 </head>
