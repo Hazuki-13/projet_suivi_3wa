@@ -40,6 +40,11 @@ return [
         'Controllers\LoginController',
         'displayLogin'
     ],
+    
+    '/addAdmin' => [
+        'Controllers\LoginController',
+        'displayAddAdmin'
+    ],
 
     '/room' => [
         'Controllers\RoomController',

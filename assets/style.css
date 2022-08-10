@@ -84,10 +84,13 @@ select {
     padding: 0.5rem;
     margin-top: 2rem;
     border-radius: 5px;
+    background-color: black;
+    color: gold;
 }
 
 .submit:hover {
     background-color:gold;
+    color:black;
 }
 .errorForm {
     color:red;
@@ -184,14 +187,10 @@ footer div {
 
 
 /*********************************************************************/
-/***************************login view********************************/
+/***************************login form********************************/
 /*********************************************************************/
 
-#userLastName {
-    margin-bottom: 1.5rem;
-}
-
-#userFirstName {
+#userName {
     margin-bottom: 1.5rem;
 }
 
@@ -199,20 +198,53 @@ footer div {
     margin-bottom: 1.5rem;
 }
 
+#password {
+    margin-bottom: 1.5rem;
+}
+
 #access {
     padding: 0.5rem 4rem;
     border-radius: 5px;
+    background-color: black;
+    color: gold;
 }
 #access:hover {
     background-color:gold;
+    color:black
+}
+
+/*********************************************************************/
+/***************************Add Admin form****************************/
+/*********************************************************************/
+
+#addUserName {
+    margin-bottom: 1.5rem;
+}
+
+#addUserEmail {
+    margin-bottom: 1.5rem;
+}
+
+#addPassword {
+    margin-bottom: 1.5rem;
+}
+
+#confirmPassword {
+    margin-bottom: 1.5rem;
+}
+
+#addAccess {
+    padding: 0.5rem 4rem;
+    border-radius: 5px;
+    background-color: black;
+    color: gold;
+}
+#addAccess:hover {
+    background-color:gold;
+    color:black
 }
 
 
-
-
-/*********************************************************************/
-/*********************************************************************/
-/*********************************************************************/
 
 /*********************************************************************/
 /*********************************************************************/
