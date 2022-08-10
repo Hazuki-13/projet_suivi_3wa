@@ -13,4 +13,9 @@ class LoginController extends Controller
         $this -> render('login');
         
     }
+
+    public function accessGranted()
+    {
+        
+    }
 }

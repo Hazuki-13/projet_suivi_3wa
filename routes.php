@@ -46,11 +46,6 @@ return [
         'displayRooms'
     ],
 
-    '/buffet' => [
-        'Controllers\HomeController',
-        'displayBuffet'
-    ],
-
     '/booking' => [
         'Controllers\BookingController',
         'bookingFormUser'

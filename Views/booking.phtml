@@ -45,7 +45,7 @@
                     <div class="div-input-label">
                             <div><label for="birthDate">your birthdate</label></div>
                             
-                            <input type="date" name="birthDate" id="birthDate" placeholder="Your birth date" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['birthDate'] !=='') {
+                            <input type="date" name="birthDate" id="birthDate" min="<?= (new \DateTime('-18 years'))->format('Y-m-d') ?>" placeholder="Your birth date" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['birthDate'] !=='') {
                             echo ($_SESSION['data']['birthDate']);}?>">
                             <p><small class="errorForm"><?php
                         if(isset($_SESSION['message']) && $_SESSION['message']['birthDate']!==''){
