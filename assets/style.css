@@ -8,7 +8,7 @@ body {
     font-family: sans-serif;
 }
 /************************************************************************/
-/************ style du hearder et de la barre de navigation *************/
+/************* style du header et de la barre de navigation *************/
 /************************************************************************/
 .navHead {
     background-color: rgb(7, 4, 21);
@@ -75,9 +75,9 @@ select {
     border-radius: 5px;
 }
 
-#div-input-label {
-    margin-top: 1rem auto;
-}
+/* #div-input-label {
+    margin: 1rem auto;
+} */
 
 .submit {
     width: 250px;
@@ -217,21 +217,41 @@ footer div {
 /***************************Add Admin form****************************/
 /*********************************************************************/
 
-#addUserName {
+
+#adminForm {
+    width: 40%;
+    /* margin-left: auto;
+    margin-right: auto; */
+    display: flex;
+    flex-direction: column;
     margin-bottom: 1.5rem;
 }
 
-#addUserEmail {
+/* #addUserName {
     margin-bottom: 1.5rem;
+} */
+
+#addUserName,
+#addUserEmail,
+#addPassword,
+#confirmPassword
+{
+    width: 25%;
+    padding:0.5rem;
+    margin: 1.5rem auto;
+    /* margin: 0 auto -1rem auto; */
+    text-align: center;
+    border-radius: 5px;
+    display: flex;
 }
 
-#addPassword {
+/* #addPassword {
     margin-bottom: 1.5rem;
 }
 
 #confirmPassword {
     margin-bottom: 1.5rem;
-}
+} */
 
 #addAccess {
     padding: 0.5rem 4rem;
@@ -243,6 +263,31 @@ footer div {
     background-color:gold;
     color:black
 }
+
+/* .radio {
+    width:40%;
+    padding: 1rem;
+    text-align: center;
+} */
+
+#status { 
+    width: 10%;
+    display: flex;
+    margin: 1rem auto;
+}
+
+/* #radio {
+    margin: 0.5rem auto 1rem;
+    width:50%;
+    display: flex;
+    justify-content: space-evenly;
+
+} */
+
+    
+
+    
+
 
 
 

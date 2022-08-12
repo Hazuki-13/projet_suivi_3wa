@@ -17,6 +17,7 @@
             <th>customer id</th>
             <th>LastName</th>
             <th>FirstName</th>
+            <th>birthdate</th>
             <th>category</th>
             <th>check-in</th>
             <th>check-out</th>
@@ -33,6 +34,7 @@
                     <td><?= $book['cust_id'] ?></td>
                     <td><?= $book['cust_lastname'] ?></td>
                     <td><?= $book['cust_firstname'] ?></td>
+                    <td><?= $book['cust_birthdate'] ?></td>
                     <td><?= $book['cat_title'] ?></td>
                     <td><?= date_format(date_create(($book['check_in'])), 'd/m/Y')?></td>
                     <td><?= date_format(date_create(($book['check_out'])), 'd/m/Y')?></td>

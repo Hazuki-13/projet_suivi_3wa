@@ -8,12 +8,12 @@ class AdminModel extends Database
 {
     public function readBooking(): array
     {
-        $bookings = 'SELECT booking.id_booking, booking.cust_id, customers.cust_lastname, customers.cust_firstname, customers.cust_email, category.cat_title, booking.check_in, booking.check_out, booking.created_at
+        $bookings = 'SELECT booking.id_booking, booking.cust_id, customers.cust_lastname, customers.cust_firstname, customers.cust_birthdate, customers.cust_email, category.cat_title, booking.check_in, booking.check_out, booking.created_at
                      
                      FROM booking
                      INNER JOIN customers ON customers.cust_id = booking.cust_id
                      INNER JOIN category ON category.cat_id = booking.cat_id
-                     ORDER BY created_at DESC';
+                     ORDER BY check_in ASC';
         return $this -> findAll($bookings);
         // echo'<pre>';
         // var_dump($bookings);

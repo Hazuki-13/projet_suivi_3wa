@@ -31,6 +31,18 @@ class BookingController extends Controller
             _afficher erreur message ="le champs n'est pas correct"
         */
 
+        $getDay = getdate();
+        $dateDay = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"];
+        
+        $legalBirthdate = $getDay["year"]-18 . "-" . $getDay["mon"] . "-" . $getDay["mday"];
+
+        // $legalAge = $dateDay - $legalBirthdate;
+        $legalAge = strtotime($dateDay) - strtotime($legalBirthdate);
+
+        $userAge = strtotime($dateDay) - strtotime($_POST["birthDate"]);
+        
+
+
         $error = false;
         $errorFirstName = '';
         $errorLastName='';
@@ -52,17 +64,25 @@ class BookingController extends Controller
             $error = true;         
         }
         //$email_a
-        if(!isset($_POST['email']) || (isset($_POST['email']) && empty(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)))) 
+        if(!isset($_POST['email']) || (isset($_POST['email']) && empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))) 
         {
             $errorEmail= 'email invalid';
             $error = true;         
-        }            
-            
-            
-        if(!isset($_POST['birthDate']) || (isset($_POST['birthDate']) && empty($_POST['birthDate']))) {
+        }
+
+
+        
+        if(!isset($_POST["birthDate"]) ||  empty($_POST["birthDate"]) || intval($userAge) < intval($legalAge))
+        {
             $errorBirthDate = 'birthdate incorrect';
-            $error = true;        
-        }            
+            $error = true;
+        }
+            
+        // if(!isset($_POST['birthDate']) || (isset($_POST['birthDate']) && empty($_POST['birthDate'])) && isset($_POST['birthDate'] < strtotime($legalAge)) {
+        //     $errorBirthDate = 'birthdate incorrect';
+        //     $error = true;        
+        // }
+
 
             
         if(!isset($_POST['cat_id']) || (isset($_POST['cat_id']) && empty($_POST['cat_id']))) 
@@ -71,15 +91,21 @@ class BookingController extends Controller
             $error = true;         
         }
 
+        //if(!isset($_POST["check_in"]) ||  empty($_POST["check_in"]) || strtotime($_POST["check_in"]) < strtotime($DateDay))
+
                                                 
-        if(!isset($_POST['check_in']) || (isset($_POST['check_in']) && empty($_POST['check_in']))) 
+        if(!isset($_POST['check_in']) || (isset($_POST['check_in']) && empty($_POST['check_in'])) || strtotime($_POST["check_in"]) < strtotime($dateDay)) 
         {
             $errorCheck_in= 'choose a date of your arrival';
             $error = true;            
         }
 
+        //if(!isset($_POST["check_out"]) ||  empty($_POST["check_out"]) || strtotime($_POST["check_in"]) > strtotime($_POST["check_out"]))
+
+        
                         
-        if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out']))) {
+        if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out'])) || strtotime($_POST["check_in"]) >= strtotime($_POST["check_out"])) 
+        {
             $errorCheck_out= 'choose a date of your leaving';
             $error = true;           
         }
@@ -118,12 +144,39 @@ class BookingController extends Controller
             $modelRoom = new RoomModel();
             $rooms = $modelRoom -> getRooms(['cat_title']);
 
+            
                 // echo('<pre>');
-                // print_r($data);
+                // echo ('getDay = ');
+                // print_r($getDay);
                 // echo ('</pre>');
+                
+                
                 // echo('<pre>');
-                // print_r($dataSuite);
-                // echo ('</pre
+                // echo ('dateDay = ');
+                // print_r($dateDay);
+                // echo ('</pre>');
+
+                // echo('<pre>');
+                // echo ('birthDate = ');
+                // print_r($_POST['birthDate']);
+                // echo ('</pre>');
+                
+                // echo('<pre>');
+                // echo ('legalBirthdate = ');
+                // print_r($legalBirthdate);
+                // echo ('</pre>');
+
+                // echo('<pre>');
+                // echo ('legalAge = ');
+                // print_r($legalAge);
+                // echo ('</pre>');
+
+                // echo('<pre>');
+                // echo ('legalAge en sec = ');
+                // print_r($legalAgeString);
+                // echo ('</pre>');
+                // die();
+
             $this -> render('booking', [
                     'rooms' => $rooms
                     // 'error' => $error
@@ -252,7 +305,7 @@ class BookingController extends Controller
             $error = true;         
         }
         //$email_a
-        if(!isset($_POST['email']) || (isset($_POST['email']) && empty(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)))) 
+        if(!isset($_POST['email']) || (isset($_POST['email']) && empty(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)))) /*à verifier l'emplacement du filter email*/
         {
             $errorEmail= 'email invalid';
             $error = true;         
@@ -318,15 +371,24 @@ class BookingController extends Controller
             $modelRoom = new RoomModel();
             $rooms = $modelRoom -> getRooms(['cat_title']);
 
+            $idCust = $_POST['cust_id'];
+            $idBook = $_POST['id_booking'];
+            $editModel = new BookingModel();
+            $form = $editModel -> findCustomer($idCust);
+            $form2 = $editModel -> findBooking($idBook);
+
                 // echo('<pre>');
-                // print_r($data);
+                // print_r($form);
                 // echo ('</pre>');
                 // echo('<pre>');
-                // print_r($dataSuite);
+                // print_r($form2);
                 // echo ('</pre>');
                 // die();
+
             $this -> render('updateBooking', [
-                    'rooms' => $rooms
+                    'rooms' => $rooms,
+                    'form' => $form,
+                    'form2' =>$form2
                 ]);
         }
         else

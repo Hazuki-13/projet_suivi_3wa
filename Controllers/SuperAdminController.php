@@ -33,6 +33,57 @@ class SuperAdminController extends Controller
             'booking' => $bookingList
         ]);
     }
+
+    public function addAdmin()
+    {
+        $error = false;
+        $errorUserName = '';
+        $errorEmail='';
+        $errorPassword='';
+        $errorConfirmPassword='';
+
+        if(!isset($_POST['userName']) || (isset($_POST['userName']) && empty($_POST['userName']))) 
+        {
+            $errorFirstName = 'username input empty';
+            $error = true;
+        }
+        
+        if(!isset($_POST['email']) || (isset($_POST['email']) && empty(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)))) 
+        {
+            $errorEmail= 'email invalid';
+            $error = true;         
+        }
+                    
+        if(!isset($_POST['password']) || (isset($_POST['password']) && empty($_POST['password']))) 
+        {
+            $errorLastName = 'password incorrect';
+            $error = true;         
+        }
+
+        if(!isset($_POST['confirmPassword']) || (isset($_POST['confirmPassword']) && empty($_POST['confirmPassword']))) 
+        {
+            $errorLastName = 'Password incorrect';
+            $error = true;         
+        }
+
+        $_SESSION['message']=[
+            'userName'=> $errorUserName,
+            'email'  => $errorEmail,
+            'password'  => $errorPassword,
+            'confirmPassword'  => $errorConfirmPassword
+        ];
+
+        if($error)
+        {
+           $_SESSION["data"] = [
+            'userName'=> htmlspecialchars($_POST['userName']),
+            'email'  => htmlspecialchars($_POST['email']),
+            'password'  => htmlspecialchars($_POST['password']),
+            'confirmPassword' => htmlspecialchars($_POST['confirmPassword'])
+           ];
+
+        }
+    }
 }
 
     

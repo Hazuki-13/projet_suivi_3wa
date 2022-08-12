@@ -11,9 +11,9 @@
                 <div class="div-input">
                     <label for="firstName"></label>
 
-                    <input type="text" name="firstName" id="firstName" placeholder="first name" value="<?= $form['cust_firstname'] ?><?php if(isset($_SESSION['data'])&& $_SESSION['data']['lastName'] !=='') 
+                    <input type="text" name="firstName" id="firstName" placeholder="first name" value="<?= htmlspecialchars($form['cust_firstname']) ?><?php if(isset($_SESSION['data'])&& $_SESSION['data']['lastName'] !=='') 
                     {
-                        echo ($_SESSION['data']['firstName']);
+                        // echo ($_SESSION['data']['firstName']);
                     }?>"> 
                     <p><small class="errorForm"><?php
                     if(isset($_SESSION['message']) && $_SESSION['message']['firstName']!=='')
@@ -25,9 +25,9 @@
                 <div class="div-input">
                     <label for="lastName"></label>
 
-                    <input type="text" name="lastName" id="lastName" placeholder="last name" value="<?= $form['cust_lastname'] ?><?php if(isset($_SESSION['data'])&& $_SESSION['data']['lastName'] !=='') 
+                    <input type="text" name="lastName" id="lastName" placeholder="last name" value="<?= htmlspecialchars($form['cust_lastname']) ?><?php if(isset($_SESSION['data'])&& $_SESSION['data']['lastName'] !=='') 
                     {
-                        echo ($_SESSION['data']['lastName']);
+                        // echo ($_SESSION['data']['lastName']);
                     }?>"> 
                     <p><small class="errorForm"><?php
                     if(isset($_SESSION['message']) && $_SESSION['message']['lastName']!=='')
@@ -39,9 +39,9 @@
                 <div class="div-input">
                         <label for="email"></label>
 
-                        <input type="email" name="email" id="email" placeholder="email" value="<?= $form['cust_email'] ?><?php if(isset($_SESSION['data'])&& $_SESSION['data']['email'] !=='') 
+                        <input type="email" name="email" id="email" placeholder="email" value="<?= htmlspecialchars($form['cust_email']) ?><?php if(isset($_SESSION['data'])&& $_SESSION['data']['email'] !=='') 
                         {
-                        echo ($_SESSION['data']['email']);
+                        // echo ($_SESSION['data']['email']);
                         }?>"> 
                         <p><small class="errorForm"><?php
                     if(isset($_SESSION['message']) && $_SESSION['message']['email']!=='')
@@ -54,9 +54,9 @@
                 <div class="div-input-label">
                         <div><label for="birthdate">your birthdate</label></div>
                         
-                        <input type="date" name="birthDate" id="birthDate" value="<?= $form['cust_birthdate'] ?><?php if(isset($_SESSION['data'])&& $_SESSION['data']['birthDate'] !=='') 
+                        <input type="date" name="birthDate" id="birthDate" value="<?= htmlspecialchars($form['cust_birthdate']) ?><?php if(isset($_SESSION['data'])&& $_SESSION['data']['birthDate'] !=='') 
                     {
-                        echo ($_SESSION['data']['birthDate']);
+                        // echo ($_SESSION['data']['birthDate']);
                     }?>">
                         <p><small class="errorForm"><?php
                     if(isset($_SESSION['message']) && $_SESSION['message']['birthDate']!=='')
@@ -76,9 +76,9 @@
                 
                 <div><label for="check-in">Check-in: 2pm</label></div>
                     
-                    <input type="date" id="check-in" name="check_in" value="<?= $form2['check_in'] ?><?php if(isset($_SESSION['data'])&& $_SESSION['data']['check_in'] !=='') 
+                    <input type="date" id="check-in" name="check_in" value="<?= htmlspecialchars($form2['check_in']) ?><?php if(isset($_SESSION['data'])&& $_SESSION['data']['check_in'] !=='') 
                     {
-                        echo ($_SESSION['data']['check_in']);
+                        // echo ($_SESSION['data']['check_in']);
                     }?>">
                     <p><small class="errorForm"><?php
                     if(isset($_SESSION['message']) && $_SESSION['message']['check_in']!=='')
@@ -89,9 +89,9 @@
                     
                 <div><label for="check-out">Check-out: 12am</label></div>
                     
-                    <input type="date" id="check-out" name="check_out" value="<?= $form2['check_out'] ?><?php if(isset($_SESSION['data'])&& $_SESSION['data']['check_out'] !=='') 
+                    <input type="date" id="check-out" name="check_out" value="<?= htmlspecialchars($form2['check_out']) ?><?php if(isset($_SESSION['data'])&& $_SESSION['data']['check_out'] !=='') 
                     {
-                        echo ($_SESSION['data']['check_out']);
+                        // echo ($_SESSION['data']['check_out']);
                     }?>">
                     <p><small class="errorForm"><?php
                     if(isset($_SESSION['message']) && $_SESSION['message']['check_out']!=='')
@@ -105,7 +105,7 @@
                     
                     <select id="selectCategory" name="cat_id">
                         
-                        <option value="<?= $form2['cat_id'] ?>">Choose your room</option>
+                        <option value="">Choose your room</option>
                         
                             <?php foreach ($rooms as $room): ?>
                                 <option value="<?= htmlspecialchars($room['cat_id']) ?>"
