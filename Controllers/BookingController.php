@@ -19,7 +19,7 @@ class BookingController extends Controller
         
         $this -> render('booking', [
             'rooms' => $rooms
-        ]);
+            ]);
     }
 
     public function create()
@@ -30,15 +30,18 @@ class BookingController extends Controller
             _si le champs n'est pas défini ou n'est pas correct
             _afficher erreur message ="le champs n'est pas correct"
         */
-
+        //Je récupère la date du jours.
         $getDay = getdate();
+        //Soustraire l'année de la date du jour par 18. Et conserver les jours et mois intact.
         $dateDay = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"];
-        
+        //Je trouve la date de naissance minimale par rapport au jour.
         $legalBirthdate = $getDay["year"]-18 . "-" . $getDay["mon"] . "-" . $getDay["mday"];
 
-        // $legalAge = $dateDay - $legalBirthdate;
-        $legalAge = strtotime($dateDay) - strtotime($legalBirthdate);
+        $legalCheckOut = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"]+1;
 
+        // Nombre de seconde qu'a vécu une personne pour avoir 18 ans à partir de la date actuelle.
+        $legalAge = strtotime($dateDay) - strtotime($legalBirthdate);
+         // Age de l'utilisateur en seconde.
         $userAge = strtotime($dateDay) - strtotime($_POST["birthDate"]);
         
 
@@ -63,7 +66,7 @@ class BookingController extends Controller
             $errorLastName = 'last name incorrect';
             $error = true;         
         }
-        //$email_a
+        
         if(!isset($_POST['email']) || (isset($_POST['email']) && empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))) 
         {
             $errorEmail= 'email invalid';
@@ -71,20 +74,19 @@ class BookingController extends Controller
         }
 
 
-        
+        // Si l'age de l'user en seconde et inférieur au nombre de seconde qu'a du vivre un individu pour avoir 18 ans à partir de la date du jour.
         if(!isset($_POST["birthDate"]) ||  empty($_POST["birthDate"]) || intval($userAge) < intval($legalAge))
         {
             $errorBirthDate = 'birthdate incorrect';
             $error = true;
         }
             
-        // if(!isset($_POST['birthDate']) || (isset($_POST['birthDate']) && empty($_POST['birthDate'])) && isset($_POST['birthDate'] < strtotime($legalAge)) {
+        // if(!isset($_POST['birthDate']) || (isset($_POST['birthDate']) && empty($_POST['birthDate'])) && isset($_POST['birthDate'] < strtotime($legalAge)) 
+        // {
         //     $errorBirthDate = 'birthdate incorrect';
         //     $error = true;        
         // }
 
-
-            
         if(!isset($_POST['cat_id']) || (isset($_POST['cat_id']) && empty($_POST['cat_id']))) 
         {
             $errorCat_id= 'room not selected';
@@ -93,20 +95,17 @@ class BookingController extends Controller
 
         //if(!isset($_POST["check_in"]) ||  empty($_POST["check_in"]) || strtotime($_POST["check_in"]) < strtotime($DateDay))
 
-                                                
-        if(!isset($_POST['check_in']) || (isset($_POST['check_in']) && empty($_POST['check_in'])) || strtotime($_POST["check_in"]) < strtotime($dateDay)) 
+        if(!isset($_POST['check_in']) || (isset($_POST['check_in']) && empty($_POST['check_in'])) || strtotime($_POST["check_in"]) < strtotime($dateDay))
         {
-            $errorCheck_in= 'choose a date of your arrival';
+            $errorCheck_in= 'date of your arrival is incorrect';
             $error = true;            
         }
 
         //if(!isset($_POST["check_out"]) ||  empty($_POST["check_out"]) || strtotime($_POST["check_in"]) > strtotime($_POST["check_out"]))
 
-        
-                        
-        if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out'])) || strtotime($_POST["check_in"]) >= strtotime($_POST["check_out"])) 
+        if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out'])) || strtotime($_POST["check_in"]) >= strtotime($_POST["check_out"]) || strtotime($_POST['check_out']) <= strtotime($dateDay))
         {
-            $errorCheck_out= 'choose a date of your leaving';
+            $errorCheck_out= 'date of your leaving is incorrect';
             $error = true;           
         }
 
@@ -128,8 +127,8 @@ class BookingController extends Controller
         if($error)
         {
            $_SESSION["data"] = [
-            'firstName'=> htmlspecialchars($_POST['firstName']),
             'lastName'  => htmlspecialchars($_POST['lastName']),
+            'firstName'=> htmlspecialchars($_POST['firstName']),
             'email'  => htmlspecialchars($_POST['email']),
             'birthDate'  => htmlspecialchars($_POST['birthDate']),
             'cat_id'  => htmlspecialchars($_POST['cat_id']),
@@ -144,55 +143,17 @@ class BookingController extends Controller
             $modelRoom = new RoomModel();
             $rooms = $modelRoom -> getRooms(['cat_title']);
 
-            
-                // echo('<pre>');
-                // echo ('getDay = ');
-                // print_r($getDay);
-                // echo ('</pre>');
-                
-                
-                // echo('<pre>');
-                // echo ('dateDay = ');
-                // print_r($dateDay);
-                // echo ('</pre>');
-
-                // echo('<pre>');
-                // echo ('birthDate = ');
-                // print_r($_POST['birthDate']);
-                // echo ('</pre>');
-                
-                // echo('<pre>');
-                // echo ('legalBirthdate = ');
-                // print_r($legalBirthdate);
-                // echo ('</pre>');
-
-                // echo('<pre>');
-                // echo ('legalAge = ');
-                // print_r($legalAge);
-                // echo ('</pre>');
-
-                // echo('<pre>');
-                // echo ('legalAge en sec = ');
-                // print_r($legalAgeString);
-                // echo ('</pre>');
-                // die();
-
             $this -> render('booking', [
                     'rooms' => $rooms
-                    // 'error' => $error
                 ]);
-                // $template =  'booking' ;
-                // require 'Views/layout.phtml';
-                // exit();
-            // redirect('/booking');
-                // die;
+                
         }
         else
         {
             $model = new BookingModel;
             $data = [
-               htmlspecialchars($_POST['firstName']),
                htmlspecialchars($_POST['lastName']),
+               htmlspecialchars($_POST['firstName']),
                htmlspecialchars($_POST['birthDate']),
                htmlspecialchars($_POST['email'])
             ];
@@ -270,19 +231,32 @@ class BookingController extends Controller
             'rooms' => $rooms,
             'form' => $form,
             'form2' =>$form2
-        ]);
+            ]);
         
 
     }
 
     public function update() :void
     {
-         /*
+        /*
             _A la modification/validation du formulaire, afficher les erreurs de champs vide ou incorrect sous chaque input
             _chaque "if" doit vérifier la validité des champs
             _si le champs n'est pas défini ou n'est pas correct
             _afficher erreur message ="le champs n'est pas correct"
         */
+
+         //Je récupère la date du jours.
+        $getDay = getdate();
+         //Soustraire l'année de la date du jour par 18. Et conserver les jours et mois intact.
+        $dateDay = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"];
+         //Je trouve la date de naissance minimale par rapport au jour.
+        $legalBirthdate = $getDay["year"]-18 . "-" . $getDay["mon"] . "-" . $getDay["mday"];
+        
+        $legalCheckOut = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"]+1;
+         // Nombre de seconde qu'a vécu une personne pour avoir 18 ans à partir de la date actuelle.
+        $legalAge = strtotime($dateDay) - strtotime($legalBirthdate);
+          // Age de l'utilisateur en seconde.
+        $userAge = strtotime($dateDay) - strtotime($_POST["birthDate"]);
 
         $error = false;
         $errorFirstName = '';
@@ -312,10 +286,11 @@ class BookingController extends Controller
         }            
             
             
-        if(!isset($_POST['birthDate']) || (isset($_POST['birthDate']) && empty($_POST['birthDate']))) {
+        if(!isset($_POST["birthDate"]) ||  empty($_POST["birthDate"]) || intval($userAge) < intval($legalAge))
+        {
             $errorBirthDate = 'birthdate incorrect';
-            $error = true;        
-        }            
+            $error = true;
+        }           
 
             
         if(!isset($_POST['cat_id']) || (isset($_POST['cat_id']) && empty($_POST['cat_id']))) 
@@ -325,15 +300,16 @@ class BookingController extends Controller
         }
 
                                                 
-        if(!isset($_POST['check_in']) || (isset($_POST['check_in']) && empty($_POST['check_in']))) 
+        if(!isset($_POST['check_in']) || (isset($_POST['check_in']) && empty($_POST['check_in'])) || strtotime($_POST["check_in"]) < strtotime($dateDay))
         {
-            $errorCheck_in= 'choose a date of your arrival';
+            $errorCheck_in= 'date of your arrival is incorrect';
             $error = true;            
         }
 
                         
-        if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out']))) {
-            $errorCheck_out= 'choose a date of your leaving';
+        if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out'])) || strtotime($_POST["check_in"]) >= strtotime($_POST["check_out"]) || strtotime($_POST['check_out']) < strtotime($legalCheckOut))
+        {
+            $errorCheck_out= 'date of your leaving is incorrect';
             $error = true;           
         }
 
@@ -398,8 +374,8 @@ class BookingController extends Controller
 
             $model = new BookingModel;
             $data = [
-               htmlspecialchars($_POST['firstName']),
                htmlspecialchars($_POST['lastName']),
+               htmlspecialchars($_POST['firstName']),
                htmlspecialchars($_POST['birthDate']),
                htmlspecialchars($_POST['email']),
                $idCust
@@ -426,7 +402,7 @@ class BookingController extends Controller
             $model -> updateModelBooking($dataSuite);
         
          
-        redirect('/super-admin-control');
+            redirect('/super-admin-control');
         }
     }
 
