@@ -41,6 +41,11 @@ return [
         'displayLogin'
     ],
     
+    '/login/access' => [
+        'Controllers\LoginController',
+        'loginAccess'
+    ],
+    
     '/addAdmin' => [
         'Controllers\LoginController',
         'displayAddAdmin'

@@ -126,7 +126,7 @@ class BookingController extends Controller
         // die();
         if($error)
         {
-           $_SESSION["data"] = [
+           $_SESSION['data'] = [
             'lastName'  => htmlspecialchars($_POST['lastName']),
             'firstName'=> htmlspecialchars($_POST['firstName']),
             'email'  => htmlspecialchars($_POST['email']),
