@@ -8,10 +8,17 @@ use Models\RoomModel;
 
 class SuperAdminController extends Controller
 {
-    public function displayBooking(): void
-    {
-        $this -> render ('super-admin-control');
-    }
+    // public function isConnected(): void
+    // {
+    //     if($_SESSION == true)
+    //     {
+    //         $this -> render ('super-admin-control');
+    //     }
+    //     else{
+    //         $this -> render ('login');
+    //     }
+    // }
+
     
     public function showRooms(): void
     {
@@ -23,15 +30,26 @@ class SuperAdminController extends Controller
 
     public function displayBookingAdmin(): void
     {
-        $model = new AdminModel;
-        $bookingList = $model -> readBooking();
-        // echo'<pre>';
-        // var_dump($bookingList);
-        // echo '</pre>';
-        // die();
-        $this -> render('super-admin-control',[
-            'booking' => $bookingList
-        ]);
+        if($_SESSION == true)
+        {
+            $model = new AdminModel;
+            $bookingList = $model -> readBooking();
+            $this -> render('super-admin-control',[
+                'booking' => $bookingList
+            ]);
+        }
+        else{
+            $this -> render ('login');
+        }
+        // $model = new AdminModel;
+        // $bookingList = $model -> readBooking();
+        // // echo'<pre>';
+        // // var_dump($bookingList);
+        // // echo '</pre>';
+        // // die();
+        // $this -> render('super-admin-control',[
+        //     'booking' => $bookingList
+        // ]);
     }
 
     // public function login()

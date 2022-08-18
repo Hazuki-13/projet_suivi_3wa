@@ -20,6 +20,18 @@ class AdminModel extends Database
         // echo '</pre>';
         // die();
     }
+
+    public function checkUser($data)
+    {
+        $email = $this -> getOneByEmail('users', 'user_name, user_email, user_password', $data);
+        return $email;
+    }
+
+    // public function findCustomer(string $id): array
+        // {
+        //     $data = $this -> getOneById('customers','cust_id',$id);
+        //     return $data;
+        // }
     
     /*
     'SELECT b.id_booking, b.cust_id, c.cust_lastname, c.cust_firstname, c.cat_title, b.check_in, b.check_out 
