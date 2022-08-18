@@ -110,7 +110,7 @@ class BookingController extends Controller
         }
 
         
-        $_SESSION['message']=[
+        $errors['message']=[
             'firstName'=> $errorFirstName,
             'lastName'  => $errorLastName,
             'email'  => $errorEmail,
@@ -124,9 +124,9 @@ class BookingController extends Controller
         // print_r($_SESSION['message']);
         // echo ('</pre>');
         // die();
-        if($error)
+        if($error == true)
         {
-           $_SESSION['data'] = [
+           $errors['data'] = [
             'lastName'  => htmlspecialchars($_POST['lastName']),
             'firstName'=> htmlspecialchars($_POST['firstName']),
             'email'  => htmlspecialchars($_POST['email']),
@@ -135,8 +135,9 @@ class BookingController extends Controller
             'check_in'  => htmlspecialchars($_POST['check_in']),
             'check_out'  => htmlspecialchars($_POST['check_out'])
            ];
+
             // echo('<pre>');
-            // print_r($_SESSION['data']);
+            // print_r($errors);
             // echo ('</pre>');
             // die();
 
@@ -144,7 +145,8 @@ class BookingController extends Controller
             $rooms = $modelRoom -> getRooms(['cat_title']);
 
             $this -> render('booking', [
-                    'rooms' => $rooms
+                    'rooms' => $rooms,
+                    'errors'=> $errors
                 ]);
                 
         }
@@ -314,7 +316,7 @@ class BookingController extends Controller
         }
 
         
-        $_SESSION['message']=[
+        $errors['message']=[
             'firstName'=> $errorFirstName,
             'lastName'  => $errorLastName,
             'email'  => $errorEmail,
@@ -330,7 +332,7 @@ class BookingController extends Controller
         // die();
         if($error)
         {
-           $_SESSION["data"] = [
+           $errors["data"] = [
             'firstName'=> htmlspecialchars($_POST['firstName']),
             'lastName' => htmlspecialchars($_POST['lastName']),
             'email' => htmlspecialchars($_POST['email']),
@@ -364,7 +366,8 @@ class BookingController extends Controller
             $this -> render('updateBooking', [
                     'rooms' => $rooms,
                     'form' => $form,
-                    'form2' =>$form2
+                    'form2' =>$form2,
+                    'errors'=> $errors
                 ]);
         }
         else

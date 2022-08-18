@@ -1,18 +1,15 @@
 <?php
 
 session_start();
-$_SESSION = [
-    'data' => true,
-    'user' => false
-];
 
-    echo'<pre>';
-    var_dump($_SESSION['data']);
-    echo '</pre>';
-    echo'<pre>';
-    var_dump($_SESSION['user']);
-    echo '</pre>';
-    // // die();
+
+    // echo'<pre>';
+    // var_dump($_SESSION['data']);
+    // echo '</pre>';
+    // echo'<pre>';
+    // var_dump($_SESSION['user']);
+    // echo '</pre>';
+    // die();
 
 date_default_timezone_set('Europe/Paris');
 

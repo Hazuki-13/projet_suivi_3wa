@@ -10,16 +10,16 @@
                     <div class="div-input">
                         <label for="firstName"></label>
 
-                            <input type="text" name="firstName" id="firstName" placeholder="Your first name" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['firstName'] !=='') 
+                            <input type="text" name="firstName" id="firstName" placeholder="Your first name" value="<?php if(isset($errors['data'])&& $errors['data']['firstName'] !=='') 
                             {
-                                echo ($_SESSION['data']['firstName']);
+                                echo ($errors['data']['firstName']);
                             }
                             ?>"> 
                             <p><small class="errorForm">
                         <?php
-                            if(isset($_SESSION['message']) && $_SESSION['message']['firstName']!=='')
+                            if(isset($errors['message']) && $errors['message']['firstName']!=='')
                             {
-                                echo($_SESSION['message']['firstName']);
+                                echo($errors['message']['firstName']);
                             }
                         ?>
                         </small></p>
@@ -27,15 +27,15 @@
                     <div class="div-input">
                         <label for="lastName"></label>
 
-                            <input type="text" name="lastName" id="lastName" placeholder="Your last name" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['lastName'] !=='') 
+                            <input type="text" name="lastName" id="lastName" placeholder="Your last name" value="<?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') 
                             {
-                                echo ($_SESSION['data']['lastName']);
+                                echo ($errors['data']['lastName']);
                             }?>"> 
                             <p><small class="errorForm">
                         <?php
-                            if(isset($_SESSION['message']) && $_SESSION['message']['lastName']!=='')
+                            if(isset($errors['message']) && $errors['message']['lastName']!=='')
                             {
-                                echo($_SESSION['message']['lastName']);
+                                echo($errors['message']['lastName']);
                             }
                         ?>
                             </small></p>
@@ -43,15 +43,15 @@
                     <div class="div-input">
                             <label for="email"></label>
 
-                                <input type="email" name="email" id="email" placeholder="Your email" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['email'] !=='') 
+                                <input type="email" name="email" id="email" placeholder="Your email" value="<?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
                                 {
-                                    echo ($_SESSION['data']['email']);
+                                    echo ($errors['data']['email']);
                                 }?>"> 
                                 <p><small class="errorForm">
                             <?php
-                                if(isset($_SESSION['message']) && $_SESSION['message']['email']!=='')
+                                if(isset($errors['message']) && $errors['message']['email']!=='')
                                 {
-                                    echo($_SESSION['message']['email']);
+                                    echo($errors['message']['email']);
                                 }
                             ?>
                                 </small></p>
@@ -60,15 +60,15 @@
                     <div class="div-input-label">
                             <div><label for="birthDate">your birthdate</label></div>
                             
-                                <input type="date" name="birthDate" id="birthDate" min="<?php (new \DateTime('-18 years'))->format('Y-m-d') ?>" placeholder="Your birth date" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['birthDate'] !=='') 
+                                <input type="date" name="birthDate" id="birthDate" min="<?php (new \DateTime('-18 years'))->format('Y-m-d') ?>" placeholder="Your birth date" value="<?php if(isset($errors['data'])&& $errors['data']['birthDate'] !=='') 
                                 {
-                                    echo ($_SESSION['data']['birthDate']);
+                                    echo ($errors['data']['birthDate']);
                                 }?>">
                                 <p><small class="errorForm">
                             <?php
-                                if(isset($_SESSION['message']) && $_SESSION['message']['birthDate']!=='')
+                                if(isset($errors['message']) && $errors['message']['birthDate']!=='')
                                 {
-                                    echo($_SESSION['message']['birthDate']);
+                                    echo($errors['message']['birthDate']);
                                 }
                             ?>
                                 </small></p>
@@ -82,30 +82,30 @@
                     
                         <div><label for="check-in">Check-in: 2pm</label></div>
                         
-                            <input type="date" id="check-in" name="check_in" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['check_in'] !=='') 
+                            <input type="date" id="check-in" name="check_in" value="<?php if(isset($errors['data'])&& $errors['data']['check_in'] !=='') 
                             {
-                                echo ($_SESSION['data']['check_in']);
+                                echo ($errors['data']['check_in']);
                             }?>">
                             <p><small class="errorForm">
                         <?php
-                            if(isset($_SESSION['message']) && $_SESSION['message']['check_in']!=='')
+                            if(isset($errors['message']) && $errors['message']['check_in']!=='')
                             {
-                                echo($_SESSION['message']['check_in']);
+                                echo($errors['message']['check_in']);
                             }
                         ?>
                             </small></p>
                         
                         <div><label for="check-out">Check-out: 12am</label></div>
                         
-                            <input type="date" id="check-out" name="check_out" value="<?php if(isset($_SESSION['data'])&& $_SESSION['data']['check_out'] !=='') 
+                            <input type="date" id="check-out" name="check_out" value="<?php if(isset($errors['data'])&& $errors['data']['check_out'] !=='') 
                             {
-                                echo ($_SESSION['data']['check_out']);
+                                echo ($errors['data']['check_out']);
                             }?>">
                             <p><small class="errorForm">
                         <?php
-                            if(isset($_SESSION['message']) && $_SESSION['message']['check_out']!=='')
+                            if(isset($errors['message']) && $errors['message']['check_out']!=='')
                             {
-                                echo($_SESSION['message']['check_out']);
+                                echo($errors['message']['check_out']);
                             }
                         ?>
                             </small></p>
@@ -125,9 +125,9 @@
                             <p><small class="errorForm">
                                 
                         <?php
-                            if(isset($_SESSION['message']) && $_SESSION['message']['cat_id']!=='')
+                            if(isset($errors['message']) && $errors['message']['cat_id']!=='')
                             {
-                                echo($_SESSION['message']['cat_id']);
+                                echo($errors['message']['cat_id']);
                             }
                         ?>
                             </small></p>
