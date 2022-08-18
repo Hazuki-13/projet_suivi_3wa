@@ -52,6 +52,15 @@ class SuperAdminController extends Controller
         // ]);
     }
 
+    // public function showAdminName()
+    // {
+    //     $data = [
+    //         htmlspecialchars($_SESSION['username'])
+    //     ];
+    //     $model = new AdminModel;
+    //     $name = $model -> adminName($data);
+    // }
+
     // public function login()
     // {
 

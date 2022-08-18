@@ -30,7 +30,7 @@ class LoginController extends Controller
         isset($_POST['password']) && !empty($_POST['password']))
         {
             $data = [
-                htmlspecialchars($_POST['email'])
+                htmlspecialchars($_POST['email']),
             ];
 
             $model = new adminModel();
@@ -45,21 +45,24 @@ class LoginController extends Controller
                 {
                     $_SESSION['user'] = true;
                     echo('connected');
+                    
+                    echo'<pre>';
+                    var_dump($_SESSION['user']);
+                    echo '</pre>';
+                    // // die();
+
                     // $model = new AdminModel;
                     // $bookingList = $model -> readBooking();
                     // $this -> render('super-admin-control',[
                     //     'booking' => $bookingList
                     // ]);
+
                     redirect('/super-admin-control');
                 }
                 else{
                     $this -> render('login');
                 }   
             }
-            // echo'<pre>';
-            // var_dump($check);
-            // echo '</pre>';
-            // // die();
             // echo'<pre>';
             // var_dump($data);
             // echo '</pre>';

@@ -74,6 +74,15 @@ class Database
         return $data;
     }
 
+    protected function getOneByName($table, $column, $name)
+    {
+        $query = $this->getPdo()->prepare("SELECT " . $column . " FROM " . $table . " WHERE user_name = ?");
+        $query->execute($name);
+        $data = $query->fetch();
+        $query->closeCursor(); // On indique au serveur que notre requete est terminée
+        return $data;
+    }
+
     protected function createOne(string $table, string $columns, string $values, $data )
     {
         $query = $this->getPdo()->prepare('INSERT INTO ' . $table . '(' . $columns . ') values (' . $values . ')');

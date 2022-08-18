@@ -65,6 +65,10 @@
 
     </header>
     <main class="container">
+        <?php if($_SESSION['user'] === true): ?>
+            <h2 class="titleAdmin">Admin space</h2>
+            <small>Welcome back <?=($_SESSION['user']['user_name'])?></small>
+        <?php endif ?>
 
     
         <?php require $template . '.phtml' ?>
