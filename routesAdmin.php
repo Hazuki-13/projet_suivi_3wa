@@ -77,25 +77,25 @@ return [
         'displayBookingAdmin'
     ],
     
-    // '/super-admin-control/updateBooking' => [
-    //     'Controllers\BookingController',
-    //     'edit'
-    // ],
+    '/super-admin-control/updateBooking' => [
+        'Controllers\BookingController',
+        'edit'
+    ],
     
-    // '/super-admin-control/update' => [
-    //     'Controllers\BookingController',
-    //     'update'
-    // ],
+    '/super-admin-control/update' => [
+        'Controllers\BookingController',
+        'update'
+    ],
     
-    // '/addAdmin' => [
-    //     'Controllers\LoginController',
-    //     'displayAddAdmin'
-    // ],
+    '/addAdmin' => [
+        'Controllers\LoginController',
+        'displayAddAdmin'
+    ],
     
-    // '/super-admin-control/delete' => [
-    //     'Controllers\BookingController',
-    //     'delete'
-    //     ]
+    '/super-admin-control/delete' => [
+        'Controllers\BookingController',
+        'delete'
+        ]
         
     ];
     

@@ -27,12 +27,6 @@ class AdminModel extends Database
         return $email;
     }
 
-    public function adminName($data)
-    {
-        $name = $this -> getOneByName('users', 'user_name', $data);
-        return $name;
-    }
-
     // public function findCustomer(string $id): array
         // {
         //     $data = $this -> getOneById('customers','cust_id',$id);

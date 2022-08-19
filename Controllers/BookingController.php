@@ -205,50 +205,56 @@ class BookingController extends Controller
 
     public function edit(): void
     {
-        //pour faire afficher le formulaire pour l'UPDATE
-        //id du
-        $idCust = $_GET['cust_id'];
-        $idBook = $_GET['id_booking'];
+        if($_SESSION == true)
+        {
 
-        
-        
-        $editModel = new BookingModel();
-        // $model2 = new BookingModel();
-        $form = $editModel -> findCustomer($idCust);
-        $form2 = $editModel -> findBooking($idBook);
-        
-        $modelRoom = new RoomModel();
-        $rooms = $modelRoom -> getRooms(['cat_title']);
-        // $model2 = new BookingModel();
-        
-        // echo('<pre>');
-        // print_r($form);
-        // echo ('</pre>');
-        // echo('<pre>');
-        // print_r($form2);
-        // echo ('</pre>');
-        // die();
-        
-        $this -> render('updateBooking', [
-            'rooms' => $rooms,
-            'form' => $form,
-            'form2' =>$form2
+            //pour faire afficher le formulaire pour l'UPDATE
+            //id du
+            $idCust = $_GET['cust_id'];
+            $idBook = $_GET['id_booking'];
+            
+            
+            
+            $editModel = new BookingModel();
+            // $model2 = new BookingModel();
+            $form = $editModel -> findCustomer($idCust);
+            $form2 = $editModel -> findBooking($idBook);
+            
+            $modelRoom = new RoomModel();
+            $rooms = $modelRoom -> getRooms(['cat_title']);
+            // $model2 = new BookingModel();
+            
+            // echo('<pre>');
+            // print_r($form);
+            // echo ('</pre>');
+            // echo('<pre>');
+            // print_r($form2);
+            // echo ('</pre>');
+            // die();
+            
+            $this -> render('updateBooking', [
+                'rooms' => $rooms,
+                'form' => $form,
+                'form2' =>$form2
             ]);
-        
-
+            
+        }else{
+            redirect('/home');
+        }
+            
     }
-
-    public function update() :void
-    {
-        /*
+        
+        public function update() :void
+        {
+            /*
             _A la modification/validation du formulaire, afficher les erreurs de champs vide ou incorrect sous chaque input
             _chaque "if" doit vérifier la validité des champs
             _si le champs n'est pas défini ou n'est pas correct
             _afficher erreur message ="le champs n'est pas correct"
-        */
-
-         //Je récupère la date du jours.
-        $getDay = getdate();
+            */
+            
+            //Je récupère la date du jours.
+            $getDay = getdate();
          //Soustraire l'année de la date du jour par 18. Et conserver les jours et mois intact.
         $dateDay = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"];
          //Je trouve la date de naissance minimale par rapport au jour.

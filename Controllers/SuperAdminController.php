@@ -32,11 +32,18 @@ class SuperAdminController extends Controller
     {
         if($_SESSION == true)
         {
+            // echo'<pre>';
+            // print_r($_SESSION);
+            // echo '</pre>';
+            // die();
+
             $model = new AdminModel;
             $bookingList = $model -> readBooking();
             $this -> render('super-admin-control',[
                 'booking' => $bookingList
             ]);
+
+
         }
         else{
             $this -> render ('login');
@@ -51,20 +58,6 @@ class SuperAdminController extends Controller
         //     'booking' => $bookingList
         // ]);
     }
-
-    // public function showAdminName()
-    // {
-    //     $data = [
-    //         htmlspecialchars($_SESSION['username'])
-    //     ];
-    //     $model = new AdminModel;
-    //     $name = $model -> adminName($data);
-    // }
-
-    // public function login()
-    // {
-
-    // }
 
     // public function addAdmin()
     // {
@@ -92,13 +85,13 @@ class SuperAdminController extends Controller
     //         $error = true;         
     //     }
 
-    //     if(!isset($_POST['confirmPassword']) || (isset($_POST['confirmPassword']) && empty($_POST['confirmPassword']))) 
+    //     if(!isset($_POST['confirmPassword']) || (isset($_POST['confirmPassword']) && empty($_POST['confirmPassword'])) || isset($_POST['confirmPassword'] !== ($_POST['password']))) 
     //     {
-    //         $errorLastName = 'Password incorrect';
+    //         $errorLastName = 'password incorrect';
     //         $error = true;         
     //     }
 
-    //     $_SESSION['message']=[
+    //     $errors['message']=[
     //         'userName'=> $errorUserName,
     //         'email'  => $errorEmail,
     //         'password'  => $errorPassword,
@@ -107,7 +100,7 @@ class SuperAdminController extends Controller
 
     //     if($error)
     //     {
-    //        $_SESSION["data"] = [
+    //        $errors["data"] = [
     //         'userName'=> htmlspecialchars($_POST['userName']),
     //         'email'  => htmlspecialchars($_POST['email']),
     //         'password'  => htmlspecialchars($_POST['password']),

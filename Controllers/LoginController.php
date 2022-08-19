@@ -43,12 +43,16 @@ class LoginController extends Controller
                 $_POST['email'] == $check['user_email'] &&
                 password_verify($_POST['password'], $check['user_password']))
                 {
-                    $_SESSION['user'] = true;
-                    echo('connected');
+                    $_SESSION['ok'] = true;
+                    $_SESSION['user'] = [
+                        'id' => $check['user_id'],
+                        'username' => $check['user_name'],
+                        'email' => $check['user_email']
+                    ];
                     
-                    echo'<pre>';
-                    var_dump($_SESSION['user']);
-                    echo '</pre>';
+                    // echo'<pre>';
+                    // print_r($_SESSION['user']);
+                    // echo '</pre>';
                     // // die();
 
                     // $model = new AdminModel;
