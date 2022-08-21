@@ -5,13 +5,32 @@ body {
     margin: 0 auto ;
     text-decoration: none;
     line-height: 1.3rem;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
+
+    /*
+        font-family: 'Alegreya', serif;
+
+        font-family: 'Athiti', sans-serif;
+
+        font-family: 'Cookie', cursive;
+
+        font-family: 'Courgette', cursive;
+
+        font-family: 'Open Sans', sans-serif;
+    */
 }
 /************************************************************************/
 /************* style du header et de la barre de navigation *************/
 /************************************************************************/
+
+.title {
+    line-height: 1.7rem;
+    font-size: 2.5rem;
+    font-family: 'Courgette';
+}
+
 .navHead {
-    background-color: rgb(7, 4, 21);
+    background-color: rgb(255, 255, 255);
     padding: 1rem;
 }
 .navHead ul {
@@ -23,7 +42,7 @@ body {
 
 .navHead a {
     text-decoration: none;
-    color:aliceblue;
+    color:rgb(0, 136, 255);
     margin-left: 2rem;
     margin-right: 2rem;
     padding: 1rem;
@@ -36,8 +55,59 @@ body {
 /***********************************************************************/
 /************************ style de la vue Home *************************/
 /***********************************************************************/
+
 .imghome {
+    width: 70%;
+}
+
+
+.homeArticle {
+    width: 70%;
+    margin: 0 auto;
+
+}
+
+.homeText {
+    text-align: justify;
+}
+/***************************Slider*************************/
+#slider {
+    position: relative;
+    width: 70%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+#slider > img {
     width: 100%;
+    aspect-ratio: 3/2;
+}
+    
+
+#precedent,
+#suivant {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    position: absolute;
+    font-size: 2.5rem;
+    color: rgba(220, 220, 220, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+}
+
+#precedent {
+    left: 0;
+}
+
+#suivant {
+    right: 0;
+}
+
+#slider:hover #precedent,
+#slider:hover #suivant {
+    opacity: 1;
 }
 
 /***********************************************************************/
