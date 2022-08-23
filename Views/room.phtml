@@ -13,10 +13,10 @@
                 <p><?= $room['cat_price'] ?>€</p>
                 <?php foreach ($pictures as $picture): ?>
                     <?php if($room['cat_id'] == $picture['cat_id']):?>
-                        <div class="divRoom">
+                        <!-- <div class="divRoom"> -->
                         <a href="../assets/img/<?= $room['cat_id'] ?>/<?= $picture['picture_url'] ?>" data-fancybox="gallery">
                         <img class="picRoom" src="../assets/img/<?= $room['cat_id'] ?>/<?= $picture['picture_url'] ?>" alt=""></a>
-                        </div>
+                        <!-- </div> -->
                     <?php endif ?>
                 <?php endforeach ?>
             </div>

@@ -134,8 +134,8 @@ body {
 
 .divRoom{
     border: 3px solid green;
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
 
 }
 
