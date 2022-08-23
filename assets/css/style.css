@@ -132,8 +132,8 @@ body {
 
 .wrapper {
     margin-bottom: .5rem;
-    border: 3px solid rgb(0, 136, 255);
-    border-radius: 10px;
+    /* border: 3px solid rgb(0, 136, 255);
+    border-radius: 10px; */
 }
 
 .picRoom {

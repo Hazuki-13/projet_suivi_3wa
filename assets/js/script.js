@@ -1,6 +1,6 @@
-if(document.querySelector('#selectCategory') !== null){
+if(document.querySelector('.selectCategory') !== null){
 
-    let categoryList = document.querySelector('#selectCategory');
+    let categoryList = document.querySelector('.selectCategory');
     categoryList.addEventListener('change', () => {
         let cat = categoryList.value;
         // console.log(cat)
@@ -13,7 +13,7 @@ if(document.querySelector('#selectCategory') !== null){
         fetch(myRequest)
         .then(res=>res.text())
         .then(res=>{
-            document.getElementById('price').innerHTML= 'Room\'s price per day : ' + res;
+            document.querySelector('.price').innerHTML= 'Room\'s price per day : ' + res;
         })
     
     });
