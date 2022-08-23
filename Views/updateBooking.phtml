@@ -6,12 +6,12 @@
 
     <form action="<?= url('/super-admin-control/update') ?>" method="POST">
         <input type="hidden" name="cust_id" value="<?= $form['cust_id'] ?>">
-        <div class="idForm">
+        <div class="classForm">
             
                 <div class="div-input">
                     <label for="firstName"></label>
 
-                    <input type="text" name="firstName" id="firstName" placeholder="first name" value="<?= htmlspecialchars($form['cust_firstname']) ?><?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') 
+                    <input type="text" name="firstName" class="firstName" placeholder="first name" value="<?= htmlspecialchars($form['cust_firstname']) ?><?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') 
                     {
                         // echo ($errors['data']['firstName']);
                     }?>"> 
@@ -25,7 +25,7 @@
                 <div class="div-input">
                     <label for="lastName"></label>
 
-                    <input type="text" name="lastName" id="lastName" placeholder="last name" value="<?= htmlspecialchars($form['cust_lastname']) ?><?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') 
+                    <input type="text" name="lastName" class="lastName" placeholder="last name" value="<?= htmlspecialchars($form['cust_lastname']) ?><?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') 
                     {
                         // echo ($errors['data']['lastName']);
                     }?>"> 
@@ -39,7 +39,7 @@
                 <div class="div-input">
                         <label for="email"></label>
 
-                        <input type="email" name="email" id="email" placeholder="email" value="<?= htmlspecialchars($form['cust_email']) ?><?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
+                        <input type="email" name="email" class="email" placeholder="email" value="<?= htmlspecialchars($form['cust_email']) ?><?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
                         {
                         // echo ($errors['data']['email']);
                         }?>"> 
@@ -54,7 +54,7 @@
                 <div class="div-input-label">
                         <div><label for="birthdate">your birthdate</label></div>
                         
-                        <input type="date" name="birthDate" id="birthDate" value="<?= htmlspecialchars($form['cust_birthdate']) ?><?php if(isset($errors['data'])&& $errors['data']['birthDate'] !=='') 
+                        <input type="date" name="birthDate" class="birthDate" value="<?= htmlspecialchars($form['cust_birthdate']) ?><?php if(isset($errors['data'])&& $errors['data']['birthDate'] !=='') 
                     {
                         // echo ($errors['data']['birthDate']);
                     }?>">
@@ -76,7 +76,7 @@
                 
                 <div><label for="check-in">Check-in: 2pm</label></div>
                     
-                    <input type="date" id="check-in" name="check_in" value="<?= htmlspecialchars($form2['check_in']) ?><?php if(isset($errors['data'])&& $errors['data']['check_in'] !=='') 
+                    <input type="date" class="check-in" name="check_in" value="<?= htmlspecialchars($form2['check_in']) ?><?php if(isset($errors['data'])&& $errors['data']['check_in'] !=='') 
                     {
                         // echo ($errors['data']['check_in']);
                     }?>">
@@ -89,7 +89,7 @@
                     
                 <div><label for="check-out">Check-out: 12am</label></div>
                     
-                    <input type="date" id="check-out" name="check_out" value="<?= htmlspecialchars($form2['check_out']) ?><?php if(isset($errors['data'])&& $errors['data']['check_out'] !=='') 
+                    <input type="date" class="check-out" name="check_out" value="<?= htmlspecialchars($form2['check_out']) ?><?php if(isset($errors['data'])&& $errors['data']['check_out'] !=='') 
                     {
                         // echo ($errors['data']['check_out']);
                     }?>">

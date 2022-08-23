@@ -5,12 +5,12 @@
     <h3>Personal details</h3>
 
         <form action="<?= url('/booking/create') ?>" method="POST">
-            <div class="idForm">
+            <div class="classForm">
                 
                     <div class="div-input">
                         <label for="firstName"></label>
 
-                            <input type="text" name="firstName" id="firstName" placeholder="Your first name" value="<?php if(isset($errors['data'])&& $errors['data']['firstName'] !=='') 
+                            <input type="text" name="firstName" class="firstName" placeholder="Your first name" value="<?php if(isset($errors['data'])&& $errors['data']['firstName'] !=='') 
                             {
                                 echo ($errors['data']['firstName']);
                             }
@@ -27,7 +27,7 @@
                     <div class="div-input">
                         <label for="lastName"></label>
 
-                            <input type="text" name="lastName" id="lastName" placeholder="Your last name" value="<?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') 
+                            <input type="text" name="lastName" class="lastName" placeholder="Your last name" value="<?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') 
                             {
                                 echo ($errors['data']['lastName']);
                             }?>"> 
@@ -43,7 +43,7 @@
                     <div class="div-input">
                             <label for="email"></label>
 
-                                <input type="email" name="email" id="email" placeholder="Your email" value="<?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
+                                <input type="email" name="email" class="email" placeholder="Your email" value="<?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
                                 {
                                     echo ($errors['data']['email']);
                                 }?>"> 
@@ -60,7 +60,7 @@
                     <div class="div-input-label">
                             <div><label for="birthDate">your birthdate</label></div>
                             
-                                <input type="date" name="birthDate" id="birthDate" min="<?php (new \DateTime('-18 years'))->format('Y-m-d') ?>" placeholder="Your birth date" value="<?php if(isset($errors['data'])&& $errors['data']['birthDate'] !=='') 
+                                <input type="date" name="birthDate" class="birthDate" min="<?php (new \DateTime('-18 years'))->format('Y-m-d') ?>" placeholder="Your birth date" value="<?php if(isset($errors['data'])&& $errors['data']['birthDate'] !=='') 
                                 {
                                     echo ($errors['data']['birthDate']);
                                 }?>">
@@ -82,7 +82,7 @@
                     
                         <div><label for="check-in">Check-in: 2pm</label></div>
                         
-                            <input type="date" id="check-in" name="check_in" value="<?php if(isset($errors['data'])&& $errors['data']['check_in'] !=='') 
+                            <input type="date" class="check-in" name="check_in" value="<?php if(isset($errors['data'])&& $errors['data']['check_in'] !=='') 
                             {
                                 echo ($errors['data']['check_in']);
                             }?>">
@@ -97,7 +97,7 @@
                         
                         <div><label for="check-out">Check-out: 12am</label></div>
                         
-                            <input type="date" id="check-out" name="check_out" value="<?php if(isset($errors['data'])&& $errors['data']['check_out'] !=='') 
+                            <input type="date" class="check-out" name="check_out" value="<?php if(isset($errors['data'])&& $errors['data']['check_out'] !=='') 
                             {
                                 echo ($errors['data']['check_out']);
                             }?>">
