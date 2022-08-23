@@ -6,6 +6,7 @@ body {
     text-decoration: none;
     line-height: 1.3rem;
     font-family: 'Open Sans', sans-serif;
+}
 
     .title,
     h2,
@@ -30,7 +31,6 @@ body {
 
         font-family: 'Open Sans', sans-serif;
     */
-}
 /************************************************************************/
 /************* style du header et de la barre de navigation *************/
 /************************************************************************/
