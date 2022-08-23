@@ -8,17 +8,17 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-    .title,
-    h2,
-    .footer h3 {
-        line-height: 1.7rem;
-        font-size: 2rem;
-        font-family: 'Courgette';
-    }
-    
-    .title {
-        font-size:2.5rem;
-    }
+.title,
+h2,
+.footer h3 {
+    line-height: 1.7rem;
+    font-size: 2rem;
+    font-family: 'Courgette';
+}
+
+.title {
+    font-size:2.5rem;
+}
     
     /*
         font-family: 'Alegreya', serif;
@@ -77,7 +77,7 @@ body {
 .homeText {
     text-align: justify;
 }
-/***************************Slider*************************/
+/*********************************Slider********************************/
 #slider {
     position: relative;
     width: 70%;
@@ -118,7 +118,7 @@ body {
 }
 
 /***********************************************************************/
-/************************ style de la vue room *************************/
+/************************ style de la vue rooms *************************/
 /***********************************************************************/
 .roomsTitle {
     text-decoration: underline;
@@ -197,7 +197,34 @@ select {
 }
 
 /*********************************************************************/
-/*********************** style de la page admin  *********************/
+/***************************login form********************************/
+/*********************************************************************/
+
+#userName {
+    margin-bottom: 1.5rem;
+}
+
+#userEmail {
+    margin-bottom: 1.5rem;
+}
+
+#password {
+    margin-bottom: 1.5rem;
+}
+
+#access {
+    padding: 0.5rem 4rem;
+    border-radius: 5px;
+    background-color: black;
+    color: gold;
+}
+#access:hover {
+    background-color:gold;
+    color:black
+}
+
+/*********************************************************************/
+/*********************** style du Back Office  ***********************/
 /*********************************************************************/
 .superAdmin a li {
     display:inline-block;
@@ -239,86 +266,8 @@ select {
 }
 
 /*********************************************************************/
-/***********************style du footer*******************************/
-/*********************************************************************/
-.footer {
-    background-color: rgb(0, 136, 255);
-    /* background-color: rgb(7, 4, 21); */
-    padding: 1.2rem;
-    margin-top: 0.7rem;
-    margin-bottom: 0.2rem;
-    color:white;
-    display:flex;
-    justify-content: space-around;
-    border-radius: 10px;
-}
-
-footer div {
-    width: 40%;
-}
-
-.footer h3 {
-    text-decoration: underline;
-}
-/* .contact {
-    display:flex;
-    justify-content: flex-start;
-} */
-.contact h4 p {
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 2rem;
-}
-
-.reseaux {
-    width: 40%;
-    /* display: flex;
-    justify-content: flex-end; */
-}
-
-.reseaux a i {
-    font-size: 2rem;
-    margin: 1.2rem;
-    color: white;
-}
-
-.reseaux a i:hover {
-    color: gold;
-}
-
-
-
-/*********************************************************************/
-/***************************login form********************************/
-/*********************************************************************/
-
-#userName {
-    margin-bottom: 1.5rem;
-}
-
-#userEmail {
-    margin-bottom: 1.5rem;
-}
-
-#password {
-    margin-bottom: 1.5rem;
-}
-
-#access {
-    padding: 0.5rem 4rem;
-    border-radius: 5px;
-    background-color: black;
-    color: gold;
-}
-#access:hover {
-    background-color:gold;
-    color:black
-}
-
-/*********************************************************************/
 /***************************Add Admin form****************************/
 /*********************************************************************/
-
 
 #adminForm {
     width: 40%;
@@ -383,16 +332,61 @@ footer div {
     width:50%;
     display: flex;
     justify-content: space-evenly;
-
+    
 } */
 
+/*********************************************************************/
+/***********************style du footer*******************************/
+/*********************************************************************/
+.footer {
+    /* background-color: rgb(0, 136, 255); */
+    /* background-color: rgb(7, 4, 21); */
+    background: rgb(61,45,253);
+    background: linear-gradient(0deg, rgba(61,45,253,1) 25%, rgba(34,193,195,1) 70%);
+    padding: 1.2rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0.2rem;
+    color:white;
+    display:flex;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+footer div {
+    width: 40%;
+}
+
+.footer h3 {
+    text-decoration: underline;
+}
+/* .contact {
+    display:flex;
+    justify-content: flex-start;
+} */
+.contact h4 p {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 2rem;
+}
+
+.reseaux {
+    width: 40%;
+    /* display: flex;
+    justify-content: flex-end; */
+}
+
+.reseaux a i {
+    font-size: 2rem;
+    margin: 1.2rem;
+    color: white;
+}
+
+.reseaux a i:hover {
+    color: gold;
+}
     
 
     
-
-
-
-
 /*********************************************************************/
 /*********************************************************************/
 /*********************************************************************/
@@ -400,3 +394,10 @@ footer div {
 /*********************************************************************/
 /*********************************************************************/
 /*********************************************************************/
+
+
+
+
+
+
+
