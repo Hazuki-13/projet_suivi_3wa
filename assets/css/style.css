@@ -120,29 +120,27 @@ body {
 /***********************************************************************/
 /************************ style de la vue room *************************/
 /***********************************************************************/
+.roomsTitle {
+    text-decoration: underline;
+}
+
 .rooms {
     width: 100%;
     margin: 0 auto;
-    /* display: flex;
-    flex-direction: column; */
-    border: 3px solid yellow;
+    /* border: 3px solid yellow; */
 }
 
 .wrapper {
-    border: 3px solid blue;
-}
-
-.divRoom{
-    border: 3px solid green;
-    /* display: flex;
-    flex-direction: row; */
-
+    margin-bottom: .5rem;
+    border: 3px solid rgb(0, 136, 255);
+    border-radius: 10px;
 }
 
 .picRoom {
-    border: 3px solid red;
     width:25%;
-    padding: 1rem;
+    padding: .5rem;
+    aspect-ratio: 3/2;
+    /* border: 3px solid red; */
 }
 
 .roomDescription {
@@ -252,6 +250,7 @@ select {
     color:white;
     display:flex;
     justify-content: space-around;
+    border-radius: 10px;
 }
 
 footer div {

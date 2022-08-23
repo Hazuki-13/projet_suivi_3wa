@@ -1,5 +1,5 @@
 
-<h2>Rooms</h2>
+<h2 class="roomsTitle">Rooms</h2>
 
     <section class="rooms">
 
@@ -8,15 +8,13 @@
             
             
             <div class="wrapper">
-                <h3><?= $room['cat_title'] ?></h3>
+                <h3 class="roomsTitle"><?= $room['cat_title'] ?></h3>
                 <p class="roomDescription"><?= $room['cat_description'] ?></p>
                 <p><?= $room['cat_price'] ?>€</p>
                 <?php foreach ($pictures as $picture): ?>
-                    <?php if($room['cat_id'] == $picture['cat_id']):?>
-                        <!-- <div class="divRoom"> -->
+                    <?php if($room['cat_id'] == $picture['cat_id']):?>                        
                         <a href="../assets/img/<?= $room['cat_id'] ?>/<?= $picture['picture_url'] ?>" data-fancybox="gallery">
-                        <img class="picRoom" src="../assets/img/<?= $room['cat_id'] ?>/<?= $picture['picture_url'] ?>" alt=""></a>
-                        <!-- </div> -->
+                        <img class="picRoom" src="../assets/img/<?= $room['cat_id'] ?>/<?= $picture['picture_url'] ?>" alt=""></a>                        
                     <?php endif ?>
                 <?php endforeach ?>
             </div>
