@@ -3,19 +3,28 @@
 
     <section class="rooms">
 
-        <div>
-            
+        
         <?php foreach ($rooms as $room): ?>
             
-    
-            <h3><?= $room['cat_title'] ?></h3>
-            <p><?= $room['cat_description'] ?></p>
-            <p><?= $room['cat_price'] ?>€</p>
-    
+            
+            <div class="wrapper">
+                <h3><?= $room['cat_title'] ?></h3>
+                <p class="roomDescription"><?= $room['cat_description'] ?></p>
+                <p><?= $room['cat_price'] ?>€</p>
+                <?php foreach ($pictures as $picture): ?>
+                    <?php if($room['cat_id'] == $picture['cat_id']):?>
+                        <div class="divRoom">
+                        <a href="../assets/img/<?= $room['cat_id'] ?>/<?= $picture['picture_url'] ?>" data-fancybox="gallery">
+                        <img class="picRoom" src="../assets/img/<?= $room['cat_id'] ?>/<?= $picture['picture_url'] ?>" alt=""></a>
+                        </div>
+                    <?php endif ?>
+                <?php endforeach ?>
+            </div>
+            
+            
         <?php endforeach ?>
               
             
-        </div>
         
 
     </section>

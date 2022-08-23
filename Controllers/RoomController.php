@@ -6,14 +6,28 @@ class RoomController extends Controller
 {
     public function displayRooms(): void
     {
-            //     // $template =  'room' ;
-        //     // require 'MVC/Views/layout.phtml';
         $model = new \Models\RoomModel();
         $rooms = $model -> getRooms();
+        $model = new \Models\RoomModel();
+        $pictures = $model -> getPictures();
         
-        //     // la methode render remplace le code précedent
+        
+
+        // echo('<pre>');
+        // print_r($rooms);
+        // echo ('</pre>');
+        // echo('<pre>');
+        // print_r($pictures);
+        // echo ('</pre>');
+        // echo('<pre>');
+        // print_r($);
+        // echo ('</pre>');
+        // die();
+
+        //la methode render remplace le code précedent
         $this -> render('room', [
-            'rooms' => $rooms
+            'rooms' => $rooms,
+            'pictures' => $pictures
         ]);
     }
 }

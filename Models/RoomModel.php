@@ -14,7 +14,29 @@ class RoomModel extends Database
       FROM category';
       return $this -> findAll($room);
     }
+
+    public function getPictures():array
+    {
+      //recupérarion des détails de la category des rooms
+      //selection de toutes les colonnes sans utiliser l'*
+      $pictures = 'SELECT picture_id, cat_id, picture_url
+      FROM pictures_details';
+      return $this -> findAll($pictures);
+    }
+    
+    // public function getRooms():array
+    // {
+    //           //recupérarion des détails de la category des rooms
+    //           //selection de toutes les colonnes sans utiliser l'*
+    //           $room = 'SELECT category.cat_id, category.cat_title, category.cat_description, pictures_details.picture_url, cat_price
+    //                   FROM category
+    //                   INNER JOIN pictures_details ON pictures_details.cat_id = category.cat_id';
+    //           return $this -> findAll($room);
+    // }
 }
+        
+
+
 
 // public function getRooms():array
     // {
