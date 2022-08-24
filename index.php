@@ -34,9 +34,6 @@ if(isset($_SESSION['ok']) && ($_SESSION['ok']) == true)
 }
 else
 {
-
-    
-    
     $routes = require 'routes.php';
     
     // Récupération de la route sur laquelle on se trouve
@@ -53,6 +50,9 @@ else
     $controller = new $controllerName();
     $controller->$method();
 }
+
+    
+    
 
 
 

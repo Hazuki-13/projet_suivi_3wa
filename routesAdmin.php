@@ -88,8 +88,18 @@ return [
     ],
     
     '/addAdmin' => [
-        'Controllers\LoginController',
+        'Controllers\SuperAdminController',
         'displayAddAdmin'
+    ],
+    
+    '/addAdmin/create' => [
+        'Controllers\SuperAdminController',
+        'createNewAdmin'
+    ],
+    
+    '/users' => [
+        'Controllers\SuperAdminController',
+        'displayUsers'
     ],
     
     '/super-admin-control/delete' => [

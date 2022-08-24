@@ -84,15 +84,7 @@ class LoginController extends Controller
         redirect('/home');
     }
         
-    public function displayAddAdmin()
-    {
-        // $template =  'login' ;
-        // require 'MVC/Views/layout.phtml';
-        // la methode render remplace le code précedent
-
-        $this -> render('addAdmin');
-        
-    }
+   
     
     // public function createAdmin()
     // {

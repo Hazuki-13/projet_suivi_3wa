@@ -21,10 +21,22 @@ class AdminModel extends Database
         // die();
     }
 
+    public function users(): array
+    {
+        $users = 'SELECT user_id, user_name, user_status, user_email, created_at
+                  FROM users';
+                  return $this -> findAll($users);
+    }
+
     public function checkUser($data)
     {
         $email = $this -> getOneByEmail('users', 'user_name, user_email, user_password', $data);
         return $email;
+    }
+
+        public function newAdmin($data): void
+    {
+        $this -> createOne('users', 'user_name, user_status,  user_email, user_password', '?, ?, ?, ?', $data);
     }
 
     // public function findCustomer(string $id): array

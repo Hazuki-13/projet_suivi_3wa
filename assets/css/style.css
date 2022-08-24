@@ -304,13 +304,13 @@ select {
     margin-bottom: 1.5rem;
 } */
 
-#addAccess {
+.addAccess {
     padding: 0.5rem 4rem;
     border-radius: 5px;
     background-color: black;
     color: gold;
 }
-#addAccess:hover {
+.addAccess:hover {
     background-color:gold;
     color:black
 }
