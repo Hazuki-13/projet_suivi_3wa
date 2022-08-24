@@ -10,7 +10,7 @@
     
     <input type="text" class="userName" name="userName" placeholder="user name" value="<?= htmlspecialchars($user['user_name']) ?><?php if(isset($errors['data'])&& $errors['data']['userName'] !=='') 
         {
-            echo ($errors['data']['userName']);
+            // echo ($errors['data']['userName']);
         }
         ?>"> 
         <p><small class="errorForm">
@@ -41,7 +41,7 @@
     
     <input type="email" class="userEmail" name="email" placeholder="email" value="<?= htmlspecialchars($user['user_email'])?><?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
         {
-            echo ($errors['data']['email']);
+            // echo ($errors['data']['email']);
         }
         ?>"> 
         <p><small class="errorForm">
@@ -55,7 +55,7 @@
     
     <input type="password" class="password" name="password" placeholder="password" value="<?= htmlspecialchars($user['user_password']) ?><?php if(isset($errors['data'])&& $errors['data']['password'] !=='') 
         {
-            echo ($errors['data']['password']);
+            // echo ($errors['data']['password']);
         }
         ?>"> 
         <p><small class="errorForm">
@@ -69,7 +69,7 @@
     
     <input type="password" class="confirmPassword" name="confirmPassword" placeholder="confirm password" value="<?= htmlspecialchars($user['user_password']) ?><?php if(isset($errors['data'])&& $errors['data']['confirmPassword'] !=='') 
         {
-            echo ($errors['data']['confirmPassword']);
+            // echo ($errors['data']['confirmPassword']);
         }
         ?>"> 
         <p><small class="errorForm">

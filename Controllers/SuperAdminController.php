@@ -78,14 +78,13 @@ class SuperAdminController extends Controller
         $errorPassword ='';
         $errorConfirmPassword ='';
 
-        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
+        
         if(!isset($_POST['userName']) || (isset($_POST['userName']) && empty($_POST['userName']))) 
         {
             $errorUserName = 'username input empty';
             $error = true;
         }
-
+        
         if(!isset($_POST['userStatus']) || (isset($_POST['userStatus']) && empty($_POST['userStatus']))) 
         {
             $errorUserStatus = 'user status not selected';
@@ -97,19 +96,19 @@ class SuperAdminController extends Controller
             $errorEmail= 'email invalid';
             $error = true;         
         }
-                    
-        if(!isset($_POST['password']) || (isset($_POST['password']) && empty($_POST['password']))) 
+        
+        if(!isset($_POST['password']) || (isset($_POST['password']) && empty($_POST['password'])))
         {
             $errorPassword = 'password incorrect';
             $error = true;         
         }
-
+        
         if(!isset($_POST['confirmPassword']) || (isset($_POST['confirmPassword']) && empty($_POST['confirmPassword'])) || ($_POST['confirmPassword'] !== ($_POST['password']))) 
         {
             $errorConfirmPassword = 'password incorrect';
             $error = true;         
         }
-
+        
         $errors['message']=[
             'userName'=> $errorUserName,
             'userStatus'=> $errorUserStatus,
@@ -117,31 +116,52 @@ class SuperAdminController extends Controller
             'password'  => $errorPassword,
             'confirmPassword'  => $errorConfirmPassword
         ];
-
+        
         if($error == true)
         {
-           $errors["data"] = [
-            'userName'=> htmlspecialchars($_POST['userName']),
+            $errors["data"] = [
+                'userName'=> htmlspecialchars($_POST['userName']),
             'userStatus'=> htmlspecialchars($_POST['userStatus']),
             'email'  => htmlspecialchars($_POST['email']),
             'password'  => htmlspecialchars($_POST['password']),
             'confirmPassword' => htmlspecialchars($_POST['confirmPassword'])
-           ];
-
-           $this -> render('addAdmin', [
-            'errors' => $errors
+        ];
+        
+        //tableau assoc : $variable
+        // la clé ['password']
+        // pour acceder à une valeur stocker dans un tableau associatif
+        // je dois renseigner le tableau dans lequel je dois aller chercher la valeur
+        // et je dois renseigner la clé à laquelle est stocker la valeur
+        //    $variable = [
+            //     'password' => $password
+            //     ];
+            
+            //     $variable['password'];
+            
+            //     echo('<pre>');
+            //     print_r($password);
+            //     echo ('</pre>');
+            // echo('<pre>');
+            // print_r($_SESSION['user']['id']);
+            // echo ('</pre>');
+            // die();
+            
+            $this -> render('addAdmin', [
+                'errors' => $errors
             ]);
-
+            
         }
-        else{
+        else
+        {
+            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
             $model = new AdminModel;
             $data = [
-               htmlspecialchars($_POST['userName']),
-               htmlspecialchars($_POST['userStatus']),
-               htmlspecialchars($_POST['email']),
-               htmlspecialchars($_POST[$password]),
-               
-            //    htmlspecialchars($_POST['confirmPassword'])
+                htmlspecialchars($_POST['userName']),
+                htmlspecialchars($_POST['userStatus']),
+                htmlspecialchars($_POST['email']),
+                htmlspecialchars($password)
+                
+                //    htmlspecialchars($_POST['confirmPassword'])
             ];
 
             $model -> newAdmin($data);
@@ -170,7 +190,7 @@ class SuperAdminController extends Controller
             $user = $editModel -> userById($userId);
             
             // echo('<pre>');
-            // print_r($form);
+            // print_r($password);
             // echo ('</pre>');
             // echo('<pre>');
             // print_r($form2);
@@ -191,14 +211,13 @@ class SuperAdminController extends Controller
             $errorPassword ='';
             $errorConfirmPassword ='';
 
-            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
+            
             if(!isset($_POST['userName']) || (isset($_POST['userName']) && empty($_POST['userName']))) 
             {
                 $errorUserName = 'username input empty';
                 $error = true;
             }
-
+            
             if(!isset($_POST['userStatus']) || (isset($_POST['userStatus']) && empty($_POST['userStatus']))) 
             {
                 $errorUserStatus = 'userStatus not selected';
@@ -210,19 +229,19 @@ class SuperAdminController extends Controller
                 $errorEmail= 'email invalid';
                 $error = true;         
             }
-                        
+            
             if(!isset($_POST['password']) || (isset($_POST['password']) && empty($_POST['password']))) 
             {
                 $errorPassword = 'password incorrect';
                 $error = true;         
             }
-
+            
             if(!isset($_POST['confirmPassword']) || (isset($_POST['confirmPassword']) && empty($_POST['confirmPassword'])) || ($_POST['confirmPassword'] !== ($_POST['password']))) 
             {
                 $errorConfirmPassword = 'password incorrect';
                 $error = true;         
             }
-
+            
             $errors['message']=[
                 'userName'=> $errorUserName,
                 'userStatus'=> $errorUserStatus,
@@ -230,7 +249,7 @@ class SuperAdminController extends Controller
                 'password'  => $errorPassword,
                 'confirmPassword'  => $errorConfirmPassword
             ];
-
+            
             if($error == true)
             {
                 $errors["data"] = [
@@ -240,32 +259,35 @@ class SuperAdminController extends Controller
                     'password'  => htmlspecialchars($_POST['password']),
                     'confirmPassword' => htmlspecialchars($_POST['confirmPassword'])
                 ];
-
+                
                 $userId = $_POST['user_id'];
-            
+                
                 $editModel = new AdminModel();
-            
+                
                 $user = $editModel -> userById($userId);
-
+                
                 $this -> render('updateAdmin', [
                     'user' => $user,
                     'errors'=> $errors
-                    ]);
-
+                ]);
+                
             }
             else
             {
+                $userId = $_POST['user_id'];
+                $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
                 $model = new AdminModel;
                 $data = [
-                htmlspecialchars($_POST['userName']),
-                htmlspecialchars($_POST['userStatus']),
-                htmlspecialchars($_POST['email']),
-                htmlspecialchars($_POST[$password]),
+                    htmlspecialchars($_POST['userName']),
+                    htmlspecialchars($_POST['userStatus']),
+                    htmlspecialchars($_POST['email']),
+                    htmlspecialchars($password),
+                    $userId
                 
                 //    htmlspecialchars($_POST['confirmPassword'])
                 ];
 
-                $model -> newAdmin($data);
+                $model -> updateModelAdmin($data);
 
                 redirect('/users');
             }
@@ -275,8 +297,8 @@ class SuperAdminController extends Controller
     {
         $id = $_GET['id'];
         $model = new AdminModel();
-        $model -> deleteModel($id);
-        redirect('/super-admin-control');
+        $model -> deleteModelAdmin($id);
+        redirect('/users');
     }
         
 }

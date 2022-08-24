@@ -21,6 +21,7 @@
                     <td><?= $user['user_email'] ?></td>
                     <td><?= date_format(date_create(($user['created_at'])), 'd/m/Y H:i:s')?></td>
                     <td><a href="<?= url('/users/updateAdmin', ['user_id' => $user['user_id']]) ?>">Update</a></td>
+                    <td><a href="<?= url('/users/delete', ['id' => $user['user_id']]) ?>">Delete</a></td>
                 </tr>
                 <?php endforeach ?>
         </tbody>

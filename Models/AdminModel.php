@@ -48,14 +48,14 @@ class AdminModel extends Database
     public function updateModelAdmin(array $data): void
     {
 
-        $this -> updateTable(' customers ', 'user_name=?, user_status=?, user_email=?, user_password=?', 'user_id', $data);
+        $this -> updateTable(' users ', 'user_name=?, user_status=?, user_email=?, user_password=?', 'user_id', $data);
     
     }
 
-    public function deleteModel(string $value): void
+    public function deleteModelAdmin(string $value): void
     {
 
-        $this -> delete(' customers ', ' cust_id', $value);
+        $this -> delete(' users ', ' user_id', $value);
     }
 
     // public function findCustomer(string $id): array

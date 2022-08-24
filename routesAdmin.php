@@ -112,6 +112,11 @@ return [
         'update'
     ],
     
+    '/users/delete' => [
+        'Controllers\SuperAdminController',
+        'delete'
+    ],
+    
     '/super-admin-control/delete' => [
         'Controllers\BookingController',
         'delete'
