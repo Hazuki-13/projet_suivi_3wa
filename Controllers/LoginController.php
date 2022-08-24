@@ -38,7 +38,8 @@ class LoginController extends Controller
             if($check == false){
                 $this -> render('login');
             }
-            else{
+            else
+            {
                 if($_POST['username'] == $check['user_name'] &&
                 $_POST['email'] == $check['user_email'] &&
                 password_verify($_POST['password'], $check['user_password']))
