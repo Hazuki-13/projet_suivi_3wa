@@ -321,7 +321,7 @@ select {
     text-align: center;
 } */
 
-#status { 
+.status { 
     width: 10%;
     display: flex;
     margin: 1rem auto;

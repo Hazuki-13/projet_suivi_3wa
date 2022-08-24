@@ -38,15 +38,13 @@ class BookingModel extends Database
 
         public function findCustomer(string $id): array
         {
-            $data = $this -> getOneById('customers','cust_id',$id);
+            $data = $this -> getOneById('customers','cust_id', $id);
             return $data;
         }
 
         public function findBooking(string $id): array
         {
-            $dataSuite = $this -> getOneById('booking','id_booking', 
-                $id  
-              );
+            $dataSuite = $this -> getOneById('booking','id_booking', $id);
               return $dataSuite;
         }
 

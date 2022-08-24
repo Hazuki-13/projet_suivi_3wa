@@ -213,10 +213,7 @@ class BookingController extends Controller
             $idCust = $_GET['cust_id'];
             $idBook = $_GET['id_booking'];
             
-            
-            
             $editModel = new BookingModel();
-            // $model2 = new BookingModel();
             $form = $editModel -> findCustomer($idCust);
             $form2 = $editModel -> findBooking($idBook);
             
@@ -255,164 +252,164 @@ class BookingController extends Controller
             
             //Je récupère la date du jours.
             $getDay = getdate();
-         //Soustraire l'année de la date du jour par 18. Et conserver les jours et mois intact.
-        $dateDay = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"];
-         //Je trouve la date de naissance minimale par rapport au jour.
-        $legalBirthdate = $getDay["year"]-18 . "-" . $getDay["mon"] . "-" . $getDay["mday"];
-        
-        $legalCheckOut = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"]+1;
-         // Nombre de seconde qu'a vécu une personne pour avoir 18 ans à partir de la date actuelle.
-        $legalAge = strtotime($dateDay) - strtotime($legalBirthdate);
-          // Age de l'utilisateur en seconde.
-        $userAge = strtotime($dateDay) - strtotime($_POST["birthDate"]);
-
-        $error = false;
-        $errorFirstName = '';
-        $errorLastName='';
-        $errorEmail='';
-        $errorBirthDate='';
-        $errorCat_id='';
-        $errorCheck_in='';
-        $errorCheck_out='';
-        
-        if(!isset($_POST['firstName']) || (isset($_POST['firstName']) && empty($_POST['firstName']))) 
-        {
-            $errorFirstName = 'first name incorrect';
-            $error = true;
-        }
-                        
-        if(!isset($_POST['lastName']) || (isset($_POST['lastName']) && empty($_POST['lastName']))) 
-        {
-            $errorLastName = 'last name incorrect';
-            $error = true;         
-        }
-        //$email_a
-        if(!isset($_POST['email']) || (isset($_POST['email']) && empty(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)))) /*à verifier l'emplacement du filter email*/
-        {
-            $errorEmail= 'email invalid';
-            $error = true;         
-        }            
+            //Soustraire l'année de la date du jour par 18. Et conserver les jours et mois intact.
+            $dateDay = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"];
+            //Je trouve la date de naissance minimale par rapport au jour.
+            $legalBirthdate = $getDay["year"]-18 . "-" . $getDay["mon"] . "-" . $getDay["mday"];
             
+            $legalCheckOut = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"]+1;
+            // Nombre de seconde qu'a vécu une personne pour avoir 18 ans à partir de la date actuelle.
+            $legalAge = strtotime($dateDay) - strtotime($legalBirthdate);
+            // Age de l'utilisateur en seconde.
+            $userAge = strtotime($dateDay) - strtotime($_POST["birthDate"]);
+
+            $error = false;
+            $errorFirstName = '';
+            $errorLastName='';
+            $errorEmail='';
+            $errorBirthDate='';
+            $errorCat_id='';
+            $errorCheck_in='';
+            $errorCheck_out='';
             
-        if(!isset($_POST["birthDate"]) ||  empty($_POST["birthDate"]) || intval($userAge) < intval($legalAge))
-        {
-            $errorBirthDate = 'birthdate incorrect';
-            $error = true;
-        }           
+            if(!isset($_POST['firstName']) || (isset($_POST['firstName']) && empty($_POST['firstName']))) 
+            {
+                $errorFirstName = 'first name incorrect';
+                $error = true;
+            }
+                            
+            if(!isset($_POST['lastName']) || (isset($_POST['lastName']) && empty($_POST['lastName']))) 
+            {
+                $errorLastName = 'last name incorrect';
+                $error = true;         
+            }
+            //$email_a
+            if(!isset($_POST['email']) || (isset($_POST['email']) && empty(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)))) /*à verifier l'emplacement du filter email*/
+            {
+                $errorEmail= 'email invalid';
+                $error = true;         
+            }            
+                
+                
+            if(!isset($_POST["birthDate"]) ||  empty($_POST["birthDate"]) || intval($userAge) < intval($legalAge))
+            {
+                $errorBirthDate = 'birthdate incorrect';
+                $error = true;
+            }           
+
+                
+            if(!isset($_POST['cat_id']) || (isset($_POST['cat_id']) && empty($_POST['cat_id']))) 
+            {
+                $errorCat_id= 'room not selected';
+                $error = true;         
+            }
+
+                                                    
+            if(!isset($_POST['check_in']) || (isset($_POST['check_in']) && empty($_POST['check_in'])) || strtotime($_POST["check_in"]) < strtotime($dateDay))
+            {
+                $errorCheck_in= 'date of your arrival is incorrect';
+                $error = true;            
+            }
+
+                            
+            if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out'])) || strtotime($_POST["check_in"]) >= strtotime($_POST["check_out"]) || strtotime($_POST['check_out']) < strtotime($legalCheckOut))
+            {
+                $errorCheck_out= 'date of your leaving is incorrect';
+                $error = true;           
+            }
 
             
-        if(!isset($_POST['cat_id']) || (isset($_POST['cat_id']) && empty($_POST['cat_id']))) 
-        {
-            $errorCat_id= 'room not selected';
-            $error = true;         
-        }
+            $errors['message']=[
+                'firstName'=> $errorFirstName,
+                'lastName'  => $errorLastName,
+                'email'  => $errorEmail,
+                'birthDate'  => $errorBirthDate,
+                'cat_id'  => $errorCat_id,
+                'check_in'  => $errorCheck_in,
+                'check_out'  => $errorCheck_out
+            ];
 
-                                                
-        if(!isset($_POST['check_in']) || (isset($_POST['check_in']) && empty($_POST['check_in'])) || strtotime($_POST["check_in"]) < strtotime($dateDay))
-        {
-            $errorCheck_in= 'date of your arrival is incorrect';
-            $error = true;            
-        }
-
-                        
-        if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out'])) || strtotime($_POST["check_in"]) >= strtotime($_POST["check_out"]) || strtotime($_POST['check_out']) < strtotime($legalCheckOut))
-        {
-            $errorCheck_out= 'date of your leaving is incorrect';
-            $error = true;           
-        }
-
-        
-        $errors['message']=[
-            'firstName'=> $errorFirstName,
-            'lastName'  => $errorLastName,
-            'email'  => $errorEmail,
-            'birthDate'  => $errorBirthDate,
-            'cat_id'  => $errorCat_id,
-            'check_in'  => $errorCheck_in,
-            'check_out'  => $errorCheck_out
-        ];
-
-        // echo('<pre>');
-        // print_r($_SESSION['message']);
-        // echo ('</pre>');
-        // die();
-        if($error)
-        {
-           $errors["data"] = [
-            'firstName'=> htmlspecialchars($_POST['firstName']),
-            'lastName' => htmlspecialchars($_POST['lastName']),
-            'email' => htmlspecialchars($_POST['email']),
-            'birthDate' => htmlspecialchars($_POST['birthDate']),
-            'cat_id' => htmlspecialchars($_POST['cat_id']),
-            'check_in' => htmlspecialchars($_POST['check_in']),
-            'check_out' => htmlspecialchars($_POST['check_out'])
-           ];
             // echo('<pre>');
-            // print_r($_SESSION['data']);
+            // print_r($_SESSION['message']);
             // echo ('</pre>');
             // die();
-
-            $modelRoom = new RoomModel();
-            $rooms = $modelRoom -> getRooms(['cat_title']);
-
-            $idCust = $_POST['cust_id'];
-            $idBook = $_POST['id_booking'];
-            $editModel = new BookingModel();
-            $form = $editModel -> findCustomer($idCust);
-            $form2 = $editModel -> findBooking($idBook);
-
+            if($error)
+            {
+            $errors["data"] = [
+                'firstName'=> htmlspecialchars($_POST['firstName']),
+                'lastName' => htmlspecialchars($_POST['lastName']),
+                'email' => htmlspecialchars($_POST['email']),
+                'birthDate' => htmlspecialchars($_POST['birthDate']),
+                'cat_id' => htmlspecialchars($_POST['cat_id']),
+                'check_in' => htmlspecialchars($_POST['check_in']),
+                'check_out' => htmlspecialchars($_POST['check_out'])
+                ];
                 // echo('<pre>');
-                // print_r($form);
-                // echo ('</pre>');
-                // echo('<pre>');
-                // print_r($form2);
+                // print_r($_SESSION['data']);
                 // echo ('</pre>');
                 // die();
 
-            $this -> render('updateBooking', [
-                    'rooms' => $rooms,
-                    'form' => $form,
-                    'form2' =>$form2,
-                    'errors'=> $errors
-                ]);
-        }
-        else
-        {
-            $idCust = $_POST['cust_id'];
-            $idBook = $_POST['id_booking'];
+                $modelRoom = new RoomModel();
+                $rooms = $modelRoom -> getRooms(['cat_title']);
 
-            $model = new BookingModel;
-            $data = [
-               htmlspecialchars($_POST['lastName']),
-               htmlspecialchars($_POST['firstName']),
-               htmlspecialchars($_POST['birthDate']),
-               htmlspecialchars($_POST['email']),
-               $idCust
-            ];
-    
-                // echo('<pre>');
-                // print_r($data);
-                // echo ('</pre>');
-    
-            $model -> updateModelCustomers($data);
-            
-            
-            $modelRoom = new RoomModel();
-            $rooms = $modelRoom -> getRooms(['cat_title']);
-            
-            // $model2 = new BookingModel;
-            $dataSuite = [
-                htmlspecialchars($_POST['cat_id']),
-                htmlspecialchars($_POST['check_in']),
-                htmlspecialchars($_POST['check_out']),
-                $idBook
-            ];
-            
-            $model -> updateModelBooking($dataSuite);
+                $idCust = $_POST['cust_id'];
+                $idBook = $_POST['id_booking'];
+                $editModel = new BookingModel();
+                $form = $editModel -> findCustomer($idCust);
+                $form2 = $editModel -> findBooking($idBook);
+
+                    // echo('<pre>');
+                    // print_r($form);
+                    // echo ('</pre>');
+                    // echo('<pre>');
+                    // print_r($form2);
+                    // echo ('</pre>');
+                    // die();
+
+                $this -> render('updateBooking', [
+                        'rooms' => $rooms,
+                        'form' => $form,
+                        'form2' =>$form2,
+                        'errors'=> $errors
+                    ]);
+            }
+            else
+            {
+                $idCust = $_POST['cust_id'];
+                $idBook = $_POST['id_booking'];
+
+                $model = new BookingModel;
+                $data = [
+                htmlspecialchars($_POST['lastName']),
+                htmlspecialchars($_POST['firstName']),
+                htmlspecialchars($_POST['birthDate']),
+                htmlspecialchars($_POST['email']),
+                $idCust
+                ];
         
-         
-            redirect('/super-admin-control');
-        }
+                    // echo('<pre>');
+                    // print_r($data);
+                    // echo ('</pre>');
+        
+                $model -> updateModelCustomers($data);
+                
+                
+                $modelRoom = new RoomModel();
+                $rooms = $modelRoom -> getRooms(['cat_title']);
+                
+                // $model2 = new BookingModel;
+                $dataSuite = [
+                    htmlspecialchars($_POST['cat_id']),
+                    htmlspecialchars($_POST['check_in']),
+                    htmlspecialchars($_POST['check_out']),
+                    $idBook
+                ];
+                
+                $model -> updateModelBooking($dataSuite);
+            
+            
+                redirect('/super-admin-control');
+            }
     }
 
     public function delete() :void

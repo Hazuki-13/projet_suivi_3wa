@@ -102,6 +102,16 @@ return [
         'displayUsers'
     ],
     
+    '/users/updateAdmin' => [
+        'Controllers\SuperAdminController',
+        'edit'
+    ],
+    
+    '/users/update' => [
+        'Controllers\SuperAdminController',
+        'update'
+    ],
+    
     '/super-admin-control/delete' => [
         'Controllers\BookingController',
         'delete'
