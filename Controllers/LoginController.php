@@ -86,12 +86,6 @@ class LoginController extends Controller
         redirect('/home');
     }
         
-   
-    
-    // public function createAdmin()
-    // {
-        
-    // }
 }
         
         

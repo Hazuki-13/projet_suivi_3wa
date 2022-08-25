@@ -4,12 +4,12 @@
 } */
 
 body {
-    max-width: 375px ;
+    /* max-width: 500px; */
     width:95%;
     text-align: center ;
     margin: 0 auto ;
     text-decoration: none;
-    line-height: 2.2rem;
+    line-height: 2.3rem;
     font-family: 'Cookie', sans-serif;
     font-size: 2.7rem;
 }
@@ -18,7 +18,7 @@ body {
 h2,
 .footer h3 {
     line-height: 1.7rem;
-    font-size: 2.7rem;
+    font-size: 3rem;
     font-family: 'Courgette';
 }
 
@@ -26,16 +26,17 @@ h2 {
     text-decoration: underline;
 }
 
-.title,
-.title a {
-    font-size:3.5rem;
-    margin:0.7rem;
-    text-decoration: none;
-}
 
 /************************************************************************/
 /************* style du header et de la barre de navigation *************/
 /************************************************************************/
+
+.title,
+.title a {
+    font-size: 5rem;
+    margin: 0.7rem;
+    text-decoration: none;
+}
 
 .toolbar {
     background-color: rgb(255, 255, 255);
@@ -67,7 +68,7 @@ h2 {
 /***********************************************************************/
 
 .imghome {
-    width: 95%;
+    width: 99%;
 }
 
 .homeArticle {
@@ -79,11 +80,11 @@ h2 {
     text-align: justify;
 }
 
-/*********************************Slider********************************/
+/******************************** Slider *******************************/
 
 #slider {
     position: relative;
-    width: 95%;
+    width: 99%;
     margin: auto;
     display: flex;
     align-items: center;
@@ -156,7 +157,7 @@ input {
     text-align: center;
     border-radius: 5px;
     display: block;
-    /* color: white; */
+    color: white;
     background: rgb(61,45,253);
     background: linear-gradient(90deg, rgba(61,45,253,1) 5%, rgba(39,167,205,1) 20%, rgba(34,193,195,1) 80%, rgba(61,45,253,1) 95%);
 }
@@ -185,7 +186,7 @@ select option {
 .submit {
     width: 35%;
     padding: 0.5rem;
-    margin-top: 2rem;
+    margin: 2rem auto 3rem ;
     border-radius: 10px;
     background: rgb(61,45,253);
     background: radial-gradient(circle, rgba(34,193,195,1) 60%, rgba(61,45,253,1) 95%);
@@ -202,32 +203,23 @@ select option {
 }
 
 /*********************************************************************/
-/***************************login form********************************/
+/************************** login form *******************************/
 /*********************************************************************/
 
-.userName {
-    margin-bottom: 1.5rem;
-}
-
-.userEmail {
-    margin-bottom: 1.5rem;
-}
-
+.userName,
+.userEmail,
 .password {
     margin-bottom: 1.5rem;
 }
 
-.access {
-    padding: 0.5rem 4rem;
-    border-radius: 5px;
-    background: rgb(61,45,253);
-    background: radial-gradient(circle, rgba(34,193,195,1) 60%, rgba(61,45,253,1) 95%);
-    color: white;
-}
-/* #access:hover {
-    background-color:gold;
-    color:black
+/* .userEmail {
+    margin-bottom: 1.5rem;
 } */
+
+/* .password {
+    margin-bottom: 1.5rem;
+} */
+
 
 /*********************************************************************/
 /*********************** style du Back Office  ***********************/
@@ -237,19 +229,20 @@ select option {
     color: red;
 }
 
-.superAdmin li a {
+.ulAdmin li a {
     display:block;
     padding:1rem;
     color:white ;
     text-decoration: none;
     text-transform: uppercase;
+    border-bottom: 2px solid white;
 }
 
 .ul {
     padding-left: 4rem;
 }
 
-.superAdmin li {
+.superAulAdmindmin li {
     border-bottom: 2px solid white;
 }
 
@@ -258,7 +251,7 @@ select option {
     color: crimson;
 } */
 
-.superAdmin {
+.ulAdmin {
     max-width: 90%;
     margin-left: 0;
     font-family: 'Open sans';
@@ -266,7 +259,7 @@ select option {
     background-color: rgb(61, 88, 208);
 }
 
-.titleAdmin {
+.adminTitle {
     color: red;
 }
 
@@ -297,10 +290,11 @@ select option {
 
 
 /*********************************************************************/
-/***********************style du footer*******************************/
+/********************** style du footer ******************************/
 /*********************************************************************/
 
 .footer {
+    width:100%;
     background: rgb(61,45,253);
     background: linear-gradient(90deg, rgba(61,45,253,1) 5%, rgba(39,167,205,1) 20%, rgba(34,193,195,1) 80%, rgba(61,45,253,1) 95%);
     padding: 0.5rem;
@@ -325,7 +319,11 @@ footer div {
 } */
 
 .contact {
-    width:70%;
+    width:40%;
+}
+
+.reseaux {
+    width: 40%;
 }
 
 .reseaux a i {
@@ -337,3 +335,296 @@ footer div {
 .reseaux a i:hover {
     color: gold;
 }
+
+/****************************************************************************/
+/************************** début version tablette **************************/
+/****************************************************************************/
+
+@media screen and (min-width:575px) {
+
+    body {
+        max-width: 95vw;
+        width:90%;
+    }
+
+    /************************************************************************/
+    /************* style du header et de la barre de navigation *************/
+    /************************** version tablette ****************************/
+    /************************************************************************/
+
+    .toolbar {
+        background-color: rgb(255, 255, 255);
+        padding: 1rem;
+    }
+    .toolbar ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        
+    }
+    
+    .toolbar a {
+        text-decoration: none;
+        color:rgb(0, 136, 255);
+        margin-left: 2rem;
+        margin-right: 2rem;
+        padding: 1rem;
+    }
+    
+    .toolbar a:hover {
+        color: gold;
+    }
+
+    /***********************************************************************/
+    /************************ style de la vue Home *************************/
+    /************************** version tablette ***************************/
+    /***********************************************************************/
+
+    
+    .homeArticle {
+        width: 95%;
+        margin: 0 auto;
+    
+    }
+    
+    /* .picRoom {
+        width:25%;
+        padding: .5rem;
+        aspect-ratio: 3/2;
+    } */
+
+    /***********************************************************************/
+    /************************** style formulaire ***************************/
+    /************************** version tablette ***************************/
+    /***********************************************************************/
+
+    input {
+        width: 70%;
+    }
+
+    select,
+    .submit {
+        width:35%;
+    }
+
+    /* .submit {
+        width:35%;
+    }
+        */
+
+    /***********************************************************************/
+    /**************************** login form *******************************/
+    /************************** version tablette ***************************/
+    /***********************************************************************/
+
+    .userName,
+    .userEmail,
+    .password {
+        width: 50%;
+    }
+
+
+
+    /***********************************************************************/
+    /************************* style du Back Office ************************/
+    /************************** version tablette ***************************/
+    /***********************************************************************/
+    
+    .ul {
+        padding-left: 7rem;
+    }
+
+    .table {
+        font-size:1.5rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: .5rem;
+    }
+
+    /***********************************************************************/
+    /************************** style du footer ****************************/
+    /************************** version tablette ***************************/
+    /***********************************************************************/
+
+    .footer {
+        display:flex;
+    }
+
+    .reseaux h3 {
+        margin-bottom: 5rem;
+    }
+
+}
+
+/***************************************************************************/
+/**************************** début version desktop ************************/
+/***************************************************************************/
+
+@media screen and (min-width:980px) {
+    body {
+        max-width: 100vw;
+        width:90%;
+    /* text-align: center ; */
+    /* margin: 0 auto ; */
+    /* text-decoration: none; */
+    line-height: 3.5rem;
+    /* font-family: 'Cookie', sans-serif; */
+    font-size: 3.5rem;
+    }
+
+    h2,
+    .footer h3 {
+        font-size: 4rem;
+    }
+
+    /***********************************************************************/
+    /************************ style de la vue Home *************************/
+    /*************************** version desktop ***************************/
+    /***********************************************************************/
+    
+    
+    
+    .title {
+        margin: 4rem auto 3rem ;
+    }
+
+    h2 {
+        margin-top: 7rem;
+    }
+
+    .toolbar {
+        /* background-color: rgb(255, 255, 255); */
+        padding: 1rem;
+        /* display: flex; */
+        /* align-content: center; */
+        /* justify-content: center; */
+        /* align-items: center; */
+    }
+
+    .toolbar li {
+        margin: 2rem 5rem 6rem;
+    }
+    
+    .toolbar a:hover {
+        color: gold;
+    }
+
+    .imghome {
+        width: 85%;
+    }
+    
+    #slider {
+        position: relative;
+        width: 85%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    /************************************************************************/
+    /************************ style de la vue rooms *************************/
+    /**************************** version desktop ***************************/
+    /************************************************************************/
+
+    .picRoom {
+        width:30%;
+    }
+
+    /************************************************************************/
+    /**************** style du formulaire de réservation ********************/
+    /**************************** version desktop ***************************/
+    /************************************************************************/
+
+    input {
+        width: 40%;
+    }
+
+    select,
+    .submit {
+        width:25%;
+    }
+
+    .submit:hover {
+        color:gold;
+    }
+
+    
+    /************************************************************************/
+    /******************************login form********************************/
+    /**************************** version desktop ***************************/
+    /************************************************************************/
+
+    .userName,
+    .userEmail,
+    .password {
+        width: 35%;
+    }
+
+    /*********************************************************************/
+    /*********************** style du Back Office  ***********************/
+    /*********************************************************************/
+
+    .ul {
+        width: 105%;
+        align-items: center;
+    }
+    
+    .ul li {
+        display:inline-block;
+        padding: 1.1rem;
+    }
+
+    .ulAdmin {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    .ulAdmin li a{
+        border-bottom: none;
+    }
+
+    
+    .table {
+        margin: 3rem auto;
+        border-collapse: collapse;
+        font-family: 'Open sans', sans-serif;
+        font-size: 1.8rem;
+    }
+
+    .table th,
+    .table td {
+        padding: .7rem;
+        border: 1px solid black;
+    }
+
+    .table a {
+        text-decoration: none;
+    }
+
+    .table a:hover{
+        color: red;
+    }
+
+
+
+    /************************************************************************/
+    /*************************** style du footer ****************************/
+    /**************************** version desktop ***************************/
+    /************************************************************************/
+
+    .reseaux h3 {
+        margin-bottom: 6.5rem;
+    }
+
+    .reseaux a i {
+        font-size: 5rem;
+        padding: 2rem;
+    }
+
+
+
+}
+
+    

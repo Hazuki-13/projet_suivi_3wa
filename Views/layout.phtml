@@ -87,12 +87,12 @@
     </header>
     <main class="container">
         <?php if(isset($_SESSION['ok']) && ($_SESSION['ok']) == true): ?>
-            <h2 class="titleAdmin">Back office</h2>
+            <h2 class="adminTitle"><a href="<?= url('/home') ?>">Back office</a></h2>
             <!-- <p><?=('connected');?></p> -->
             <small>Welcome back <strong class="sessionName"><?=($_SESSION['user']['username'])?></strong></small>
 
             <div class="ul">
-        <ul class="superAdmin">
+        <ul class="ulAdmin">
             <li><a href="<?= url('/super-admin-control') ?>">Booking list</a></li>
             <li><a href="<?= url('/booking') ?>">New Booking</a></li>
             <li><a href="<?= url('/users') ?>">Admin list</a></li>

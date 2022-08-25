@@ -77,6 +77,7 @@ h2,
 .homeText {
     text-align: justify;
 }
+
 /*********************************Slider********************************/
 #slider {
     position: relative;
@@ -192,6 +193,7 @@ select {
     background-color:gold;
     color:black;
 }
+
 .errorForm {
     color:red;
 }
