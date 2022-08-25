@@ -1,19 +1,19 @@
 
-<h2>Connexion</h2>
+<h2>Login</h2>
 
-<form action="<?= url('/login/access') ?>" method="post">
-    <label for="login">Login</label>
-    <p></p>
-    <input type="text" id="userName" name="username" placeholder="user name">
-    <p></p>
-    <input type="email" id="userEmail" name="email" placeholder="email">
-    <p></p>
-    <input type="password" id="password" name="password" placeholder="password">
-    <p></p>
-    <button id="access">Submit</button>
+<form action="<?= url('/login/access') ?>" method="POST">
+    <div class="adminForm">
+        <label for="username">User name</label>    
+        <input type="text" class="userName" name="username" placeholder="user name">
+        <label for="email">Email</label>
+        <input type="email" class="userEmail" name="email" placeholder="email">
+        <label for="password">Password</label>
+        <input type="password" class="password" name="password" placeholder="password">
+        
+        <button class="access">Submit</button>
 
+    </div>
 </form>
-
 <!-- <form action="index.php?route=login" method="POST">
     <input type="email" name="email" placeholder="Email..."/>
     <input type="password" name="password" placeholder="Password..."/>

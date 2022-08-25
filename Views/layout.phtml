@@ -20,37 +20,47 @@
             // echo('<br>'.$endUrl);
     ?>
     <?php if($endUrl !== "create"): ?>
+        <link rel="stylesheet" href="../assets/css/normalize.css">
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
     <?php else: ?>
+        <link rel="stylesheet" href="../../assets/css/normalize.css">
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
     <?php endif; ?>
     <?php if($endUrl !== "updateBooking"): ?>
+        <link rel="stylesheet" href="../assets/css/normalize.css">
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
     <?php else: ?>
+        <link rel="stylesheet" href="../../assets/css/normalize.css">
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
     <?php endif; ?>
     <?php if($endUrl !== "updateAdmin"): ?>
+        <link rel="stylesheet" href="../assets/css/normalize.css">
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
     <?php else: ?>
+    <link rel="stylesheet" href="../../assets/css/normalize.css">
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
     <?php endif; ?>
     <?php if($endUrl !== "update"): ?>
+        <link rel="stylesheet" href="../assets/css/normalize.css">
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
     <?php else: ?>
+        <link rel="stylesheet" href="../../assets/css/normalize.css">
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
     <?php endif; ?>
     <?php if($endUrl !== "access"): ?>
+        <link rel="stylesheet" href="../assets/css/normalize.css">
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
     <?php else: ?>
+        <link rel="stylesheet" href="../../assets/css/normalize.css">
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
     <?php endif; ?>
@@ -60,16 +70,15 @@
 <body>
     <header>
 
-        <a href="<?= url('/home') ?>"><h1 class="title">my Hotel</h1></a>
+        <h1 class="title"><a href="<?= url('/home') ?>">my Hotel</a></h1>
 
-            <nav class ="navHead">
+            <nav class ="toolbar">
                 <ul>
                     <li><a href="<?= url('/home') ?>">Home</a></li>
                     <li><a href="<?= url('/room') ?>">Rooms</a></li>
                     <li><a href="<?= url('/booking') ?>">Booking</a></li>
                     <li><a href="#about">About</a></li>
                     <?php if(isset($_SESSION['ok']) && ($_SESSION['ok']) == true): ?>
-                        <li><a href="<?= url('/super-admin-control') ?>">Admin</a></li>
                         <li><a href="<?= url('/logout') ?>">Logout</a></li>
                     <?php endif ?>
                 </ul>
@@ -80,7 +89,16 @@
         <?php if(isset($_SESSION['ok']) && ($_SESSION['ok']) == true): ?>
             <h2 class="titleAdmin">Back office</h2>
             <!-- <p><?=('connected');?></p> -->
-            <small>Welcome back <strong><?=($_SESSION['user']['username'])?></strong></small>
+            <small>Welcome back <strong class="sessionName"><?=($_SESSION['user']['username'])?></strong></small>
+
+            <div class="ul">
+        <ul class="superAdmin">
+            <li><a href="<?= url('/super-admin-control') ?>">Booking list</a></li>
+            <li><a href="<?= url('/booking') ?>">New Booking</a></li>
+            <li><a href="<?= url('/users') ?>">Admin list</a></li>
+            <li><a href="<?= url('/addAdmin') ?>">New Admin</a></li>
+        </ul>
+    </div>
         <?php endif ?>
 
     

@@ -1,18 +1,13 @@
-<div>
-        <ul class="superAdmin">
-            <a href="<?= url('/super-admin-control') ?>"><li>All Booking</li></a>
-            <a href="<?= url('/booking') ?>"><li>Add Booking</li></a>
-        </ul>
-    </div>
+
 
 <h2>New Admin</h2>
 
 
 <form action="<?= url('/addAdmin/create') ?>" method="POST">
     <div class="adminForm">
-    <label for="add"></label>
+    <label for="userName">User name</label>
     
-    <input type="text" class="addUserName" name="userName" placeholder="user name" value="<?php if(isset($errors['data'])&& $errors['data']['userName'] !=='') 
+    <input type="text" class="userName" name="userName" placeholder="user name" value="<?php if(isset($errors['data'])&& $errors['data']['userName'] !=='') 
         {
             echo ($errors['data']['userName']);
         }
@@ -42,8 +37,10 @@
                             }
                         ?>
                             </small></p>
+
+    <label for="email">Email</label>
     
-    <input type="email" class="addUserEmail" name="email" placeholder="email" value="<?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
+    <input type="email" class="userEmail" name="email" placeholder="email" value="<?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
         {
             echo ($errors['data']['email']);
         }
@@ -56,8 +53,10 @@
         }
     ?>
     </small></p>
+
+    <label for="password">Password</label>
     
-    <input type="password" class="addPassword" name="password" placeholder="password" value="<?php if(isset($errors['data'])&& $errors['data']['password'] !=='') 
+    <input type="password" class="password" name="password" placeholder="password" value="<?php if(isset($errors['data'])&& $errors['data']['password'] !=='') 
         {
             echo ($errors['data']['password']);
         }
@@ -70,6 +69,8 @@
         }
     ?>
     </small></p>
+
+    <label for="password">Confirm your password</label>
     
     <input type="password" class="confirmPassword" name="confirmPassword" placeholder="confirm password" value="<?php if(isset($errors['data'])&& $errors['data']['confirmPassword'] !=='') 
         {
@@ -85,6 +86,6 @@
     ?>
     </small></p>
     
-    <button class="addAccess">Submit</button>
+    <button class="submit">Submit</button>
     </div>
 </form>

@@ -8,7 +8,7 @@
             <div class="classForm">
                 
                     <div class="div-input">
-                        <label for="firstName"></label>
+                        <label for="firstName">First name</label>
 
                             <input type="text" name="firstName" class="firstName" placeholder="Your first name" value="<?php if(isset($errors['data'])&& $errors['data']['firstName'] !=='') 
                             {
@@ -25,7 +25,7 @@
                         </small></p>
                     </div>
                     <div class="div-input">
-                        <label for="lastName"></label>
+                        <label for="lastName">Last name</label>
 
                             <input type="text" name="lastName" class="lastName" placeholder="Your last name" value="<?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') 
                             {
@@ -41,7 +41,7 @@
                             </small></p>
                     </div>
                     <div class="div-input">
-                            <label for="email"></label>
+                            <label for="email">Email</label>
 
                                 <input type="email" name="email" class="email" placeholder="Your email" value="<?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
                                 {
@@ -58,7 +58,7 @@
                     </div>                    
                                            
                     <div class="div-input-label">
-                            <div><label for="birthDate">your birthdate</label></div>
+                            <div><label for="birthDate">Birthdate</label></div>
                             
                                 <input type="date" name="birthDate" class="birthDate" min="<?php (new \DateTime('-18 years'))->format('Y-m-d') ?>" placeholder="Your birth date" value="<?php if(isset($errors['data'])&& $errors['data']['birthDate'] !=='') 
                                 {

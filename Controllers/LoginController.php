@@ -62,9 +62,10 @@ class LoginController extends Controller
                     //     'booking' => $bookingList
                     // ]);
 
-                    redirect('/super-admin-control');
+                    redirect('/home');
                 }
-                else{
+                else
+                {
                     $this -> render('login');
                 }   
             }
