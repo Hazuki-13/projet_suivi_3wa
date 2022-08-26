@@ -40,15 +40,15 @@ return [
         'Controllers\LoginController',
         'displayLogin'
     ],
-
-    '/logout' => [
-        'Controllers\LoginController',
-        'logout'
-    ],
     
     '/login/access' => [
         'Controllers\LoginController',
         'loginAccess'
+    ],
+
+    '/logout' => [
+        'Controllers\LoginController',
+        'logout'
     ],
     
     '/room' => [

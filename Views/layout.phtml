@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/normalize.css">
     <link rel="stylesheet" href="../assets/fancybox/jquery.fancybox.css">
     <script src="https://kit.fontawesome.com/01b2730b7a.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,27 +109,34 @@
     
     <footer class="footer" id="about">
 
-        <div class="contact">
+        <div class="info">
 
-            <h3>Contact</h3>
+            <div class="contact">
+
+                <h3>Contact</h3>
+                
+                <p>Adress: my adress</p>
+                <p>Email: myemail@email.com</p>
+                <p>Phone: +9999999999</p>
+                
+            </div>
             
-            <p>Adress: my adress</p>
-            <p>Email: myemail@email.com</p>
-            <p>Phone: +9999999999</p>
-            
+            <div class="reseaux">
+                
+                <h3>Social</h3>
+
+                    <a target="_blank" href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+                    <a target="_blank" href="https://twitter.com/?la"><i class="fa-brands fa-twitter"></i></a>
+                    <a target="_blank" href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+
+            </div>
         </div>
-        
-        <div class="reseaux">
-            
-            <h3>Social</h3>
-
-                <a target="_blank" href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
-                <a target="_blank" href="https://twitter.com/?la"><i class="fa-brands fa-twitter"></i></a>
-                <a target="_blank" href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
-
+        <div class="exo">
+            <p>Cet exercice a été réalisé par Alexandre Angosto</p>
         </div>
-        
         </footer>
+
+        
         <?php if($endUrl !== "create"): ?>
             <script src="../assets/js/script.js"></script>
         <?php else: ?>

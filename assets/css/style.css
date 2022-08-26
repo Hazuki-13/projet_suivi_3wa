@@ -1,10 +1,6 @@
 
-/* html{
-    margin-bottom:0;
-} */
 
 body {
-    /* max-width: 500px; */
     width:95%;
     text-align: center ;
     margin: 0 auto ;
@@ -15,8 +11,7 @@ body {
 }
 
 .title,
-h2,
-.footer h3 {
+h2 {
     line-height: 1.7rem;
     font-size: 3rem;
     font-family: 'Courgette';
@@ -25,7 +20,6 @@ h2,
 h2 {
     text-decoration: underline;
 }
-
 
 /************************************************************************/
 /************* style du header et de la barre de navigation *************/
@@ -42,8 +36,6 @@ h2 {
     background-color: rgb(255, 255, 255);
     display:flex;
     flex-direction: column;
-    /* padding: 0.3rem; */
-    /* margin:.5 auto; */
 }
 
 .toolbar ul {
@@ -173,7 +165,6 @@ select {
     text-align: center;
     background: rgb(61,45,253);
     background: radial-gradient(circle, rgba(34,193,195,1) 60%, rgba(61,45,253,1) 95%);
-    /* background: radial-gradient(circle, rgba(61,45,253,1) 60%, rgba(34,193,195,1) 95%); */
     color: white;
     border-radius: 10px;
 }
@@ -193,11 +184,6 @@ select option {
     color: white;
 }
 
-/* .submit:hover {
-    background-color:gold;
-    color:black;
-} */
-
 .errorForm {
     color:red;
 }
@@ -211,15 +197,6 @@ select option {
 .password {
     margin-bottom: 1.5rem;
 }
-
-/* .userEmail {
-    margin-bottom: 1.5rem;
-} */
-
-/* .password {
-    margin-bottom: 1.5rem;
-} */
-
 
 /*********************************************************************/
 /*********************** style du Back Office  ***********************/
@@ -245,11 +222,6 @@ select option {
 .superAulAdmindmin li {
     border-bottom: 2px solid white;
 }
-
-
-/* .superAdmin a li:hover {
-    color: crimson;
-} */
 
 .ulAdmin {
     max-width: 90%;
@@ -285,45 +257,30 @@ select option {
     color: red;
 }
 
-
-
-
-
 /*********************************************************************/
 /********************** style du footer ******************************/
 /*********************************************************************/
 
 .footer {
-    width:100%;
     background: rgb(61,45,253);
     background: linear-gradient(90deg, rgba(61,45,253,1) 5%, rgba(39,167,205,1) 20%, rgba(34,193,195,1) 80%, rgba(61,45,253,1) 95%);
     padding: 0.5rem;
-    margin-top: 0.5rem;
+    margin-top:1.5rem;
     color:white;
     border-radius: 10px;
 }
 
-footer div {
-    width: 90%;
-    margin: 0.3rem auto;
-}
-
 .footer h3 {
     text-decoration: underline;
+    margin: 2rem auto;
 }
 
-/* .contact h4 p {
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 2rem;
-} */
-
-.contact {
-    width:40%;
+.contact > p {
+    margin: 0rem 0 2rem 0;
 }
 
-.reseaux {
-    width: 40%;
+.reseaux > h3 {
+    margin-bottom: 2rem;
 }
 
 .reseaux a i {
@@ -334,6 +291,10 @@ footer div {
 
 .reseaux a i:hover {
     color: gold;
+}
+
+.exo > p {
+    margin: 2rem 0 2rem 0px;
 }
 
 /****************************************************************************/
@@ -380,18 +341,11 @@ footer div {
     /************************** version tablette ***************************/
     /***********************************************************************/
 
-    
     .homeArticle {
         width: 95%;
         margin: 0 auto;
     
     }
-    
-    /* .picRoom {
-        width:25%;
-        padding: .5rem;
-        aspect-ratio: 3/2;
-    } */
 
     /***********************************************************************/
     /************************** style formulaire ***************************/
@@ -407,11 +361,6 @@ footer div {
         width:35%;
     }
 
-    /* .submit {
-        width:35%;
-    }
-        */
-
     /***********************************************************************/
     /**************************** login form *******************************/
     /************************** version tablette ***************************/
@@ -422,8 +371,6 @@ footer div {
     .password {
         width: 50%;
     }
-
-
 
     /***********************************************************************/
     /************************* style du Back Office ************************/
@@ -448,13 +395,27 @@ footer div {
     /************************** version tablette ***************************/
     /***********************************************************************/
 
-    .footer {
-        display:flex;
+    .info {
+        display: flex;
+        justify-content: space-evenly;
     }
 
-    .reseaux h3 {
-        margin-bottom: 5rem;
+    .reseaux > h3 {
+        margin-bottom: 4.5rem;
     }
+
+    .footer h3 {
+        font-size: 4.5rem;
+    }
+
+    .reseaux a i {
+        font-size: 4rem;
+    }
+
+    .exo > p {
+        margin: 0rem 0 1.5rem 0;
+    }
+    
 
 }
 
@@ -466,16 +427,11 @@ footer div {
     body {
         max-width: 100vw;
         width:90%;
-    /* text-align: center ; */
-    /* margin: 0 auto ; */
-    /* text-decoration: none; */
-    line-height: 3.5rem;
-    /* font-family: 'Cookie', sans-serif; */
-    font-size: 3.5rem;
+        line-height: 3.5rem;
+        font-size: 3.5rem;
     }
 
-    h2,
-    .footer h3 {
+    h2 {
         font-size: 4rem;
     }
 
@@ -483,8 +439,6 @@ footer div {
     /************************ style de la vue Home *************************/
     /*************************** version desktop ***************************/
     /***********************************************************************/
-    
-    
     
     .title {
         margin: 4rem auto 3rem ;
@@ -495,12 +449,7 @@ footer div {
     }
 
     .toolbar {
-        /* background-color: rgb(255, 255, 255); */
         padding: 1rem;
-        /* display: flex; */
-        /* align-content: center; */
-        /* justify-content: center; */
-        /* align-items: center; */
     }
 
     .toolbar li {
@@ -562,9 +511,10 @@ footer div {
         width: 35%;
     }
 
-    /*********************************************************************/
-    /*********************** style du Back Office  ***********************/
-    /*********************************************************************/
+    /************************************************************************/
+    /************************* style du Back Office  ************************/
+    /**************************** version desktop ***************************/
+    /************************************************************************/
 
     .ul {
         width: 105%;
@@ -607,24 +557,24 @@ footer div {
         color: red;
     }
 
-
-
     /************************************************************************/
     /*************************** style du footer ****************************/
     /**************************** version desktop ***************************/
     /************************************************************************/
 
-    .reseaux h3 {
+    .footer h3 {
+        font-size: 4.5rem;
+    }
+
+    .reseaux > h3 {
         margin-bottom: 6.5rem;
     }
 
-    .reseaux a i {
-        font-size: 5rem;
-        padding: 2rem;
-    }
-
-
-
 }
+
+        
+
+
+
 
     
