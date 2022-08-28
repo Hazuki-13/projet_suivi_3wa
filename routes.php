@@ -18,18 +18,19 @@ function url(string $path, array $parameters = []): string
     return $url;
 }
 
-/**
- * Redirige vers une route de l'application
- * 
- * @param string $path
- * @param array $parameters
- */
+// /**
+//  * Redirige vers une route de l'application
+//  * 
+//  * @param string $path
+//  * @param array $parameters
+//  */
 function redirect(string $path, array $parameters = []): void
 {
     header('Location: ' . url($path, $parameters));
     exit();
 }
 
+//toutes les routes avec leur méthode coté publique + routes pour accéder à la connexion admin
 return [
     '/home' => [
         'Controllers\HomeController',
@@ -39,11 +40,6 @@ return [
     '/login' => [
         'Controllers\LoginController',
         'displayLogin'
-    ],
-
-    '/logout' => [
-        'Controllers\LoginController',
-        'logout'
     ],
     
     '/login/access' => [
@@ -70,32 +66,7 @@ return [
     '/booking/ajax' => [
         'Controllers\BookingController',
         'search'
-    ],
-    
-    '/super-admin-control' => [
-        'Controllers\SuperAdminController',
-        'displayBookingAdmin'
-    ],
-    
-    // '/super-admin-control/updateBooking' => [
-    //     'Controllers\BookingController',
-    //     'edit'
-    // ],
-    
-    // '/super-admin-control/update' => [
-    //     'Controllers\BookingController',
-    //     'update'
-    // ],
-    
-    // '/addAdmin' => [
-    //     'Controllers\LoginController',
-    //     'displayAddAdmin'
-    // ],
-    
-    // '/super-admin-control/delete' => [
-    //     'Controllers\BookingController',
-    //     'delete'
-    //     ]
+    ]
         
     ];
     

@@ -10,13 +10,17 @@
     
     <input type="text" class="userName" name="userName" placeholder="user name" value="<?= htmlspecialchars($user['user_name']) ?><?php if(isset($errors['data'])&& $errors['data']['userName'] !=='') 
         {
-            // echo ($errors['data']['userName']);
+            // chargement de la donnée $user'userName' à modifier
+            // puis si $errors 'data' est defini et que $errors 'data','userName' n'est pas vide
+            // alors réaffichage de la donnée gérer par le controller
         }
         ?>"> 
         <p><small class="errorForm">
     <?php
+        // si $errors 'message' est défini et que $errors 'message','userName' n'est pas vide
         if(isset($errors['message']) && $errors['message']['userName']!=='')
         {
+            // alors affichage du message d'erreur 'userName' defini dans le controlleur
             echo($errors['message']['userName']);
         }
     ?>

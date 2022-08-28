@@ -4,7 +4,7 @@ namespace Controllers;
 
 class HomeController extends Controller
 {
-    public function displayHome()
+    public function displayHome():void
     {
         // $template =  'home' ;
         // require 'MVC/Views/layout.phtml';

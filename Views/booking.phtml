@@ -12,13 +12,17 @@
 
                             <input type="text" name="firstName" class="firstName" placeholder="Your first name" value="<?php if(isset($errors['data'])&& $errors['data']['firstName'] !=='') 
                             {
+                                // si $errors 'data' est defini et que $errors 'data','firstName' n'est pas vide
+                                // alors réaffichage de la donnée entrée précédement avant le déclenchement des erreurs
                                 echo ($errors['data']['firstName']);
                             }
                             ?>"> 
                             <p><small class="errorForm">
                         <?php
+                            // si $errors 'message' est défini et que $errors 'message','firstName' n'est pas vide
                             if(isset($errors['message']) && $errors['message']['firstName']!=='')
                             {
+                                // alors affichage du message d'erreur 'firstName' defini dans le controlleur
                                 echo($errors['message']['firstName']);
                             }
                         ?>
@@ -29,12 +33,16 @@
 
                             <input type="text" name="lastName" class="lastName" placeholder="Your last name" value="<?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') 
                             {
+                                // si $errors 'data' est defini et que $errors 'data','lastName' n'est pas vide
+                                // alors réaffichage de la donnée entrée précédement avant le déclenchement des erreurs
                                 echo ($errors['data']['lastName']);
                             }?>"> 
                             <p><small class="errorForm">
                         <?php
+                            // si $errors 'message' est défini et que $errors 'message','lastName' n'est pas vide
                             if(isset($errors['message']) && $errors['message']['lastName']!=='')
                             {
+                                // alors affichage du message 'lastName' d'erreur defini dans le controlleur
                                 echo($errors['message']['lastName']);
                             }
                         ?>
@@ -45,12 +53,16 @@
 
                                 <input type="email" name="email" class="email" placeholder="Your email" value="<?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
                                 {
+                                    // si $errors 'data' est defini et que $errors 'data','email' n'est pas vide
+                                    // alors réaffichage de la donnée entrée précédement avant le déclenchement des erreurs
                                     echo ($errors['data']['email']);
                                 }?>"> 
                                 <p><small class="errorForm">
                             <?php
+                                // si $errors 'message' est défini et que $errors 'message','email' n'est pas vide
                                 if(isset($errors['message']) && $errors['message']['email']!=='')
                                 {
+                                    // alors affichage du message d'erreur 'email' defini dans le controlleur
                                     echo($errors['message']['email']);
                                 }
                             ?>
@@ -60,14 +72,18 @@
                     <div class="div-input-label">
                             <div><label for="birthDate">Birthdate</label></div>
                             
-                                <input type="date" name="birthDate" class="birthDate" min="<?php (new \DateTime('-18 years'))->format('Y-m-d') ?>" placeholder="Your birth date" value="<?php if(isset($errors['data'])&& $errors['data']['birthDate'] !=='') 
+                                <input type="date" name="birthDate" class="birthDate" placeholder="Your birth date" value="<?php if(isset($errors['data'])&& $errors['data']['birthDate'] !=='') 
                                 {
+                                    // si $errors 'data' est defini et que $errors 'data','birthDate' n'est pas vide
+                                    // alors réaffichage de la date entrée précédement avant le déclenchement des erreurs
                                     echo ($errors['data']['birthDate']);
                                 }?>">
                                 <p><small class="errorForm">
                             <?php
+                                // si $errors 'message' est défini et que $errors 'message','birthDate' n'est pas vide
                                 if(isset($errors['message']) && $errors['message']['birthDate']!=='')
                                 {
+                                    // alors affichage du message d'erreur 'birthDate' defini dans le controlleur
                                     echo($errors['message']['birthDate']);
                                 }
                             ?>
@@ -84,12 +100,16 @@
                         
                             <input type="date" class="check-in" name="check_in" value="<?php if(isset($errors['data'])&& $errors['data']['check_in'] !=='') 
                             {
+                                // si $errors 'data' est defini et que $errors 'data','check_in' n'est pas vide
+                                // alors réaffichage de la date entrée précédement avant le déclenchement des erreurs
                                 echo ($errors['data']['check_in']);
                             }?>">
                             <p><small class="errorForm">
                         <?php
+                            // si $errors 'message' est défini et que $errors 'message','check_in' n'est pas vide
                             if(isset($errors['message']) && $errors['message']['check_in']!=='')
                             {
+                                // alors affichage du message d'erreur 'check_in' defini dans le controlleur
                                 echo($errors['message']['check_in']);
                             }
                         ?>
@@ -99,12 +119,16 @@
                         
                             <input type="date" class="check-out" name="check_out" value="<?php if(isset($errors['data'])&& $errors['data']['check_out'] !=='') 
                             {
+                                // si $errors 'data' est defini et que $errors 'data','check_out' n'est pas vide
+                                // alors réaffichage de la date entrée précédement avant le déclenchement des erreurs
                                 echo ($errors['data']['check_out']);
                             }?>">
                             <p><small class="errorForm">
                         <?php
+                            // si $errors 'message' est défini et que $errors 'message','check_out' n'est pas vide
                             if(isset($errors['message']) && $errors['message']['check_out']!=='')
                             {
+                                // alors affichage du message d'erreur 'check_out' defini dans le controlleur
                                 echo($errors['message']['check_out']);
                             }
                         ?>
@@ -116,7 +140,7 @@
                         <select class="selectCategory" name="cat_id">
                             
                             <option value="">Choose your room</option>
-                            
+                            <!-- boucle pour faire afficher les catégories de rooms -->
                             <?php foreach ($rooms as $room): ?>
                                 <option value="<?= htmlspecialchars($room['cat_id']) ?>"><?= htmlspecialchars($room['cat_title']) ?></option>
                             <?php endforeach ?>
@@ -125,8 +149,10 @@
                             <p><small class="errorForm">
                                 
                         <?php
+                            // si $errors 'message' est défini et que $errors 'message','cat_id' n'est pas vide
                             if(isset($errors['message']) && $errors['message']['cat_id']!=='')
                             {
+                                // alors affichage du message d'erreur 'cat_id' defini dans le controlleur
                                 echo($errors['message']['cat_id']);
                             }
                         ?>

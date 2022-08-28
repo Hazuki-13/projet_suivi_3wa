@@ -18,32 +18,23 @@ function url(string $path, array $parameters = []): string
     return $url;
 }
 
-/**
- * Redirige vers une route de l'application
- * 
- * @param string $path
- * @param array $parameters
- */
+// /**
+//  * Redirige vers une route de l'application
+//  * 
+//  * @param string $path
+//  * @param array $parameters
+//  */
 function redirect(string $path, array $parameters = []): void
 {
     header('Location: ' . url($path, $parameters));
     exit();
 }
 
+// toutes les routes publique et admin avec leur méthodes
 return [
     '/home' => [
         'Controllers\HomeController',
         'displayHome'
-    ],
-    
-    '/login' => [
-        'Controllers\LoginController',
-        'displayLogin'
-    ],
-    
-    '/login/access' => [
-        'Controllers\LoginController',
-        'loginAccess'
     ],
 
     '/logout' => [

@@ -3,7 +3,7 @@
 
     <section class="rooms">
 
-        
+        <!-- boucle pour faire afficher les info des rooms -->
         <?php foreach ($rooms as $room): ?>
             
             <hr>
@@ -11,9 +11,10 @@
                 <div class="wrapper">
                     <h3 class="roomsTitle"><?= $room['cat_title'] ?></h3>
                     <?php foreach ($pictures as $picture): ?>
+                        <!-- si l'id de $room est égal à l'id de $picture permet d'afficher toutes les img dans chaque category (sinon cela double les catégory pour chaque img, CQFD) -->
                         <?php if($room['cat_id'] == $picture['cat_id']):?>                        
                             <a href="../assets/img/<?= $room['cat_id'] ?>/<?= $picture['picture_url'] ?>" data-fancybox="gallery">
-                                <img class="picRoom" src="../assets/img/<?= $room['cat_id'] ?>/<?= $picture['picture_url'] ?>" alt=""></a>                        
+                                <img class="picRoom" src="../assets/img/<?= $room['cat_id'] ?>/<?= $picture['picture_url'] ?>" alt="photo<?= $room['cat_title'] ?>"></a>                        
                         <?php endif ?>
                     <?php endforeach ?>
                     <p class="roomDescription"><?= $room['cat_description'] ?></p>
@@ -27,7 +28,7 @@
         
 
     </section>
-
+<figcaption></figcaption>
     
         
 
