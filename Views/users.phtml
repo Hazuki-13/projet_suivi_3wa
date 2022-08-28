@@ -12,17 +12,18 @@
         </tr>
     </thead>
     <tbody>
-            <?php foreach ($users as $user): ?>
+        <?php foreach ($users as $user): ?>
             <tr>
-
-                    <td><?= $user['user_id'] ?></td>
-                    <td><?= $user['user_name'] ?></td>
-                    <td><?= $user['user_status'] ?></td>
-                    <td><?= $user['user_email'] ?></td>
-                    <td><?= date_format(date_create(($user['created_at'])), 'd/m/Y H:i:s')?></td>
-                    <td><a href="<?= url('/users/updateAdmin', ['user_id' => $user['user_id']]) ?>">Update</a></td>
-                    <td><a href="<?= url('/users/delete', ['id' => $user['user_id']]) ?>">Delete</a></td>
-                </tr>
-                <?php endforeach ?>
-        </tbody>
-    </table>
+                <td><?= $user['user_id'] ?></td>
+                <td><?= $user['user_name'] ?></td>
+                <td><?= $user['user_status'] ?></td>
+                <td><?= $user['user_email'] ?></td>
+                <td><?= date_format(date_create(($user['created_at'])), 'd/m/Y H:i:s')?></td>
+                <!-- lien vers le formulaire "updateAdmin" avec la variable $user et sa clé qui contient le bon "id" pour le modifier le bon user  -->
+                <td><a href="<?= url('/users/updateAdmin', ['user_id' => $user['user_id']]) ?>">Update</a></td>
+                <!-- lien vers la méthode "delete" avec la variable $user et sa clé qui contient le bon "id" pour supprimer le bon user -->
+                <td><a href="<?= url('/users/delete', ['id' => $user['user_id']]) ?>">Delete</a></td>
+            </tr>
+            <?php endforeach ?>
+    </tbody>
+</table>

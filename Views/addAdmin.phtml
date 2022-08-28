@@ -9,13 +9,17 @@
     
     <input type="text" class="userName" name="userName" placeholder="user name" value="<?php if(isset($errors['data'])&& $errors['data']['userName'] !=='') 
         {
+            // si $errors 'data' est defini et que $errors 'data','userName' n'est pas vide
+            // alors réaffichage de la donnée entrée précédement avant le déclenchement des erreurs
             echo ($errors['data']['userName']);
         }
         ?>"> 
         <p><small class="errorForm">
     <?php
+        // si $errors 'message' est défini et que $errors 'message','userName' n'est pas vide
         if(isset($errors['message']) && $errors['message']['userName']!=='')
         {
+            // alors affichage du message d'erreur 'userName' defini dans le controller
             echo($errors['message']['userName']);
         }
     ?>
@@ -23,32 +27,38 @@
 
     <select name="userStatus" class="status">
         
-    <option value="">choose status</option>
-    <option value="admin">admin</option>
-    <option value="super admin">super admin</option>
+        <option value="">choose status</option>
+        <option value="admin">admin</option>
+        <option value="super admin">super admin</option>
 
     </select>
     <p><small class="errorForm">
                                 
-                        <?php
-                            if(isset($errors['message']) && $errors['message']['userStatus']!=='')
-                            {
-                                echo($errors['message']['userStatus']);
-                            }
-                        ?>
-                            </small></p>
+    <?php
+        // si $errors 'message' est défini et que $errors 'message','userStatus' n'est pas vide
+        if(isset($errors['message']) && $errors['message']['userStatus']!=='')
+        {
+            // alors affichage du message d'erreur 'userStatus' defini dans le controller
+            echo($errors['message']['userStatus']);
+        }
+    ?>
+        </small></p>
 
     <label for="email">Email</label>
     
     <input type="email" class="userEmail" name="email" placeholder="email" value="<?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
         {
+            // si $errors 'data' est defini et que $errors 'data','email' n'est pas vide
+            // alors réaffichage de la donnée entrée précédement avant le déclenchement des erreurs
             echo ($errors['data']['email']);
         }
         ?>"> 
         <p><small class="errorForm">
     <?php
+        // si $errors 'message' est défini et que $errors 'message','email' n'est pas vide
         if(isset($errors['message']) && $errors['message']['email']!=='')
         {
+            // alors affichage du message d'erreur 'email' defini dans le controller
             echo($errors['message']['email']);
         }
     ?>
@@ -58,13 +68,17 @@
     
     <input type="password" class="password" name="password" placeholder="password" value="<?php if(isset($errors['data'])&& $errors['data']['password'] !=='') 
         {
+            // si $errors 'data' est defini et que $errors 'data','password' n'est pas vide
+            // alors réaffichage du mot de passe entrée précédement avant le déclenchement des erreurs
             echo ($errors['data']['password']);
         }
         ?>"> 
         <p><small class="errorForm">
     <?php
+        // si $errors 'message' est défini et que $errors 'message','password' n'est pas vide
         if(isset($errors['message']) && $errors['message']['password']!=='')
         {
+            // alors affichage du message d'erreur 'password' defini dans le controller
             echo($errors['message']['password']);
         }
     ?>
@@ -72,15 +86,19 @@
 
     <label for="password">Confirm your password</label>
     
-    <input type="password" class="confirmPassword" name="confirmPassword" placeholder="confirm password" value="<?php if(isset($errors['data'])&& $errors['data']['confirmPassword'] !=='') 
+    <input type="password" class="password" name="confirmPassword" placeholder="confirm password" value="<?php if(isset($errors['data'])&& $errors['data']['confirmPassword'] !=='') 
         {
+            // si $errors 'data' est defini et que $errors 'data','confirmPassword' n'est pas vide
+            // alors réaffichage du mot de passe entrée précédement avant le déclenchement des erreurs
             echo ($errors['data']['confirmPassword']);
         }
         ?>"> 
         <p><small class="errorForm">
     <?php
+        // si $errors 'message' est défini et que $errors 'message','confirmPassword' n'est pas vide
         if(isset($errors['message']) && $errors['message']['confirmPassword']!=='')
         {
+            // alors affichage du message d'erreur 'confirmPassword' defini dans le controller
             echo($errors['message']['confirmPassword']);
         }
     ?>

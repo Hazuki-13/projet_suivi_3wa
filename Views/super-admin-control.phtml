@@ -1,7 +1,4 @@
 
-
-    
-
     <table class="table">
     <thead>
         <tr>
@@ -19,9 +16,9 @@
         </tr>
     </thead>
         <tbody>
+            <!-- boucle permettant d'afficher le detail de chaque booking -->
             <?php foreach ($booking as $book): ?>
-            <tr>
-
+                <tr>
                     <td id="nbr"></td>
                     <td><?= $book['id_booking'] ?></td>
                     <td><?= $book['cust_id'] ?></td>
@@ -32,13 +29,19 @@
                     <td><?= date_format(date_create(($book['check_in'])), 'd/m/Y')?></td>
                     <td><?= date_format(date_create(($book['check_out'])), 'd/m/Y')?></td>
                     <td><?= date_format(date_create(($book['created_at'])), 'd/m/Y H:i:s')?></td>
+                    <!-- lien vers le formulaire "updateBooking" avec la variable $book et sa clé qui contient le bon "id" pour le modifier le bon booking et/ou le bon customer  -->
                     <td><a href="<?= url('/super-admin-control/updateBooking', ['cust_id' => $book['cust_id'], 'id_booking' => $book['id_booking']]) ?>">Update</a></td>
+                    <!-- lien vers la méthode "delete" avec la variable $book et sa clé qui contient le bon "id" pour supprimer le bon booking -->
                     <td><a href="<?= url('/super-admin-control/delete', ['id' => $book['cust_id']]) ?>">Delete</a></td>
-
                 </tr>
-                <?php endforeach ?>
+            <?php endforeach ?>
         </tbody>
     </table>
+
+
+
+    
+
 
     
             

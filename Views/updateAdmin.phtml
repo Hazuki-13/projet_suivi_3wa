@@ -20,7 +20,7 @@
         // si $errors 'message' est défini et que $errors 'message','userName' n'est pas vide
         if(isset($errors['message']) && $errors['message']['userName']!=='')
         {
-            // alors affichage du message d'erreur 'userName' defini dans le controlleur
+            // alors affichage du message d'erreur 'userName' defini dans le controller
             echo($errors['message']['userName']);
         }
     ?>
@@ -35,23 +35,29 @@
     </select>
     <p><small class="errorForm">
                                 
-                        <?php
-                            if(isset($errors['message']) && $errors['message']['userStatus']!=='')
-                            {
-                                echo($errors['message']['userStatus']);
-                            }
-                        ?>
-                            </small></p>
+    <?php
+        // si $errors 'message' est défini et que $errors 'message','userStatus' n'est pas vide
+        if(isset($errors['message']) && $errors['message']['userStatus']!=='')
+        {
+            // alors affichage du message d'erreur 'userStatus' defini dans le controller
+            echo($errors['message']['userStatus']);
+        }
+    ?>
+        </small></p>
     
     <input type="email" class="userEmail" name="email" placeholder="email" value="<?= htmlspecialchars($user['user_email'])?><?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
         {
-            // echo ($errors['data']['email']);
+            // chargement de la donnée $user'email' à modifier
+            // puis si $errors 'data' est defini et que $errors 'data','email' n'est pas vide
+            // alors réaffichage de la donnée gérer par le controller
         }
         ?>"> 
         <p><small class="errorForm">
     <?php
+        // si $errors 'message' est défini et que $errors 'message','email' n'est pas vide
         if(isset($errors['message']) && $errors['message']['email']!=='')
         {
+            // alors affichage du message d'erreur 'email' defini dans le controller
             echo($errors['message']['email']);
         }
     ?>
@@ -59,27 +65,35 @@
     
     <input type="password" class="password" name="password" placeholder="password" value="<?= htmlspecialchars($user['user_password']) ?><?php if(isset($errors['data'])&& $errors['data']['password'] !=='') 
         {
-            // echo ($errors['data']['password']);
+            // chargement de la donnée $user'password' à modifier
+            // puis si $errors 'data' est defini et que $errors 'data','password' n'est pas vide
+            // alors réaffichage du mot de passe gérer par le controller
         }
         ?>"> 
         <p><small class="errorForm">
     <?php
+        // si $errors 'message' est défini et que $errors 'message','password' n'est pas vide
         if(isset($errors['message']) && $errors['message']['password']!=='')
         {
+            // alors affichage du message d'erreur 'password' defini dans le controller
             echo($errors['message']['password']);
         }
     ?>
     </small></p>
     
-    <input type="password" class="confirmPassword" name="confirmPassword" placeholder="confirm password" value="<?= htmlspecialchars($user['user_password']) ?><?php if(isset($errors['data'])&& $errors['data']['confirmPassword'] !=='') 
+    <input type="password" class="password" name="confirmPassword" placeholder="confirm password" value="<?= htmlspecialchars($user['user_password']) ?><?php if(isset($errors['data'])&& $errors['data']['confirmPassword'] !=='') 
         {
-            // echo ($errors['data']['confirmPassword']);
+            // chargement de la donnée $user'confirmPassword' à modifier
+            // puis si $errors 'data' est defini et que $errors 'data','confirmPassword' n'est pas vide
+            // alors réaffichage du mot de passe gérer par le controller
         }
         ?>"> 
         <p><small class="errorForm">
     <?php
+        // si $errors 'message' est défini et que $errors 'message','confirmPassword' n'est pas vide
         if(isset($errors['message']) && $errors['message']['confirmPassword']!=='')
         {
+            // alors affichage du message d'erreur 'confirmPassword' defini dans le controller
             echo($errors['message']['confirmPassword']);
         }
     ?>
