@@ -8,8 +8,8 @@ class HomeController extends Controller
     {
         // $template =  'home' ;
         // require 'MVC/Views/layout.phtml';
-        
         // la methode render remplace le code précedent
         $this -> render('home');
     }
 }
+        

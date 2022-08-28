@@ -19,7 +19,7 @@ function url(string $path, array $parameters = []): string
 }
 
 // /**
-//  * Redirige vers une route de l'application
+//  * Redirige vers une route
 //  * 
 //  * @param string $path
 //  * @param array $parameters

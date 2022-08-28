@@ -9,9 +9,9 @@ class Controller
         extract($variables);
         require 'Views/layout.phtml';
         
-        // evite de répéter le code suivant dans mes controlleurs
-
+        // la méthode "render" evite de répéter le code suivant dans mes controlleurs
         // $template =  'home' ;
         // require 'Views/layout.phtml';
+
     }
 }

@@ -9,18 +9,16 @@ class BookingController extends Controller
 {
     public function bookingFormUser()
     {
-        
+        // instanciation d'un nouveau model
         $modelRoom = new RoomModel();
+        // stockage de ce nouveau model dans une variable qui appel la methode "getRooms"
         $rooms = $modelRoom -> getRooms(['cat_title']);
-
-        // $template =  'booking' ;
-        // require 'MVC/Views/layout.phtml';
-        // la methode render remplace le code précedent
-        
+        // puis "render" de la vue avec sa variable pour l'affichage des categories      
         $this -> render('booking', [
             'rooms' => $rooms
             ]);
     }
+            
 
     public function create()
     {
@@ -30,21 +28,16 @@ class BookingController extends Controller
             _si le champs n'est pas défini ou n'est pas correct
             _afficher erreur message ="le champs n'est pas correct"
         */
-        //Je récupère la date du jours.
+        // récupération de la date du jour.
         $getDay = getdate();
-        //Soustraire l'année de la date du jour par 18. Et conserver les jours et mois intact.
+        // Soustraire de 18 l'année partir de la date du jour.
         $dateDay = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"];
-        //Je trouve la date de naissance minimale par rapport au jour.
+        // resultat de la date de naissance minimale par rapport à la date du jour.
         $legalBirthdate = $getDay["year"]-18 . "-" . $getDay["mon"] . "-" . $getDay["mday"];
-
-        $legalCheckOut = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"]+1;
-
-        // Nombre de seconde qu'a vécu une personne pour avoir 18 ans à partir de la date actuelle.
+        // Nombre de seconde que contient 18 ans jusqu'à de la date actuelle.
         $legalAge = strtotime($dateDay) - strtotime($legalBirthdate);
-         // Age de l'utilisateur en seconde.
+        // Age de l'utilisateur en seconde.
         $userAge = strtotime($dateDay) - strtotime($_POST["birthDate"]);
-        
-
 
         $error = false;
         $errorFirstName = '';
@@ -54,62 +47,57 @@ class BookingController extends Controller
         $errorCat_id='';
         $errorCheck_in='';
         $errorCheck_out='';
-        
+        // si $_POST "firstName" n'est pas défini ou est défini et vide
         if(!isset($_POST['firstName']) || (isset($_POST['firstName']) && empty($_POST['firstName']))) 
         {
+            // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
             $errorFirstName = 'first name incorrect';
             $error = true;
         }
-                        
+        // si $_POST "lastName" n'est pas défini ou est défini et vide
         if(!isset($_POST['lastName']) || (isset($_POST['lastName']) && empty($_POST['lastName']))) 
         {
+            // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
             $errorLastName = 'last name incorrect';
             $error = true;         
         }
-        
+        // si $_POST "email" n'est pas défini ou est défini et vide
         if(!isset($_POST['email']) || (isset($_POST['email']) && empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))) 
         {
+            // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
             $errorEmail= 'email invalid';
             $error = true;         
         }
-
-
-        // Si l'age de l'user en seconde et inférieur au nombre de seconde qu'a du vivre un individu pour avoir 18 ans à partir de la date du jour.
+        // si $_POST "birthDate" n'est pas défini ou est défini et vide ou que l'âge est inférieur à l'âge legal de 18 ans
         if(!isset($_POST["birthDate"]) ||  empty($_POST["birthDate"]) || intval($userAge) < intval($legalAge))
         {
+            // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
             $errorBirthDate = 'birthdate incorrect';
             $error = true;
         }
-            
-        // if(!isset($_POST['birthDate']) || (isset($_POST['birthDate']) && empty($_POST['birthDate'])) && isset($_POST['birthDate'] < strtotime($legalAge)) 
-        // {
-        //     $errorBirthDate = 'birthdate incorrect';
-        //     $error = true;        
-        // }
-
+        // si $_POST "cat_id" n'est pas défini ou est défini et vide
         if(!isset($_POST['cat_id']) || (isset($_POST['cat_id']) && empty($_POST['cat_id']))) 
         {
+            // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
             $errorCat_id= 'room not selected';
             $error = true;         
         }
-
-        //if(!isset($_POST["check_in"]) ||  empty($_POST["check_in"]) || strtotime($_POST["check_in"]) < strtotime($DateDay))
-
+        // si $_POST "check_in" n'est pas défini ou est défini et vide ou inférieur à la date du jour
         if(!isset($_POST['check_in']) || (isset($_POST['check_in']) && empty($_POST['check_in'])) || strtotime($_POST["check_in"]) < strtotime($dateDay))
         {
+            // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
             $errorCheck_in= 'date of your arrival is incorrect';
             $error = true;            
         }
-
-        //if(!isset($_POST["check_out"]) ||  empty($_POST["check_out"]) || strtotime($_POST["check_in"]) > strtotime($_POST["check_out"]))
-
-        if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out'])) || strtotime($_POST["check_in"]) >= strtotime($_POST["check_out"]) || strtotime($_POST['check_out']) <= strtotime($dateDay))
+        // si $_POST "check_out" n'est pas défini ou est défini et vide ou que "check-in" est inférieur/egal à $_POST "check_out" ou que $_POST "check_out" est inférieur/égal à la date du jour
+        if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out'])) || strtotime($_POST["check_out"]) <= strtotime($_POST["check_in"]) || strtotime($_POST['check_out']) <= strtotime($dateDay))
         {
+            // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
             $errorCheck_out= 'date of your leaving is incorrect';
             $error = true;           
         }
 
-        
+        // stockage des messages d'erreur dans la variable $errors avec comme cle "message" qui est appelé dans la vue
         $errors['message']=[
             'firstName'=> $errorFirstName,
             'lastName'  => $errorLastName,
@@ -119,11 +107,7 @@ class BookingController extends Controller
             'check_in'  => $errorCheck_in,
             'check_out'  => $errorCheck_out
         ];
-
-        // echo('<pre>');
-        // print_r($_SESSION['message']);
-        // echo ('</pre>');
-        // die();
+        // si $error est égal à true alors renvoie des info pré-rempli précédement dans les champs "input" pour corriger les erreurs
         if($error == true)
         {
            $errors['data'] = [
@@ -135,44 +119,39 @@ class BookingController extends Controller
             'check_in'  => htmlspecialchars($_POST['check_in']),
             'check_out'  => htmlspecialchars($_POST['check_out'])
            ];
-
-            // echo('<pre>');
-            // print_r($errors);
-            // echo ('</pre>');
-            // die();
-
+            // instanciation d'un nouvau model
             $modelRoom = new RoomModel();
+            // stockage de ce nouveau model dans une variable qui appel la methode "getRooms" présente dans le model concerné
             $rooms = $modelRoom -> getRooms(['cat_title']);
-
+            // puis "render" de la vue avec ses variables "rooms" et "errors" 
             $this -> render('booking', [
                     'rooms' => $rooms,
                     'errors'=> $errors
                 ]);
                 
         }
+        // sinon envoie de ces données correcte avec le $_POST dans la variable $data
         else
         {
+            // instanciation d'un nouveau model
             $model = new BookingModel;
+            // contenu de la variable $data
             $data = [
                htmlspecialchars($_POST['lastName']),
                htmlspecialchars($_POST['firstName']),
                htmlspecialchars($_POST['birthDate']),
                htmlspecialchars($_POST['email'])
             ];
-    
-                // echo('<pre>');
-                // print_r($data);
-                // echo ('</pre>');
-    
+            // envoie de ces données avec le $_POST via variable $data
+            // appel de la méthode "newBooking" dans le model pour insérer les données du nouveau "customer" dans la bonne table
             $model -> newBooking($data);
-            // on vient d'inserer des element new customer
-            // recuperer l'id de ce nouveau customer
+            // recuperer l'id de ce nouveau customer avec la méthode "getLastCustomerId" présente dans le model concerné
             $cust_id = $model -> getLastCustomerId();
-            
+            // instanciation d'un nouveau model
             $modelRoom = new RoomModel();
+            // stockage de ce nouveau model dans une variable qui appel la methode "getRooms" présente dans le model concerné
             $rooms = $modelRoom -> getRooms(['cat_title']);
-            
-            // $model2 = new BookingModel;
+            // contenu de la variable $dataSuite
             $dataSuite = [
                 $cust_id,
                 htmlspecialchars($_POST['cat_id']),
@@ -180,66 +159,56 @@ class BookingController extends Controller
                 htmlspecialchars($_POST['check_out'])
     
             ];
-            
+            // envoie de ces données avec le $_POST via variable $dataSuite qui concerne une autre table
+            // appel de la méthode "newBookingSuite" dans le model pour insérer les données du nouveau "booking" dans la bonne table
             $model -> newBookingSuite($dataSuite);
-        
-         
+            // à la validation du formulaire redirection vers la page "home"
             redirect('/home');
         }
-            
     }
-    
+         
     public function search()
     {
+        // déclaration des variables pour la requête js
         $content = file_get_contents("php://input");
         $data = json_decode($content, true);
-
         $search = $data['id'];
-        
+        // instanciation d'un nouveau model
         $modelRoom = new RoomModel();
+        // stockage de ce nouveau model dans une variable qui appel la methode "getOneById" présente dans le fichier Database
         $price = $modelRoom -> getOneById('category', 'cat_id', $search);
-        // file_put_contents('exemple.txt', $price['cat_price']);
         include'views/prix.phtml';
+        
 
     }
-
+            
     public function edit(): void
     {
-        if($_SESSION == true)
-        {
-
-            //pour faire afficher le formulaire pour l'UPDATE
-            //id du
-            $idCust = $_GET['cust_id'];
-            $idBook = $_GET['id_booking'];
-            
-            $editModel = new BookingModel();
-            $form = $editModel -> findCustomer($idCust);
-            $form2 = $editModel -> findBooking($idBook);
-            
-            $modelRoom = new RoomModel();
-            $rooms = $modelRoom -> getRooms(['cat_title']);
-            // $model2 = new BookingModel();
-            
-            // echo('<pre>');
-            // print_r($form);
-            // echo ('</pre>');
-            // echo('<pre>');
-            // print_r($form2);
-            // echo ('</pre>');
-            // die();
-            
-            $this -> render('updateBooking', [
-                'rooms' => $rooms,
-                'form' => $form,
-                'form2' =>$form2
-            ]);
-            
-        }else{
-            redirect('/home');
-        }
-            
+        // faire afficher les données dans le formulaire pour l'UPDATE
+        // récupération de l'id pour la modification via $_GET dans une variable
+        // première variable $idCust pour récupérer le bon id dans la table "customers"
+        $idCust = $_GET['cust_id'];
+        // deuxième variable $idBook pour récupérer le bon id dans la table "booking"
+        $idBook = $_GET['id_booking'];
+        // instanciation d'un nouveau model (Booking)
+        $editModel = new BookingModel();
+        // ce nouveau model est stocker dans une variable $form puis appelle la methode "findCustomer" dans le model concerné
+        $form = $editModel -> findCustomer($idCust);
+        // puis ce nouveau model est stocker dans une autre variable $form2 pour appeler la methode "findBooking" dans le model concerné
+        $form2 = $editModel -> findBooking($idBook);
+        // instanciation d'un nouveau model (Room)
+        $modelRoom = new RoomModel();
+        // stockage du nouveau model (Room) dans une variable $rooms qui appelle la methode "getRooms" dans le model
+        $rooms = $modelRoom -> getRooms(['cat_title']);
+        // puis render de la vue "updateBooking" avec ses variables nécessaire à l'affichage des données
+        $this -> render('updateBooking', [
+            'rooms' => $rooms,
+            'form' => $form,
+            'form2' =>$form2
+        ]);
     }
+    
+
         
         public function update() :void
         {
@@ -250,19 +219,17 @@ class BookingController extends Controller
             _afficher erreur message ="le champs n'est pas correct"
             */
             
-            //Je récupère la date du jours.
+            // récupération de la date du jour.
             $getDay = getdate();
-            //Soustraire l'année de la date du jour par 18. Et conserver les jours et mois intact.
+            // Soustraire de 18 l'année partir de la date du jour.
             $dateDay = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"];
-            //Je trouve la date de naissance minimale par rapport au jour.
+            // resultat de la date de naissance minimale par rapport à la date du jour.
             $legalBirthdate = $getDay["year"]-18 . "-" . $getDay["mon"] . "-" . $getDay["mday"];
-            
-            $legalCheckOut = $getDay["year"] . "-" . $getDay["mon"] . "-" . $getDay["mday"]+1;
-            // Nombre de seconde qu'a vécu une personne pour avoir 18 ans à partir de la date actuelle.
+            // Nombre de seconde que contient 18 ans jusqu'à de la date actuelle.
             $legalAge = strtotime($dateDay) - strtotime($legalBirthdate);
             // Age de l'utilisateur en seconde.
             $userAge = strtotime($dateDay) - strtotime($_POST["birthDate"]);
-
+            
             $error = false;
             $errorFirstName = '';
             $errorLastName='';
@@ -271,54 +238,57 @@ class BookingController extends Controller
             $errorCat_id='';
             $errorCheck_in='';
             $errorCheck_out='';
-            
+            // si $_POST "firstName" n'est pas défini ou est défini et vide
             if(!isset($_POST['firstName']) || (isset($_POST['firstName']) && empty($_POST['firstName']))) 
             {
+                // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
                 $errorFirstName = 'first name incorrect';
                 $error = true;
             }
-                            
+            // si $_POST "lastName" n'est pas défini ou est défini et vide
             if(!isset($_POST['lastName']) || (isset($_POST['lastName']) && empty($_POST['lastName']))) 
             {
+                // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
                 $errorLastName = 'last name incorrect';
                 $error = true;         
             }
-            //$email_a
-            if(!isset($_POST['email']) || (isset($_POST['email']) && empty(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)))) /*à verifier l'emplacement du filter email*/
+            // si $_POST "email" n'est pas défini ou est défini et vide
+            if(!isset($_POST['email']) || (isset($_POST['email']) && empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))) 
             {
+                // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
                 $errorEmail= 'email invalid';
                 $error = true;         
-            }            
-                
-                
+            }
+            // si $_POST "birthDate" n'est pas défini ou est défini et vide ou que l'âge est inférieur à l'âge legal de 18 ans
             if(!isset($_POST["birthDate"]) ||  empty($_POST["birthDate"]) || intval($userAge) < intval($legalAge))
             {
+                // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
                 $errorBirthDate = 'birthdate incorrect';
                 $error = true;
-            }           
-
-                
+            }
+            // si $_POST "cat_id" n'est pas défini ou est défini et vide
             if(!isset($_POST['cat_id']) || (isset($_POST['cat_id']) && empty($_POST['cat_id']))) 
             {
+                // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
                 $errorCat_id= 'room not selected';
                 $error = true;         
             }
-
-                                                    
+            // si $_POST "check_in" n'est pas défini ou est défini et vide ou inférieur à la date du jour
             if(!isset($_POST['check_in']) || (isset($_POST['check_in']) && empty($_POST['check_in'])) || strtotime($_POST["check_in"]) < strtotime($dateDay))
             {
+                // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
                 $errorCheck_in= 'date of your arrival is incorrect';
                 $error = true;            
             }
-
-                            
-            if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out'])) || strtotime($_POST["check_in"]) >= strtotime($_POST["check_out"]) || strtotime($_POST['check_out']) < strtotime($legalCheckOut))
+            // si $_POST "check_out" n'est pas défini ou est défini et vide ou que "check-in" est inférieur/egal à $_POST "check_out" ou que $_POST "check_out" est inférieur/égal à la date du jour
+            if(!isset($_POST['check_out']) || (isset($_POST['check_out']) && empty($_POST['check_out'])) || strtotime($_POST["check_out"]) <= strtotime($_POST["check_in"]) || strtotime($_POST['check_out']) <= strtotime($dateDay))
             {
+                // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
                 $errorCheck_out= 'date of your leaving is incorrect';
                 $error = true;           
             }
 
-            
+            // stockage des messages d'erreur dans la variable $errors avec comme cle "message" qui est appelé dans la vue
             $errors['message']=[
                 'firstName'=> $errorFirstName,
                 'lastName'  => $errorLastName,
@@ -328,44 +298,29 @@ class BookingController extends Controller
                 'check_in'  => $errorCheck_in,
                 'check_out'  => $errorCheck_out
             ];
-
-            // echo('<pre>');
-            // print_r($_SESSION['message']);
-            // echo ('</pre>');
-            // die();
-            if($error)
+            // si $error est égal à true alors renvoie des info pré-rempli précédement dans les champs "input" pour corriger les erreurs
+            if($error == true)
             {
-            $errors["data"] = [
+            $errors['data'] = [
+                'lastName'  => htmlspecialchars($_POST['lastName']),
                 'firstName'=> htmlspecialchars($_POST['firstName']),
-                'lastName' => htmlspecialchars($_POST['lastName']),
-                'email' => htmlspecialchars($_POST['email']),
-                'birthDate' => htmlspecialchars($_POST['birthDate']),
-                'cat_id' => htmlspecialchars($_POST['cat_id']),
-                'check_in' => htmlspecialchars($_POST['check_in']),
-                'check_out' => htmlspecialchars($_POST['check_out'])
+                'email'  => htmlspecialchars($_POST['email']),
+                'birthDate'  => htmlspecialchars($_POST['birthDate']),
+                'cat_id'  => htmlspecialchars($_POST['cat_id']),
+                'check_in'  => htmlspecialchars($_POST['check_in']),
+                'check_out'  => htmlspecialchars($_POST['check_out'])
                 ];
-                // echo('<pre>');
-                // print_r($_SESSION['data']);
-                // echo ('</pre>');
-                // die();
-
+                // instanciation d'un nouvau model
                 $modelRoom = new RoomModel();
+                // stockage de ce nouveau model dans une variable qui appel la methode "getRooms" présente dans le model concerné
                 $rooms = $modelRoom -> getRooms(['cat_title']);
-
+                // récupération des info de la méthode "edit" qui contient les 2 variables pour les id et l'appel des 2 methodes dans le model concerné
                 $idCust = $_POST['cust_id'];
                 $idBook = $_POST['id_booking'];
                 $editModel = new BookingModel();
                 $form = $editModel -> findCustomer($idCust);
                 $form2 = $editModel -> findBooking($idBook);
-
-                    // echo('<pre>');
-                    // print_r($form);
-                    // echo ('</pre>');
-                    // echo('<pre>');
-                    // print_r($form2);
-                    // echo ('</pre>');
-                    // die();
-
+                // puis render de la vue avec ses variable
                 $this -> render('updateBooking', [
                         'rooms' => $rooms,
                         'form' => $form,
@@ -373,12 +328,15 @@ class BookingController extends Controller
                         'errors'=> $errors
                     ]);
             }
+            // sinon envoie de ces données correcte avec le $_POST dans la variable $data
             else
             {
+                // récupération des id dans les variables pour la modification
                 $idCust = $_POST['cust_id'];
                 $idBook = $_POST['id_booking'];
-
+                // instanciation d'un nouvau model
                 $model = new BookingModel;
+                // contenu de la variable $data
                 $data = [
                 htmlspecialchars($_POST['lastName']),
                 htmlspecialchars($_POST['firstName']),
@@ -386,28 +344,24 @@ class BookingController extends Controller
                 htmlspecialchars($_POST['email']),
                 $idCust
                 ];
-        
-                    // echo('<pre>');
-                    // print_r($data);
-                    // echo ('</pre>');
-        
+                // envoie de ces données avec le $_POST via variable $data
+                // appel de la méthode "updateModelCustomers" dans le model pour mofifier les données du  "customer"
                 $model -> updateModelCustomers($data);
-                
-                
+                // instanciation d'un nouveau model
                 $modelRoom = new RoomModel();
+                // stockage de ce nouveau model dans une variable qui appel la methode "getRooms" présente dans le model concerné
                 $rooms = $modelRoom -> getRooms(['cat_title']);
-                
-                // $model2 = new BookingModel;
+                // contenu de la variable $dataSuite;
                 $dataSuite = [
                     htmlspecialchars($_POST['cat_id']),
                     htmlspecialchars($_POST['check_in']),
                     htmlspecialchars($_POST['check_out']),
                     $idBook
                 ];
-                
+                // envoie de ces données avec le $_POST via variable $dataSuite qui concerne une autre table
+                // appel de la méthode "updateModelBooking" dans le model pour modifier les données du "booking" dans la table en question
                 $model -> updateModelBooking($dataSuite);
-            
-            
+                // puis redirection vers la vue "bookingList"            
                 redirect('/super-admin-control');
             }
     }
@@ -417,6 +371,7 @@ class BookingController extends Controller
         $id = $_GET['id'];
         $model = new BookingModel();
         $model -> deleteModel($id);
+        // puis redirect vers la vue "bookingList"
         redirect('/super-admin-control');
     }
     
