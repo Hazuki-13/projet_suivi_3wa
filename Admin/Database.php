@@ -16,8 +16,8 @@ class Database
         
                 ]);
     }
-
-    public function getPdo():PDO
+    // Getter de la connexion PDO
+    public function getPdo(): PDO
     {
         return $this -> pdo;
     }

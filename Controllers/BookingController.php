@@ -178,12 +178,10 @@ class BookingController extends Controller
         // instanciation d'un nouveau model
         $modelRoom = new RoomModel();
         // appel de la methode du model "searchById" pour recupérer le titre de la category choisi
-        $price = $modelRoom -> searchById('category', 'cat_id', $search);
+        $price = $modelRoom -> searchById($search);
         include'views/prix.phtml';
     }
-        
-
-            
+                    
     public function edit(): void
     {
         // faire afficher les données dans le formulaire pour l'UPDATE
