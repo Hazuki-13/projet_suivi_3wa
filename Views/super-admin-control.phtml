@@ -20,15 +20,15 @@
             <?php foreach ($booking as $book): ?>
                 <tr>
                     <td id="nbr"></td>
-                    <td><?= $book['id_booking'] ?></td>
-                    <td><?= $book['cust_id'] ?></td>
-                    <td><?= $book['cust_lastname'] ?></td>
-                    <td><?= $book['cust_firstname'] ?></td>
-                    <td><?= date_format(date_create(($book['cust_birthdate'])), 'd/m/Y')?></td>
-                    <td><?= $book['cat_title'] ?></td>
-                    <td><?= date_format(date_create(($book['check_in'])), 'd/m/Y')?></td>
-                    <td><?= date_format(date_create(($book['check_out'])), 'd/m/Y')?></td>
-                    <td><?= date_format(date_create(($book['created_at'])), 'd/m/Y H:i:s')?></td>
+                    <td><?= htmlspecialchars($book['id_booking']) ?></td>
+                    <td><?= htmlspecialchars($book['cust_id']) ?></td>
+                    <td><?= htmlspecialchars($book['cust_lastname'])  ?></td>
+                    <td><?= htmlspecialchars($book['cust_firstname']) ?></td>
+                    <td><?= htmlspecialchars(date_format(date_create(($book['cust_birthdate'])), 'd/m/Y'))?></td>
+                    <td><?= htmlspecialchars($book['cat_title']) ?></td>
+                    <td><?= htmlspecialchars(date_format(date_create(($book['check_in'])), 'd/m/Y')) ?></td>
+                    <td><?= htmlspecialchars(date_format(date_create(($book['check_out'])), 'd/m/Y')) ?></td>
+                    <td><?= htmlspecialchars(date_format(date_create(($book['created_at'])), 'd/m/Y H:i:s')) ?></td>
                     <!-- lien vers le formulaire "updateBooking" avec la variable $book et sa clé qui contient le bon "id" pour le modifier le bon booking et/ou le bon customer  -->
                     <td><a href="<?= url('/super-admin-control/updateBooking', ['cust_id' => $book['cust_id'], 'id_booking' => $book['id_booking']]) ?>">Update</a></td>
                     <!-- lien vers la méthode "delete" avec la variable $book et sa clé qui contient le bon "id" pour supprimer le bon booking -->

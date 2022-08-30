@@ -7,7 +7,7 @@ use Models\RoomModel;
 
 class BookingController extends Controller
 {
-    public function bookingFormUser()
+    public function bookingFormUser(): void
     {
         // instanciation d'un nouveau model
         $modelRoom = new RoomModel();
@@ -20,7 +20,7 @@ class BookingController extends Controller
     }
             
 
-    public function create()
+    public function create(): void
     {
         /*
             _A la validation du formulaire, afficher les erreurs de champs vide ou incorrect sous chaque input
@@ -49,6 +49,7 @@ class BookingController extends Controller
         $errorCheck_out='';
         // si $_POST "firstName" n'est pas défini ou est défini et vide
         if(!isset($_POST['firstName']) || (isset($_POST['firstName']) && empty($_POST['firstName']))) 
+        // !preg_match("/^[a-zA-Z]+$/",  // !preg_match("/^[A-Za-z\-]+$/",
         {
             // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
             $errorFirstName = 'first name incorrect';
@@ -169,18 +170,19 @@ class BookingController extends Controller
          
     public function search()
     {
-        // déclaration des variables pour la requête js
+        // recuperation des données evoyer par le js
         $content = file_get_contents("php://input");
+        // decoder le fichier json pour recuperer l'id de la catégory permettant la recherche
         $data = json_decode($content, true);
         $search = $data['id'];
         // instanciation d'un nouveau model
         $modelRoom = new RoomModel();
-        // stockage de ce nouveau model dans une variable qui appel la methode "getOneById" présente dans le fichier Database
-        $price = $modelRoom -> getOneById('category', 'cat_id', $search);
+        // appel de la methode du model "searchById" pour recupérer le titre de la category choisi
+        $price = $modelRoom -> searchById('category', 'cat_id', $search);
         include'views/prix.phtml';
+    }
         
 
-    }
             
     public function edit(): void
     {
@@ -208,8 +210,6 @@ class BookingController extends Controller
         ]);
     }
     
-
-        
         public function update() :void
         {
             /*
@@ -317,10 +317,12 @@ class BookingController extends Controller
                 // récupération des info de la méthode "edit" qui contient les 2 variables pour les id et l'appel des 2 methodes dans le model concerné
                 $idCust = $_POST['cust_id'];
                 $idBook = $_POST['id_booking'];
+                // instaciation d'un nouveau model
                 $editModel = new BookingModel();
+                // stockage du model dans 2 variables puis appel des methodes concernés
                 $form = $editModel -> findCustomer($idCust);
                 $form2 = $editModel -> findBooking($idBook);
-                // puis render de la vue avec ses variable
+                // puis render de la vue avec ses variables necessaires à l'affichage de toutes les info
                 $this -> render('updateBooking', [
                         'rooms' => $rooms,
                         'form' => $form,
@@ -368,8 +370,11 @@ class BookingController extends Controller
 
     public function delete() :void
     {
+        // récupération de l'id dans une variable pour la suppression
         $id = $_GET['id'];
+        // instanciation d'un nouvau model
         $model = new BookingModel();
+        // appel de la méthode "deleteModel" dans le model pour supprimer les données lié à l'id selectionné
         $model -> deleteModel($id);
         // puis redirect vers la vue "bookingList"
         redirect('/super-admin-control');

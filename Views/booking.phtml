@@ -1,5 +1,5 @@
 
-
+<!-- page booking, formulaire séparer en 2 parties -->
 <h2>Booking</h2>
 
     <h3>Personal details</h3>
@@ -142,7 +142,16 @@
                             <option value="">Choose your room</option>
                                 <!-- boucle pour faire afficher les catégories de rooms -->
                                 <?php foreach ($rooms as $room): ?>
-                                    <option value="<?= htmlspecialchars($room['cat_id']) ?>"><?= htmlspecialchars($room['cat_title']) ?></option>
+                                    
+                                    <option value="<?= htmlspecialchars($room['cat_id']) ?>"
+                                    
+                                    <?php if(isset($errors)): ?>
+
+                                        <?php if ($errors['data']['cat_id'] == $room['cat_id']) : ?> selected <?php endif; ?>
+                                    <?php endif; ?>
+                                    
+                                    
+                                    ><?= htmlspecialchars($room['cat_title']) ?></option>
                                 <?php endforeach ?>
                                 
                         </select>
