@@ -24,6 +24,7 @@ class RoomModel extends Database
 
     public function searchById(string $id): array
     {
+      // récupération des info des catégories par leurs id
         $search = $this -> getOneById('category', 'cat_id', $id);
         return $search;
     }

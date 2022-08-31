@@ -100,13 +100,14 @@
         <?php if(isset($_SESSION['ok']) && ($_SESSION['ok']) == true): ?>
             <h2 class="adminTitle">Back office</a></h2>
             <small>Welcome back <strong class="sessionName"><?=($_SESSION['user']['username'])?></strong></small>
-
             <div class="ul">
         <ul class="ulAdmin">
             <li><a href="<?= url('/super-admin-control') ?>">Booking list</a></li>
-            <li><a href="<?= url('/booking') ?>">New Booking</a></li>
+            <!-- condition pour donner accès uniquement aux "super admin" -->
+            <?php if($_SESSION['user']['userstatus'] === 'super admin'): ?>
             <li><a href="<?= url('/users') ?>">Admin list</a></li>
             <li><a href="<?= url('/addAdmin') ?>">New Admin</a></li>
+            <?php endif ?>
         </ul>
     </div>
         <?php endif ?>

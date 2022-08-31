@@ -1,12 +1,12 @@
 <?php
 
-// /**
-//  * Construit une url absolue à partir d'un chemin
-//  * 
-//  * @param string $path
-//  * @param array $parameters
-//  * @return string
-//  */
+/**
+* Construit une url absolue à partir d'un chemin
+* 
+* @param string $path
+* @param array $parameters
+* @return string
+**/
 function url(string $path, array $parameters = []): string 
 {
     $url = $_SERVER['SCRIPT_NAME'] . $path;
@@ -18,12 +18,12 @@ function url(string $path, array $parameters = []): string
     return $url;
 }
 
-// /**
-//  * Redirige vers une route
-//  * 
-//  * @param string $path
-//  * @param array $parameters
-//  */
+/**
+* Redirige vers une route
+* 
+* @param string $path
+* @param array $parameters
+*/
 function redirect(string $path, array $parameters = []): void
 {
     header('Location: ' . url($path, $parameters));

@@ -11,12 +11,10 @@
                 <div class="div-input">
                     <label for="firstName"></label>
 
-                    <input type="text" name="firstName" class="firstName" placeholder="first name" value="<?= htmlspecialchars($form['cust_firstname']) ?><?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') 
-                    {
-                        // chargement de la donnée $user'firstName' à modifier
-                        // puis si $errors 'data' est defini et que $errors 'data','firstName' n'est pas vide
-                        // alors réaffichage de la donnée gérer par le controller
-                    }?>"> 
+                    <input type="text" name="firstName" class="firstName" placeholder="first name" value="<?= htmlspecialchars($form['cust_firstname']) ?><?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') ?>"> 
+                        <!-- chargement de la donnée $user'firstName' à modifier 
+                        puis si $errors 'data' est defini et que $errors 'data','firstName' n'est pas vide
+                        alors réaffichage de la donnée gérer par le controller --> 
                     <p><small class="errorForm">
                 <?php
                     // si $errors 'message' est défini et que $errors 'message','firstName' n'est pas vide
@@ -30,18 +28,11 @@
                 <div class="div-input">
                     <label for="lastName"></label>
 
-                    <input type="text" name="lastName" class="lastName" placeholder="last name" value="<?= htmlspecialchars($form['cust_lastname']) ?><?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') 
-                    {
-                        // chargement de la donnée $user'lastName' à modifier
-                        // puis si $errors 'data' est defini et que $errors 'data','lastName' n'est pas vide
-                        // alors réaffichage de la donnée gérer par le controller
-                    }?>"> 
+                    <input type="text" name="lastName" class="lastName" placeholder="last name" value="<?= htmlspecialchars($form['cust_lastname']) ?><?php if(isset($errors['data'])&& $errors['data']['lastName'] !=='') ?>"> 
                     <p><small class="errorForm">
                 <?php
-                    // si $errors 'message' est défini et que $errors 'message','lastName' n'est pas vide
                     if(isset($errors['message']) && $errors['message']['lastName']!=='')
                     {
-                        // alors affichage du message d'erreur 'lastName' defini dans le controller
                         echo($errors['message']['lastName']);
                     }
                     ?></small></p>
@@ -49,18 +40,11 @@
                 <div class="div-input">
                         <label for="email"></label>
 
-                        <input type="email" name="email" class="email" placeholder="email" value="<?= htmlspecialchars($form['cust_email']) ?><?php if(isset($errors['data'])&& $errors['data']['email'] !=='') 
-                        {
-                            // chargement de la donnée $user'email' à modifier
-                            // puis si $errors 'data' est defini et que $errors 'data','email' n'est pas vide
-                            // alors réaffichage de la donnée gérer par le controller
-                        }?>"> 
+                        <input type="email" name="email" class="email" placeholder="email" value="<?= htmlspecialchars($form['cust_email']) ?><?php if(isset($errors['data'])&& $errors['data']['email'] !=='') ?>"> 
                         <p><small class="errorForm">
                 <?php
-                    // si $errors 'message' est défini et que $errors 'message','email' n'est pas vide
                     if(isset($errors['message']) && $errors['message']['email']!=='')
                     {
-                        // alors affichage du message d'erreur 'email' defini dans le controller
                         echo($errors['message']['email']);
                     }
                     ?></small></p>
@@ -69,18 +53,11 @@
                 <div class="div-input-label">
                         <div><label for="birthdate">your birthdate</label></div>
                         
-                        <input type="date" name="birthDate" class="birthDate" value="<?= htmlspecialchars($form['cust_birthdate']) ?><?php if(isset($errors['data'])&& $errors['data']['birthDate'] !=='') 
-                        {
-                            // chargement de la donnée $user'birthDate' à modifier
-                            // puis si $errors 'data' est defini et que $errors 'data','birthDate' n'est pas vide
-                            // alors réaffichage de la donnée gérer par le controller
-                        }?>">
+                        <input type="date" name="birthDate" class="birthDate" value="<?= htmlspecialchars($form['cust_birthdate']) ?><?php if(isset($errors['data'])&& $errors['data']['birthDate'] !=='') ?>">
                         <p><small class="errorForm">
                 <?php
-                    // si $errors 'message' est défini et que $errors 'message','birthDate' n'est pas vide
                     if(isset($errors['message']) && $errors['message']['birthDate']!=='')
                     {
-                        // alors affichage du message d'erreur 'birthDate' defini dans le controller
                         echo($errors['message']['birthDate']);
                     }
                     ?></small></p>
@@ -96,36 +73,22 @@
                 
                 <div><label for="check-in">Check-in: 2pm</label></div>
                     
-                    <input type="date" class="check-in" name="check_in" value="<?= htmlspecialchars($form2['check_in']) ?><?php if(isset($errors['data'])&& $errors['data']['check_in'] !=='') 
-                    {
-                        // chargement de la donnée $user'check_in' à modifier
-                        // puis si $errors 'data' est defini et que $errors 'data','check_in' n'est pas vide
-                        // alors réaffichage de la date gérer par le controller
-                    }?>">
+                    <input type="date" class="check-in" name="check_in" value="<?= htmlspecialchars($form2['check_in']) ?><?php if(isset($errors['data'])&& $errors['data']['check_in'] !=='') ?>">
                     <p><small class="errorForm">
                 <?php
-                    // si $errors 'message' est défini et que $errors 'message','check_in' n'est pas vide
                     if(isset($errors['message']) && $errors['message']['check_in']!=='')
                     {
-                        // alors affichage du message d'erreur 'check_in' defini dans le controller
                         echo($errors['message']['check_in']);
                     }
                     ?></small></p>
                     
                 <div><label for="check-out">Check-out: 12am</label></div>
                     
-                    <input type="date" class="check-out" name="check_out" value="<?= htmlspecialchars($form2['check_out']) ?><?php if(isset($errors['data'])&& $errors['data']['check_out'] !=='') 
-                    {
-                        // chargement de la donnée $user'check_out' à modifier
-                        // puis si $errors 'data' est defini et que $errors 'data','check_out' n'est pas vide
-                        // alors réaffichage de la date gérer par le controller
-                    }?>">
+                    <input type="date" class="check-out" name="check_out" value="<?= htmlspecialchars($form2['check_out']) ?><?php if(isset($errors['data'])&& $errors['data']['check_out'] !=='') ?>">
                     <p><small class="errorForm">
                 <?php
-                    // si $errors 'message' est défini et que $errors 'message','check_out' n'est pas vide
                     if(isset($errors['message']) && $errors['message']['check_out']!=='')
                     {
-                        // alors affichage du message d'erreur 'check_out' defini dans le controller
                         echo($errors['message']['check_out']);
                     }
                     ?></small></p>
@@ -146,10 +109,8 @@
                     </select>
                         <p><small class="errorForm">
                     <?php
-                        // si $errors 'message' est défini et que $errors 'message','cat_id' n'est pas vide
                         if(isset($errors['message']) && $errors['message']['cat_id']!=='')
                         {
-                            // alors affichage du message d'erreur 'cat_id' defini dans le controller
                             echo($errors['message']['cat_id']);
                         }
                     ?>

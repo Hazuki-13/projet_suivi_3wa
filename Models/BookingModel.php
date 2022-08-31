@@ -6,8 +6,6 @@ use Admin\Database;
 
 class BookingModel extends Database
 {
-    // protected Database $db;
-
         public function newBooking($data): void
         {
             // Méthode permettant de creer une réservation (partie 1)

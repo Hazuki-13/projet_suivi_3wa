@@ -35,7 +35,7 @@ class AdminModel extends Database
     public function checkUser($data)
     {
         // methode permettant de verifier un utilisateur par son email via une requête dans une variable $email
-        $email = $this -> getOneByEmail('users', 'user_name, user_status, user_email, user_password', $data);
+        $email = $this -> getOneByEmail('users', 'user_id, user_name, user_status, user_email, user_password', $data);
         return $email;
     }
 

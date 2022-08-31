@@ -22,7 +22,6 @@ if(isset($_SESSION['ok']) && ($_SESSION['ok']) == true)
     // Récupération de la route sur laquelle on se trouve
     $route = $_SERVER['PATH_INFO'] ?? '/home';
 
-    //si $routes n'est pas defini alors direction page home par defaut
     if (!isset($routes[$route]))
     {
         header ("location: home");
@@ -35,7 +34,6 @@ if(isset($_SESSION['ok']) && ($_SESSION['ok']) == true)
     $controller = new $controllerName();
     $controller->$method();
 }
-// sinon accès aux routes publique uniquement
 else
 {
     //récupération des routes publique
@@ -44,7 +42,6 @@ else
     // Récupération de la route sur laquelle on se trouve
     $route = $_SERVER['PATH_INFO'] ?? '/home';
     
-    //si $routes n'est pas defini alors direction page home par defaut
     if (!isset($routes[$route]))
     {
         header ("location: home");
