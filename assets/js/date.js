@@ -14,10 +14,18 @@ function countDays() {
         console.log(check_in.value);
         console.log(check_out.value);
 
+        let date1 = new Date(check_in);
+        let date2 = new Date(check_out);
+        let resultTime = date2.getTime() - date1.getTime();
+        
+        console.log(resultTime);
     }
 }
 
 /*
+*** let date1 = new Date(check_in);
+*** let date2 = new Date(check_out);
+
 *** var date1 = new Date("01/01/2020");
 *** var date2 = new Date("07/04/2020");
 *** var Diff_temps = date2.getTime() - date1.getTime(); 

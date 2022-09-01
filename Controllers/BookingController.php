@@ -336,7 +336,7 @@ class BookingController extends Controller
                 ];
 
                 $model -> updateModelBooking($dataSuite);
-                redirect('/super-admin-control');
+                redirect('/bookingList');
             }
     }
 
@@ -348,7 +348,7 @@ class BookingController extends Controller
         $id = $_GET['id'];
         $model = new BookingModel();
         $model -> deleteModel($id);
-        redirect('/super-admin-control');
+        redirect('/bookingList');
     }
 }
     

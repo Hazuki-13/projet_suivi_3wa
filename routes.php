@@ -37,12 +37,12 @@ return [
         'displayHome'
     ],
     
-    '/login' => [
+    '/478845ZrqQifzZ9ymRHF_login' => [
         'Controllers\LoginController',
         'displayLogin'
     ],
     
-    '/login/access' => [
+    '/478845ZrqQifzZ9ymRHF_login/access' => [
         'Controllers\LoginController',
         'loginAccess'
     ],

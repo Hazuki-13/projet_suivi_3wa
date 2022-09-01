@@ -102,7 +102,7 @@
             <small>Welcome back <strong class="sessionName"><?=($_SESSION['user']['username'])?></strong></small>
             <div class="ul">
         <ul class="ulAdmin">
-            <li><a href="<?= url('/super-admin-control') ?>">Booking list</a></li>
+            <li><a href="<?= url('/bookingList') ?>">Booking list</a></li>
             <!-- condition pour donner accès uniquement aux "super admin" -->
             <?php if($_SESSION['user']['userstatus'] === 'super admin'): ?>
             <li><a href="<?= url('/users') ?>">Admin list</a></li>

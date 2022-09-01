@@ -3,16 +3,14 @@
 namespace Controllers;
 
 use Models\AdminModel;
-use Models\BookingModel;
-use Models\RoomModel;
 
-class SuperAdminController extends Controller
+class AdminController extends Controller
 {
     public function displayBookingAdmin(): void
     {
             $model = new AdminModel;
             $bookingList = $model -> readBookings();
-            $this -> render('super-admin-control',[
+            $this -> render('bookingList',[
                 'booking' => $bookingList
             ]);
     }

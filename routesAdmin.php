@@ -63,55 +63,55 @@ return [
         'search'
     ],
     
-    '/super-admin-control' => [
-        'Controllers\SuperAdminController',
+    '/bookingList' => [
+        'Controllers\AdminController',
         'displayBookingAdmin'
     ],
     
-    '/super-admin-control/updateBooking' => [
+    '/bookingList/updateBooking' => [
         'Controllers\BookingController',
         'edit'
     ],
     
-    '/super-admin-control/update' => [
+    '/bookingList/update' => [
         'Controllers\BookingController',
         'update'
     ],
     
+    '/bookingList/delete' => [
+        'Controllers\BookingController',
+        'delete'
+    ],
+    
     '/addAdmin' => [
-        'Controllers\SuperAdminController',
+        'Controllers\AdminController',
         'displayAddAdmin'
     ],
     
     '/addAdmin/create' => [
-        'Controllers\SuperAdminController',
+        'Controllers\AdminController',
         'createNewAdmin'
     ],
     
     '/users' => [
-        'Controllers\SuperAdminController',
+        'Controllers\AdminController',
         'displayUsers'
     ],
     
     '/users/updateAdmin' => [
-        'Controllers\SuperAdminController',
+        'Controllers\AdminController',
         'edit'
     ],
     
     '/users/update' => [
-        'Controllers\SuperAdminController',
+        'Controllers\AdminController',
         'update'
     ],
     
     '/users/delete' => [
-        'Controllers\SuperAdminController',
+        'Controllers\AdminController',
         'delete'
-    ],
-    
-    '/super-admin-control/delete' => [
-        'Controllers\BookingController',
-        'delete'
-        ]
+    ]
         
     ];
     

@@ -34,9 +34,9 @@
                     <!-- condition pour donner accès uniquement aux "super admin" -->
                     <?php if($_SESSION['user']['userstatus'] === 'super admin'): ?>
                     <!-- lien vers le formulaire "updateBooking" avec la variable $book et sa clé qui contient le bon "id" pour le modifier le bon booking et/ou le bon customer  -->
-                    <td><a href="<?= url('/super-admin-control/updateBooking', ['cust_id' => $book['cust_id'], 'id_booking' => $book['id_booking']]) ?>">Update</a></td>
+                    <td><a href="<?= url('/bookingList/updateBooking', ['cust_id' => $book['cust_id'], 'id_booking' => $book['id_booking']]) ?>">Update</a></td>
                     <!-- lien vers la méthode "delete" avec la variable $book et sa clé qui contient le bon "id" pour supprimer le bon booking -->
-                    <td><a href="<?= url('/super-admin-control/delete', ['id' => $book['cust_id']]) ?>">Delete</a></td>
+                    <td><a href="<?= url('/bookingList/delete', ['id' => $book['cust_id']]) ?>">Delete</a></td>
                     <?php endif ?>
                 </tr>
             <?php endforeach ?>

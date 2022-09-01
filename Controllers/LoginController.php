@@ -9,7 +9,7 @@ class LoginController extends Controller
     // Display de la page login avec la méthode render
     public function displayLogin()
     {
-        $this -> render('login');
+        $this -> render('478845ZrqQifzZ9ymRHF_login');
     }
    
     public function loginAccess()
@@ -39,12 +39,12 @@ class LoginController extends Controller
             }
             else
             {               
-                $this -> render('login');   
+                $this -> render('478845ZrqQifzZ9ymRHF_login');   
             }
         }
             else
             {          
-                $this -> render('login');   
+                $this -> render('478845ZrqQifzZ9ymRHF_login');   
             }            
         
     }
