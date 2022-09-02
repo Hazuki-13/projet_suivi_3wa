@@ -9,19 +9,33 @@ let check_in = document.querySelector('.check-in');
 let check_out = document.querySelector('.check-out');
 check_in.addEventListener('change', countDays);
 check_out.addEventListener('change', countDays);
+
 function countDays() {
     if(check_in.value != "" && check_out.value !="" ) {
         console.log(check_in.value);
         console.log(check_out.value);
 
-        let date1 = new Date(check_in);
-        let date2 = new Date(check_out);
-        let resultTime = date2.getTime() - date1.getTime();
-        
+        let date1 = new Date(check_in.value);
+        let date2 = new Date(check_out.value);
+        date1 = Date.parse(date1);
+        date2 = Date.parse(date2);
+        console.log(date1);
+        console.log(date2);
+
+        let resultTime = date2 - date1;
+        resultTime = (date2 - date1) / 86400000;
+
+        document.querySelectorAll('.price').innerHTML = `
+        <span> : ${resultTime} </span>
+        `
         console.log(resultTime);
     }
+        
 }
 
+
+
+// const 
 /*
 *** let date1 = new Date(check_in);
 *** let date2 = new Date(check_out);
