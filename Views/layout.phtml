@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/normalize.css">
+    <link rel="stylesheet" href="../assets/css/normalize.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
     <link rel="stylesheet" href="../assets/fancybox/jquery.fancybox.css">
     <script src="https://kit.fontawesome.com/01b2730b7a.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,47 +30,27 @@
         donc si la fin de l'url est différent de = "create, updateBooking, updateAdmin..etc..etc.."
         alors = <link rel="stylesheet" href="../assets/css/style.css">
         sinon = <link rel="stylesheet" href="../../assets/css/style.css"> -->
-    <?php if($endUrl !== "create"): ?>
-        <link rel="stylesheet" href="../assets/css/normalize.css">
-        <link rel="stylesheet" href="../assets/css/style.css">
-        <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
-    <?php else: ?>
+    <?php if($endUrl == "create"): ?>
         <link rel="stylesheet" href="../../assets/css/normalize.css">
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
     <?php endif; ?>
-    <?php if($endUrl !== "updateBooking"): ?>
-        <link rel="stylesheet" href="../assets/css/normalize.css">
-        <link rel="stylesheet" href="../assets/css/style.css">
-        <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
-    <?php else: ?>
+    <?php if($endUrl == "updateBooking"): ?>
         <link rel="stylesheet" href="../../assets/css/normalize.css">
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
     <?php endif; ?>
-    <?php if($endUrl !== "updateAdmin"): ?>
-        <link rel="stylesheet" href="../assets/css/normalize.css">
-        <link rel="stylesheet" href="../assets/css/style.css">
-        <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
-    <?php else: ?>
+    <?php if($endUrl == "updateAdmin"): ?>
     <link rel="stylesheet" href="../../assets/css/normalize.css">
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
     <?php endif; ?>
-    <?php if($endUrl !== "update"): ?>
-        <link rel="stylesheet" href="../assets/css/normalize.css">
-        <link rel="stylesheet" href="../assets/css/style.css">
-        <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
-    <?php else: ?>
+    <?php if($endUrl == "update"): ?>
         <link rel="stylesheet" href="../../assets/css/normalize.css">
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
     <?php endif; ?>
-    <?php if($endUrl !== "access"): ?>
-        <link rel="stylesheet" href="../assets/css/normalize.css">
-        <link rel="stylesheet" href="../assets/css/style.css">
-        <link rel="icon" type="img/png" href="../assets/favicon/favicon-32x32.png" />
-    <?php else: ?>
+    <?php if($endUrl == "access"): ?>
         <link rel="stylesheet" href="../../assets/css/normalize.css">
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="icon" type="img/png" href="../../assets/favicon/favicon-32x32.png" />
@@ -151,20 +134,16 @@
         donc si la fin de l'url est différent de = "create, updateBooking"
         alors = <script src="../assets/js/script.js"></script>
         sinon = <script src="../../assets/js/script.js"></script> -->
-        <?php if($endUrl !== "create"): ?>
-            <script src="../assets/js/script.js"></script>
-        <?php else: ?>
+        <?php if($endUrl == "create"): ?>
             <script src="../../assets/js/script.js"></script>
         <?php endif; ?>
-        <?php if($endUrl !== "updateBooking"): ?>
-            <script src="../assets/js/script.js"></script>
-        <?php else: ?>
+        <?php if($endUrl == "updateBooking"): ?>
             <script src="../../assets/js/script.js"></script>
         <?php endif; ?>
 
         <script type="text/javascript" src="../assets/fancybox/jquery-3.5.1.js"></script>
         <script type="text/javascript" src="../assets/fancybox/jquery.fancybox.js"></script>
-        <script type="text/javascript" src="../assets/js/date.js"></script>
+        <!-- <script type="text/javascript" src="../assets/js/date.js"></script> -->
         <script src="../assets/js/script.js"></script>
         
 

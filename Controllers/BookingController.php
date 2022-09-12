@@ -163,7 +163,7 @@ class BookingController extends Controller
          
     public function search()
     {
-        // recuperation des données evoyer par le js
+        // recuperation des données envoyer par le js
         $content = file_get_contents("php://input");
         // decoder le fichier json pour recuperer l'id de la catégory permettant la recherche
         $data = json_decode($content, true);

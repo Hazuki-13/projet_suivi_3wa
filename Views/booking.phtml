@@ -127,7 +127,7 @@
                                 <!-- boucle pour faire afficher les catégories de rooms -->
                                 <?php foreach ($rooms as $room): ?>
                                     
-                                    <option value="<?= htmlspecialchars($room['cat_id']) ?>"
+                                    <option class="catDisplay"value="<?= htmlspecialchars($room['cat_id']) ?>"
                                     
                                     <?php if(isset($errors)): ?>
 
@@ -150,14 +150,21 @@
                             </small></p>
                             
                         
+                    <div class="result">
 
                         <div class="price">
-                            
-                                    
+                            <span class="priceDisplay"></span>
                         </div>
+                        <div class="days">
+
+                        </div>
+                        <div class="priceTimesDays">
+                            
+                        </div>
+                                    
+                    </div>  
                         
-                        
-                    </div>
+                </div>
                 
                 <button class="submit">Book now!</button>
         </form>

@@ -3,7 +3,7 @@
 body {
     width:95%;
     text-align: center ;
-    margin: 0 auto ;
+    margin: 2.5rem auto 0 ;
     text-decoration: none;
     line-height: 2.3rem;
     font-family: 'Cookie', sans-serif;
@@ -190,6 +190,32 @@ select > option {
 
 .errorForm {
     color:red;
+}
+
+.result {
+    margin: 0 auto;
+    /* border: 2px solid purple; */
+    display: flex;
+    justify-content: center;
+}
+
+.price {
+    width: 20%;
+    text-align: end;
+    margin-right: .7rem;
+    /* border: 2px solid red; */
+}
+
+.days {
+    width: 6.5%;
+    text-align: start;
+    /* border: 2px solid blue; */
+}
+
+.priceTimesDays {
+    width: 5%;
+    text-align: start;
+    /* border: 2px solid green; */
 }
 
 /*********************************************************************/
