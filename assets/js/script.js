@@ -2,38 +2,52 @@
 
 let check_in = document.querySelector('.check-in');
 let check_out = document.querySelector('.check-out');
+let checkinDate;
+let checkoutDate;
+let currentDate = new Date;
+console.log(currentDate);
 let resultTime;
 let day;
 
 function countDays() {
-    if(check_in.value != "" && check_out.value !="" ) {
-
-        let date1 = new Date(check_in.value);
-        let date2 = new Date(check_out.value);
-        date1 = Date.parse(date1);
-        date2 = Date.parse(date2);
-
-        resultTime = (date2 - date1) / 86400000;
-
-        document.querySelector('.days').innerHTML = 
-        `<span> Day(s) x ${resultTime} </span>`
-        total();
-    }
+    let message = document.querySelector('.days');
+    checkinDate = new Date(check_in.value);
+    checkoutDate = new Date(check_out.value);
+    if(check_in.value != "" && check_out.value !="" && check_in.value < check_out.value && checkinDate >= currentDate) {
         
+        let date1 = Date.parse(checkinDate);
+        let date2 = Date.parse(checkoutDate);
+        resultTime = (date2 - date1) / 86400000;
+        message.innerHTML = `<span> Day(s) x ${resultTime} </span>`;
+    }
+    else if(checkinDate <= currentDate) {
+        message.innerHTML="date d'entrée antérieure à ce jour";
+    }
+    else if(check_in.value != "" && check_out.value !="" && check_in.value > check_out.value) {
+        message.innerHTML="date de sortie antérieure à date d'entrée";
+    }
+    else
+    {
+        message.innerHTML="";
+    }
+    total();
 }
-
-
+        
 function total() {
-
-    if(check_in.value != "" && check_out.value !="" && selectCategory !== null) {
+    let message = document.querySelector('.priceTimesDays')
+    if(check_in.value != "" && check_out.value !="" && selectCategory.value !== "" && check_in.value < check_out.value && checkinDate >= currentDate) {
         let total = resultTime * day;      
-        document.querySelector('.priceTimesDays').innerHTML= " Total = " + total + "€" ;
+        message.innerHTML= " Total = " + total + "€" ;
+    }
+    else
+    {
+        message.innerHTML="";
     }
 }
-    check_in.addEventListener('change', countDays);
-    check_out.addEventListener('change', countDays);
+check_in.addEventListener('change', countDays);
+check_out.addEventListener('change', countDays);
 
-let selectCategory = document.querySelector('.selectCategory')
+let selectCategory = document.querySelector('.selectCategory');
 if(selectCategory !== null){
 
     let categoryList = document.querySelector('.selectCategory');
@@ -54,7 +68,9 @@ if(selectCategory !== null){
                 total();
 
             })
-        }else {
+        }
+        else
+        {
             document.querySelector('.priceDisplay').innerHTML= "";
         }
     });
