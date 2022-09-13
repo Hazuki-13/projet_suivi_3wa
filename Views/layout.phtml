@@ -22,7 +22,6 @@
             // echo($path);
         $pathFragments = explode('/', $path);
         $endUrl = end($pathFragments);
-            // echo('<br>'.$endUrl);
     ?>
 
     <!-- mise en place d'une condition avec $_SERVER['REQUEST_URI']
@@ -61,7 +60,7 @@
 <body>
     <header>
 
-        <h1 class="title"><a href="<?= url('/home') ?>">my Hotel</a></h1>
+        <h1 class="title"><a href="<?= url('/home') ?>"></a>my Hotel</h1>
 
             <nav class ="toolbar">
                 <ul>
@@ -108,7 +107,7 @@
 
                 <h3>Contact</h3>
                 
-                <p>Adress: my adress</p>
+                <p>Address: my address</p>
                 <p>Email: myemail@email.com</p>
                 <p>Phone: +9999999999</p>
                 
@@ -143,7 +142,6 @@
 
         <script type="text/javascript" src="../assets/fancybox/jquery-3.5.1.js"></script>
         <script type="text/javascript" src="../assets/fancybox/jquery.fancybox.js"></script>
-        <!-- <script type="text/javascript" src="../assets/js/date.js"></script> -->
         <script src="../assets/js/script.js"></script>
         <script src="../assets/js/nbr.js"></script>
         

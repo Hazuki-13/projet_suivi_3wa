@@ -150,8 +150,7 @@ input {
     border-radius: 5px;
     display: block;
     color: white;
-    background: rgb(61,45,253);
-    background: linear-gradient(90deg, rgba(61,45,253,1) 5%, rgba(39,167,205,1) 20%, rgba(34,193,195,1) 80%, rgba(61,45,253,1) 95%);
+    background: rgba(34,193,195,1);
 }
 
 hr {
@@ -163,8 +162,7 @@ select {
     width: 65%;
     padding: 0.5rem;
     text-align: center;
-    background: rgb(61,45,253);
-    background: radial-gradient(circle, rgba(34,193,195,1) 60%, rgba(61,45,253,1) 95%);
+    background: rgba(34,193,195,1);
     color: white;
     border-radius: 10px;
 }
@@ -183,9 +181,12 @@ select > option {
     padding: 0.5rem;
     margin: 2rem auto 3rem ;
     border-radius: 10px;
-    background: rgb(61,45,253);
-    background: radial-gradient(circle, rgba(34,193,195,1) 60%, rgba(61,45,253,1) 95%);
+    background:rgba(34,193,195,1);
     color: white;
+}
+
+.submit:hover {
+    color: gold;
 }
 
 .errorForm {
@@ -194,17 +195,18 @@ select > option {
 
 .result {
     margin: 0 auto;
-    border: 2px solid purple;
+    /* border: 2px solid purple; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .price {
-    width: 55%;
-    text-align: center;
-    margin-right: .7rem;
-    border: 2px solid red;
+    width: 25rem;
+    /* text-align: center; */
+    padding: .7rem;
+    /* margin-right: .7rem; */
+    /* border: 2px solid red; */
 }
 
 /* .priceDisplay {
@@ -212,17 +214,17 @@ select > option {
 } */
 
 .days {
-    width: 55%;
-    text-align: end;
-    padding-right: 2.8rem;
-    border: 2px solid blue;
+    width: 25rem;
+    /* text-align: center; */
+    padding: .7rem;
+    /* border: 2px solid blue; */
 }
 
 .priceTimesDays {
-    width: 55%;
-    text-align: end;
-    padding-right: 1rem;
-    border: 2px solid green;
+    width: 25rem;
+    /* text-align: center; */
+    padding: .7rem;
+    /* border: 2px solid green; */
 }
 
 /*********************************************************************/
@@ -250,6 +252,10 @@ select > option {
     text-decoration: none;
     text-transform: uppercase;
     border-bottom: 2px solid white;
+}
+
+.ulAdmin li a:hover{
+    color: red;
 }
 
 .ul {

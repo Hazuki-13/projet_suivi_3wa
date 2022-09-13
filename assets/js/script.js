@@ -16,7 +16,7 @@ function countDays() {
         resultTime = (date2 - date1) / 86400000;
 
         document.querySelector('.days').innerHTML = 
-        `<span> x ${resultTime} day(s) </span>`
+        `<span> Day(s) x ${resultTime} </span>`
         total();
     }
         
@@ -27,7 +27,7 @@ function total() {
 
     if(check_in.value != "" && check_out.value !="" && selectCategory !== null) {
         let total = resultTime * day;      
-        document.querySelector('.priceTimesDays').innerHTML= " = " + total + "€" ;
+        document.querySelector('.priceTimesDays').innerHTML= " Total = " + total + "€" ;
     }
 }
     check_in.addEventListener('change', countDays);
@@ -49,7 +49,7 @@ if(selectCategory !== null){
             fetch(myRequest)
             .then(res=>res.text())
             .then(res=>{
-                document.querySelector('.priceDisplay').innerHTML= "Room's price per day : " + res + "€" ;
+                document.querySelector('.priceDisplay').innerHTML= "Room : " + res + "€" ;
                 day = res;
                 total();
 
