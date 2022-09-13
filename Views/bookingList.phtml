@@ -21,7 +21,7 @@
             <!-- boucle permettant d'afficher le detail de chaque booking -->
             <?php foreach ($booking as $book): ?>
                 <tr>
-                    <td id="nbr"></td>
+                    <td class="nbr"></td>
                     <td><?= htmlspecialchars($book['id_booking']) ?></td>
                     <td><?= htmlspecialchars($book['cust_id']) ?></td>
                     <td><?= htmlspecialchars($book['cust_lastname'])  ?></td>

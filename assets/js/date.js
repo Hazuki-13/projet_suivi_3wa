@@ -1,34 +1,42 @@
 
 
 
-let check_in = document.querySelector('.check-in');
-let check_out = document.querySelector('.check-out');
+// let check_in = document.querySelector('.check-in');
+// let check_out = document.querySelector('.check-out');
 
-function countDays() {
-    if(check_in.value != "" && check_out.value !="" ) {
-        // console.log(check_in.value);
-        // console.log(check_out.value);
+// function countDays() {
+//     if(check_in.value != "" && check_out.value !="" ) {
+//         // console.log(check_in.value);
+//         // console.log(check_out.value);
 
-        let date1 = new Date(check_in.value);
-        let date2 = new Date(check_out.value);
-        date1 = Date.parse(date1);
-        date2 = Date.parse(date2);
-        // console.log(date1);
-        // console.log(date2);
+//         let date1 = new Date(check_in.value);
+//         let date2 = new Date(check_out.value);
+//         date1 = Date.parse(date1);
+//         date2 = Date.parse(date2);
+//         // console.log(date1);
+//         // console.log(date2);
 
-        let resultTime = date2 - date1;
-        resultTime = (date2 - date1) / 86400000;
+//         let resultTime = date2 - date1;
+//         resultTime = (date2 - date1) / 86400000;
 
-        document.querySelector('.days').innerHTML = `
-        <span> x ${resultTime} </span>
-        `
-        console.log(resultTime);
-        console.log(typeof(resultTime));
-    }
+//         document.querySelector('.days').innerHTML = `
+//         <span> x ${resultTime} </span>
+//         `
+//         console.log(resultTime);
+//         console.log(typeof(resultTime));
+//     }
         
-}
-    check_in.addEventListener('change', countDays);
-    check_out.addEventListener('change', countDays);
+// }
+//     check_in.addEventListener('change', countDays);
+//     check_out.addEventListener('change', countDays);
+
+// ```JS
+// async function getRequest(e) {
+//     let response = await fetch(url);
+//     let data = await response.json();
+//     document.getElementById('getResponse').innerHTML = `${data.results.prenom} ${data.results.status}`;
+// }
+// ```
 
 
     
