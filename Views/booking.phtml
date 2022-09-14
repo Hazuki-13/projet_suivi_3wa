@@ -90,7 +90,7 @@
             <h3>Your stay</h3>
                 <div class="formRoom">
                     
-                        <div><label for="check-in">Check-in: 2pm</label></div>
+                        <div><label for="check-in">Check-in: 2pm to 6pm</label></div>
                         
                             <input type="date" class="check-in" name="check_in" value="<?php if(isset($errors['data'])&& $errors['data']['check_in'] !=='') 
                             {
@@ -109,7 +109,7 @@
                         ?>
                             </small></p>
                         
-                        <div><label for="check-out">Check-out: 12am</label></div>
+                        <div><label for="check-out">Check-out: until 12pm</label></div>
                         
                             <input type="date" class="check-out" name="check_out" value="<?php if(isset($errors['data'])&& $errors['data']['check_out'] !=='') 
                             {
