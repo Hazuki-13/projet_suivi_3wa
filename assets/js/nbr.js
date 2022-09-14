@@ -4,18 +4,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   let colonnes = document.querySelectorAll('.nbr');
   let nbrOfColumn;
-  
-  for ( let colonne of colonnes ){
-    nbrOfColumn = colonnes.length
-    // tr = colonne;
-    // console.log(tr);
-    for (i=0; i <= nbrOfColumn; i++) {
-      console.log(i);
-      // colonnes.innerHTML = `${i}`;
-    }
-    console.log(nbrOfColumn);
-    colonnes.innerHTML = "toto";
+  nbrOfColumn = colonnes.length
+  for (i=0; i <= nbrOfColumn; i++) {
+    colonnes[i].innerHTML = `${i+1}`;
   }
+
+}
+);
   
   
-});

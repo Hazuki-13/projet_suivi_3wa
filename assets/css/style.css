@@ -335,7 +335,7 @@ select > option {
 /************************** début version tablette **************************/
 /****************************************************************************/
 
-@media screen and (min-width:575px) {
+@media screen and (min-width:600px) {
 
     body {
         max-width: 95vw;
@@ -457,12 +457,12 @@ select > option {
 /**************************** début version desktop ************************/
 /***************************************************************************/
 
-@media screen and (min-width:980px) {
+@media screen and (min-width:1080px) {
     body {
-        max-width: 100vw;
         width:90%;
         line-height: 3.2rem;
         font-size: 3rem;
+        align-items: center;
     }
 
     h2 {
