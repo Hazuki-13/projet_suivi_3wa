@@ -41,7 +41,9 @@ class BookingController extends Controller
 
         $error = false;
         $errorFirstName = '';
+        $errorEmptyFirstName = '';
         $errorLastName='';
+        $errorEmptyLastName='';
         $errorEmail='';
         $errorBirthDate='';
         $errorCat_id='';
@@ -51,7 +53,7 @@ class BookingController extends Controller
         if(!isset($_POST['firstName']) || (isset($_POST['firstName']) && empty($_POST['firstName']))) 
         {
             // alors je stocke un message d'erreur dans une variable qui sera affiché dans la vue
-            $errorFirstName = 'first name empty';
+            $errorEmptyFirstName = 'first name empty';
             $error = true;
         }
         // n'autorise que les lettres
@@ -63,7 +65,7 @@ class BookingController extends Controller
 
         if(!isset($_POST['lastName']) || (isset($_POST['lastName']) && empty($_POST['lastName']))) 
         {
-            $errorLastName = 'last name empty';
+            $errorEmptyLastName = 'last name empty';
             $error = true;         
         }
 
@@ -105,7 +107,9 @@ class BookingController extends Controller
 
         // stockage des messages d'erreur dans la variable $errors avec comme clé "message" qui est appelé dans la vue
         $errors['message']=[
+            'firstNameEmpty'=> $errorEmptyFirstName,
             'firstName'=> $errorFirstName,
+            'lastNameEmpty'  => $errorEmptyLastName,
             'lastName'  => $errorLastName,
             'email'  => $errorEmail,
             'birthDate'  => $errorBirthDate,

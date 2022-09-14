@@ -20,9 +20,12 @@
                             <p><small class="errorForm">
                         <?php
                             // si $errors 'message' est défini et que $errors 'message','firstName' n'est pas vide
-                            if(isset($errors['message']) && $errors['message']['firstName']!=='')
+                            if(isset($errors['message']) && $errors['message']['firstNameEmpty']!=='')
                             {
                                 // alors affichage du message d'erreur 'firstName' defini dans le controller
+                                echo($errors['message']['firstNameEmpty']);
+                            }
+                            else if (isset($errors['message']) && $errors['message']['firstName']){
                                 echo($errors['message']['firstName']);
                             }
                         ?>
@@ -37,8 +40,11 @@
                             }?>"> 
                             <p><small class="errorForm">
                         <?php
-                            if(isset($errors['message']) && $errors['message']['lastName']!=='')
+                            if(isset($errors['message']) && $errors['message']['lastNameEmpty']!=='')
                             {
+                                echo($errors['message']['lastNameEmpty']);
+                            }
+                            else if (isset($errors['message']) && $errors['message']['lastName']){
                                 echo($errors['message']['lastName']);
                             }
                         ?>

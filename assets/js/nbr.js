@@ -19,9 +19,3 @@ window.addEventListener("DOMContentLoaded", (event) => {
   
   
 });
-
-/*
-* je créer ce code pour afficher 
-* un numéro dans une colone pour chaque rangée
-* 
-*/
